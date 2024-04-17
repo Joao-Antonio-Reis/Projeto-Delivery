@@ -10,7 +10,7 @@ import Generics.Cliente;
 import Generics.Endereco;
 
 
-public class ClientForm {
+public class ClientForm extends JFrame{
     private JFrame frame;
     private JTextField nomeField;
     private JTextField telefoneField;
@@ -31,71 +31,86 @@ public class ClientForm {
     }
 
     public ClientForm() {
-        initialize();
+        frame();
     }
 
-    private void initialize() {
-        frame = new JFrame("Cadastro Cliente");
-        frame.setBounds(500, 300, 600, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new FlowLayout());
+    private void frame() {
+
+        setTitle("Japinha Oriental Food - Cadastro Cliente");
+        setVisible(true); //Visibilidade true
+        setSize(800,800); //Define o tamanho da tela
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Fecha o programa quando fecha a janela
+        setResizable(false);//Não deixa mudar o tamanho
+        setLocationRelativeTo(null); //abre o frame no meio da tela
+        setLayout(null);
 
         JLabel nomeLabel = new JLabel("Nome:");
         nomeLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(nomeLabel);
+        nomeLabel.setBounds(10, 10, 50, 20);
+        add(nomeLabel);
 
         nomeField = new JTextField();
-        nomeField.setColumns(10);
-        nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        frame.getContentPane().add(nomeField);
+        nomeField.setBounds(60, 10, 280,20);
+        nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(nomeField);
 
         JLabel telefoneLabel = new JLabel("Telefone:");
+        telefoneLabel.setBounds(10, 35, 80, 20);
         telefoneLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(telefoneLabel);
+        add(telefoneLabel);
 
         telefoneField = new JTextField();
-        telefoneField.setColumns(10);
-        frame.getContentPane().add(telefoneField);
+        telefoneField.setBounds(80, 35,100,20);
+        telefoneField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(telefoneField);
 
         JLabel bairroLabel = new JLabel("Bairro:");
+        bairroLabel.setBounds(190, 35, 80, 20);
         bairroLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(bairroLabel);
+        add(bairroLabel);
 
         bairroField = new JTextField();
-        bairroField.setColumns(10);
-        frame.getContentPane().add(bairroField);
+        bairroField.setBounds(240, 35, 100, 20);
+        bairroField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(bairroField);
 
         JLabel ruaLabel = new JLabel("Rua:");
+        ruaLabel.setBounds(10, 60, 40, 20);
         ruaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(ruaLabel);
+        add(ruaLabel);
 
         ruaField = new JTextField();
-        ruaField.setColumns(10);
-        frame.getContentPane().add(ruaField);
+        ruaField.setBounds(45, 60, 200, 20);
+        ruaField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(ruaField);
 
-        JLabel numeroLabel = new JLabel("Numero:");
+        JLabel numeroLabel = new JLabel("N°:");
+        numeroLabel.setBounds(250, 60, 25, 20);
         numeroLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(numeroLabel);
+        add(numeroLabel);
 
         numeroField = new JTextField();
+        numeroField.setBounds(272, 60, 68, 20);
+        numeroField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         numeroField.setColumns(10);
-        frame.getContentPane().add(numeroField);
+        add(numeroField);
 
         JLabel complementoLabel = new JLabel("Complemento:");
         complementoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(complementoLabel);
+        add(complementoLabel);
 
         complementoField = new JTextField();
         complementoField.setColumns(10);
-        frame.getContentPane().add(complementoField);
+        add(complementoField);
 
         JButton submitButton = new JButton("Submit");
-        submitButton.setSize(new Dimension(25,15));
-        //submitButton.setMargin(new Insets(10,10,10,10));
+        submitButton.setSize(new Dimension(25,20));
+        submitButton.setBounds(650, 715, 125, 40);
         submitButton.setFont(new Font("Arial", Font.BOLD, 20));
         submitButton.setBackground(Color.RED);
         submitButton.setForeground(Color.WHITE);
-        submitButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        submitButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+        add(submitButton);
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String nome = nomeField.getText();
