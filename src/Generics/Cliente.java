@@ -30,4 +30,13 @@ public class Cliente {
     public void setEndereço(Endereco endereço) {
         this.endereço = endereço;
     }
+
+    public void informacaoCliente(Cliente cliente) {
+        System.out.println(cliente.getNome());
+        System.out.println(cliente.getTelefone());
+        System.out.println(cliente.getEndereço().getBairro());
+        System.out.println(cliente.getEndereço().getRua());
+        System.out.println(cliente.getEndereço().getNumero());
+        System.out.println(cliente.getEndereço().getComplemento());
+    }
 }
