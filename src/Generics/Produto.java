@@ -6,8 +6,16 @@ public class Produto {
     private Categoria categoria;
     private String descricao;
     private Double valor;
+    
     public Produto(int id, String nome, Categoria categoria, String descricao, Double valor) {
         this.id = id;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
+    public Produto(String nome, Categoria categoria, String descricao, Double valor) {
         this.nome = nome;
         this.categoria = categoria;
         this.descricao = descricao;
