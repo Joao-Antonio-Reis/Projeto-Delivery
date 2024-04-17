@@ -36,5 +36,7 @@ public class Cliente {
         System.out.println(cliente.getTelefone());
         System.out.println(cliente.getEndereço().getBairro());
         System.out.println(cliente.getEndereço().getRua());
+        System.out.println(cliente.getEndereço().getNumero());
+        System.out.println(cliente.getEndereço().getComplemento());
     }
 }

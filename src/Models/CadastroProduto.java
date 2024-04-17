@@ -72,7 +72,7 @@ public class CadastroProduto {
         submitButton.setForeground(Color.WHITE);
         submitButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         submitButton.addActionListener(new ActionListener() {
-         
+        
             // Terminar de fazer o método depois de linkar as categorias para poder selecionar a cada produto adicionado.
             public void actionPerformed(ActionEvent e) {
                 
