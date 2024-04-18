@@ -1,9 +1,6 @@
 package Models;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,15 +17,27 @@ public class CadastroProduto {
         private JTextField categoriaField;
         private JTextField descricaoField;
         private JTextField valorField;
-    
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+               CadastroProduto window = new CadastroProduto();
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
     public CadastroProduto() {
         initialize();
     }
 
     private void initialize() {
-        frame = new JFrame("Cadastro Cliente");
-        frame.setBounds(500, 300, 600, 600);
+        frame = new JFrame("Japinha Oriental Food - Cadastro Cliente");
+        frame.setSize(800,800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.getContentPane().setLayout(new FlowLayout());
 
         JLabel nomeLabel = new JLabel("Nome:");

@@ -8,11 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import Generics.Cliente;
 import Generics.Endereco;
@@ -28,6 +24,7 @@ public class ClientForm extends JFrame{
     private JTextField complementoField;
 
     private Font font = new Font("Arial", Font.BOLD, 15);
+    private Color cor = new Color(136,0, 12);
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -54,81 +51,71 @@ public class ClientForm extends JFrame{
         setLocationRelativeTo(null); //abre o frame no meio da tela
         setLayout(null);
 
-        JButton buttonCardapio = new JButton("Cardapio");
-        buttonCardapio.setBounds(0, 0, 100, 20);
-        buttonCardapio.setFont(font);
-        buttonCardapio.setForeground(Color.BLACK);
-        buttonCardapio.setBackground(Color.WHITE);
-        add(buttonCardapio);
+        JMenuBar menuBar = new JMenuBar();
+        // Cria os menus
+        JMenu categoriasMenu = new JMenu("Categoria");
+        JMenu carrinhoMenu = new JMenu("Carrinho");
+        JMenu loginMenu = new JMenu("Login");
 
-        JButton button2 = new JButton("Button2");
-        button2.setBounds(100, 0, 100, 20);
-        button2.setFont(font);
-        button2.setForeground(Color.BLACK);
-        button2.setBackground(Color.WHITE);
-        add(button2);
+        menuBar.setBackground(cor);
+        categoriasMenu.setForeground(Color.WHITE);
+        carrinhoMenu.setForeground(Color.WHITE);
+        loginMenu.setForeground(Color.WHITE);
 
-        JButton button3 = new JButton("Carrinho");
-        button3.setBounds(200, 0, 100, 20);
-        button3.setFont(font);
-        button3.setForeground(Color.BLACK);
-        button3.setBackground(Color.WHITE);
-        add(button3);
+        menuBar.add(categoriasMenu);
+        menuBar.add(carrinhoMenu);
+        menuBar.add(loginMenu);
 
-        JButton button4 = new JButton("Login");
-        button4.setBounds(300, 0, 100, 20);
-        button4.setFont(font);
-        button4.setForeground(Color.BLACK);
-        button4.setBackground(Color.WHITE);
-        add(button4);
+        setJMenuBar(menuBar);
+
 
         JLabel nomeLabel = new JLabel("Nome:");
         nomeLabel.setFont(font);
-        nomeLabel.setBounds(5, 30, 50, 20);
+        nomeLabel.setBounds(5, 5, 50, 20);
         add(nomeLabel);
 
         nomeField = new JTextField();
-        nomeField.setBounds(55, 30, 320,20);
+        nomeField.setBounds(55, 5, 320,20);
         nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(nomeField);
 
         JLabel telefoneLabel = new JLabel("Telefone:");
-        telefoneLabel.setBounds(5, 60, 80, 20);
+        telefoneLabel.setBounds(5, 30, 80, 20);
         telefoneLabel.setFont(font);
         add(telefoneLabel);
 
         telefoneField = new JTextField();
-        telefoneField.setBounds(75, 60,100,20);
+        telefoneField.setBounds(75, 30,100,20);
         telefoneField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(telefoneField);
 
         JLabel bairroLabel = new JLabel("Bairro:");
-        bairroLabel.setBounds(185, 60, 80, 20);
+        bairroLabel.setBounds(185, 30, 80, 20);
         bairroLabel.setFont(font);
         add(bairroLabel);
 
         bairroField = new JTextField();
-        bairroField.setBounds(235, 60, 140, 20);
+        bairroField.setBounds(235, 30, 140, 20);
         bairroField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(bairroField);
 
         JLabel ruaLabel = new JLabel("Rua:");
-        ruaLabel.setBounds(5, 90, 38, 20);
+        ruaLabel.setBounds(5, 55, 38, 20);
         ruaLabel.setFont(font);
         add(ruaLabel);
 
         ruaField = new JTextField();
-        ruaField.setBounds(38, 90, 200, 20);
+        ruaField.setBounds(38, 55, 200, 20);
         ruaField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(ruaField);
 
         JLabel numeroLabel = new JLabel("N°:");
-        numeroLabel.setBounds(245, 90, 25, 20);
+        numeroLabel.setBounds(245, 55, 25, 20);
         numeroLabel.setFont(font);
         add(numeroLabel);
 
         numeroField = new JTextField();
-        numeroField.setBounds(268, 90, 68, 20);
+        numeroField.setBounds(268, 55, 68, 20);
         numeroField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         numeroField.setColumns(10);
         add(numeroField);
@@ -143,9 +130,9 @@ public class ClientForm extends JFrame{
 
         JButton submitButton = new JButton("Submit");
         submitButton.setSize(new Dimension(25,20));
-        submitButton.setBounds(270, 715, 125, 40);
+        submitButton.setBounds(270, 695, 125, 40);
         submitButton.setFont(font);
-        submitButton.setBackground(Color.RED);
+        submitButton.setBackground(cor);
         submitButton.setForeground(Color.WHITE);
         submitButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 
