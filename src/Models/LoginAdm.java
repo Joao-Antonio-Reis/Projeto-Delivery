@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 public class LoginAdm extends JFrame{
     
+    private JFrame f
     private JTextField loginField;
     private JTextField senhaField;
     private JButton loginButton;
