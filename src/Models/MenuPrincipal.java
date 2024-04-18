@@ -68,7 +68,13 @@ public class MenuPrincipal extends JFrame {
         //Action produtos
         produtos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                ClientForm clientForm = new ClientForm();
 
+                //Adiciona o ClientForm ao MenuPrincipal
+                getContentPane().removeAll();
+                getContentPane().add(clientForm);
+                revalidate();
+                repaint();
             }
         });
 
