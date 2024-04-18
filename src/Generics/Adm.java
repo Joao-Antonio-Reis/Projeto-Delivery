@@ -12,6 +12,11 @@ public class Adm {
         this.senha = senha;
     }
 
+    public Adm(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
+
     public int getId() {
         return id;
     }
@@ -35,6 +40,4 @@ public class Adm {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    
 }
