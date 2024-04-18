@@ -14,8 +14,7 @@ import Generics.Cliente;
 import Generics.Endereco;
 
 
-public class ClientForm extends JFrame{
-    private JFrame frame;
+public class ClientForm extends JPanel{
     private JTextField nomeField;
     private JTextField telefoneField;
     private JTextField bairroField;
@@ -26,49 +25,26 @@ public class ClientForm extends JFrame{
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136,0, 12);
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                ClientForm window = new ClientForm();
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(() -> {
+//            try {
+//                ClientForm window = new ClientForm();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        });
+//    }
 
     public ClientForm() {
-        frame();
+        panelClienteForm();
     }
 
-    private void frame() {
+    public void panelClienteForm() {
 
-        setTitle("Japinha Oriental Food - Cadastro Cliente");
-        setVisible(true); //Visibilidade true
-        setSize(415,800); //Define o tamanho da tela
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Fecha o programa quando fecha a janela
-        setResizable(false);//Não deixa mudar o tamanho
-        setLocationRelativeTo(null); //abre o frame no meio da tela
+        setVisible(true);
         setLayout(null);
 
-        JMenuBar menuBar = new JMenuBar();
-        // Cria os menus
-        JMenu categoriasMenu = new JMenu("Categoria");
-        JMenu carrinhoMenu = new JMenu("Carrinho");
-        JMenu loginMenu = new JMenu("Login");
-
-        menuBar.setBackground(cor);
-        categoriasMenu.setForeground(Color.WHITE);
-        carrinhoMenu.setForeground(Color.WHITE);
-        loginMenu.setForeground(Color.WHITE);
-
-        menuBar.add(categoriasMenu);
-        menuBar.add(carrinhoMenu);
-        menuBar.add(loginMenu);
-
-        setJMenuBar(menuBar);
-
-
+        //Label Nome
         JLabel nomeLabel = new JLabel("Nome:");
         nomeLabel.setFont(font);
         nomeLabel.setBounds(5, 5, 50, 20);
@@ -79,6 +55,7 @@ public class ClientForm extends JFrame{
         nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(nomeField);
 
+        //Label telefone
         JLabel telefoneLabel = new JLabel("Telefone:");
         telefoneLabel.setBounds(5, 30, 80, 20);
         telefoneLabel.setFont(font);
@@ -89,6 +66,7 @@ public class ClientForm extends JFrame{
         telefoneField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(telefoneField);
 
+        //Label bairro
         JLabel bairroLabel = new JLabel("Bairro:");
         bairroLabel.setBounds(185, 30, 80, 20);
         bairroLabel.setFont(font);
@@ -99,6 +77,7 @@ public class ClientForm extends JFrame{
         bairroField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(bairroField);
 
+        //Label rua
         JLabel ruaLabel = new JLabel("Rua:");
         ruaLabel.setBounds(5, 55, 38, 20);
         ruaLabel.setFont(font);
@@ -109,6 +88,7 @@ public class ClientForm extends JFrame{
         ruaField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(ruaField);
 
+        //Label Numeri
         JLabel numeroLabel = new JLabel("N°:");
         numeroLabel.setBounds(245, 55, 25, 20);
         numeroLabel.setFont(font);
@@ -120,6 +100,7 @@ public class ClientForm extends JFrame{
         numeroField.setColumns(10);
         add(numeroField);
 
+        //Label complemento
         JLabel complementoLabel = new JLabel("Complemento:");
         complementoLabel.setFont(font);
         add(complementoLabel);
@@ -128,6 +109,7 @@ public class ClientForm extends JFrame{
         complementoField.setColumns(10);
         add(complementoField);
 
+        //Button de submit
         JButton submitButton = new JButton("Submit");
         submitButton.setSize(new Dimension(25,20));
         submitButton.setBounds(270, 695, 125, 40);

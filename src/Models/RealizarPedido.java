@@ -1,5 +1,5 @@
 package Models;
 
-public class RealizarPedido {
+public class RealizarPedido extends MenuPrincipal {
     
 }
