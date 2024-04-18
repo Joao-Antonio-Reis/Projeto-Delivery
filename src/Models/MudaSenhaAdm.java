@@ -8,13 +8,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
 public class MudaSenhaAdm extends JFrame{
     
     private JFrame frame;
-    private JTextField senha1Field;
-    private JTextField senha2Field;
+    private JPasswordField senha1Field;
+    private JPasswordField senha2Field;
     private JButton submitButton;
 
     private Font font = new Font("Arial", Font.BOLD, 15);
@@ -34,7 +34,7 @@ public class MudaSenhaAdm extends JFrame{
         senha1Label.setBounds(5, 30, 50, 20);
         add(senha1Label);
 
-        senha1Field = new JTextField();
+        senha1Field = new JPasswordField();
         senha1Field.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         senha1Field.setBounds(55, 30, 320,20);
         add(senha1Field);
@@ -44,7 +44,7 @@ public class MudaSenhaAdm extends JFrame{
         senha2Label.setBounds(5, 30, 50, 20);
         add(senha2Label);
 
-        senha2Field = new JTextField();
+        senha2Field = new JPasswordField();
         senha2Field.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         senha2Field.setBounds(55, 30, 320,20);
         add(senha2Field);
@@ -59,7 +59,7 @@ public class MudaSenhaAdm extends JFrame{
 
         /*
         Criar ActionPerformed para realizar a alteração da senha Administrativa
-        loginButton.addActionListener(new ActionListener() {
+        submitButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
                 
