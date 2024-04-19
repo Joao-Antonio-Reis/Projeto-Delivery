@@ -17,7 +17,7 @@ public class LoginAdm extends JLabel{
     private JTextField loginField;
     private JTextField senhaField;
     private JButton loginButton;
-
+    private Color cor = new Color(136,0, 12);
     private Font font = new Font("Arial", Font.BOLD, 15);
 
     public LoginAdm(){
@@ -51,11 +51,12 @@ public class LoginAdm extends JLabel{
 
         loginButton = new JButton("Login");
         loginButton.setSize(new Dimension(25,20));
-        loginButton.setBounds(270, 715, 125, 40);
+        loginButton.setBounds(270, 695, 125, 40);
         loginButton.setFont(font);
-        loginButton.setBackground(Color.RED);
+        loginButton.setBackground(cor);
         loginButton.setForeground(Color.WHITE);
         loginButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+        add(loginButton);
 
         loginButton.addActionListener(new ActionListener() {
             

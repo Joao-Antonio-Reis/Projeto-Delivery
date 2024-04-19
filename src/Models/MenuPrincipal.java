@@ -40,6 +40,14 @@ public class MenuPrincipal extends JFrame {
         menuBar.setBackground(cor);
 
         //Criando a opção categoria
+        JButton voltaMenu = new JButton("Menu");
+        voltaMenu.setBorder(BorderFactory.createLineBorder(cor,0));
+        voltaMenu.setBackground(cor);
+        voltaMenu.setForeground(Color.WHITE);
+        menuBar.add(voltaMenu);
+
+
+        //Criando a opção categoria
         JMenu categoriasMenu = new JMenu("Cardapio");
         categoriasMenu.setForeground(Color.WHITE);
         menuBar.add(categoriasMenu);
@@ -52,6 +60,8 @@ public class MenuPrincipal extends JFrame {
         menuBar.add(carrinhoMenu);
         JMenuItem verCarrinho = new JMenuItem("Ver Carrinho");// Cria o item do menu
         carrinhoMenu.add(verCarrinho);// Adiciona o item ao menu "Arquivo"
+        JMenuItem finalizarCompra = new JMenuItem("Finalizar compra");
+        carrinhoMenu.add(finalizarCompra);
 
         //Criando a opção login
         JMenu loginMenu = new JMenu("Login");
@@ -65,14 +75,38 @@ public class MenuPrincipal extends JFrame {
 
         setJMenuBar(menuBar);//Setando o menu no frame
 
+        JLabel menuprin = new JLabel("Menu principal");
+        menuprin.setBounds(5, 5, 100,20);
+        add(menuprin);
+
+        voltaMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Limpa o contêiner principal e adiciona novamente o conteúdo inicial
+                getContentPane().removeAll();
+                frame(); // Recria o menu principal
+                revalidate();
+                repaint();
+            }
+        });
+
         //Action produtos
         produtos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ClientForm clientForm = new ClientForm();
+                Cardapio cardapio = new Cardapio();
 
-                //Adiciona o ClientForm ao MenuPrincipal
                 getContentPane().removeAll();
-                getContentPane().add(clientForm);
+                getContentPane().add(cardapio);
+                revalidate();
+                repaint();
+            }
+        });
+
+        finalizarCompra.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                RealizarPedido finalizar = new RealizarPedido();
+
+                getContentPane().removeAll();
+                getContentPane().add(finalizar);
                 revalidate();
                 repaint();
             }
@@ -83,7 +117,6 @@ public class MenuPrincipal extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ClientForm clientForm = new ClientForm();
 
-                // Adiciona o ClientForm ao MenuPrincipal
                 getContentPane().removeAll();
                 getContentPane().add(clientForm);
                 revalidate();
@@ -96,7 +129,6 @@ public class MenuPrincipal extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 LoginAdm loginAdm = new LoginAdm();
 
-                // Adiciona o ClientForm ao MenuPrincipal
                 getContentPane().removeAll();
                 getContentPane().add(loginAdm);
                 revalidate();
