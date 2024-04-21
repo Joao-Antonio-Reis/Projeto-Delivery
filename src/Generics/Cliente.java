@@ -39,5 +39,4 @@ public class Cliente {
         System.out.println(cliente.getEndereço().getNumero());
         System.out.println(cliente.getEndereço().getComplemento());
     }
-
 }
