@@ -1,9 +1,9 @@
 CREATE TABLE enderecos (
     endereco_id INT AUTO_INCREMENT PRIMARY KEY,
-    bairro VARCHAR(100)
+    bairro VARCHAR(100),
     rua VARCHAR(100),
     numero VARCHAR(10),
-    complemento VARCHAR(100), -- Adicione uma vírgula aqui
+    complemento VARCHAR(100),
 );
 
 CREATE TABLE clientes (
