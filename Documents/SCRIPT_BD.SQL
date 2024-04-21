@@ -3,7 +3,7 @@ CREATE TABLE enderecos (
     bairro VARCHAR(100),
     rua VARCHAR(100),
     numero VARCHAR(10),
-    complemento VARCHAR(100),
+    complemento VARCHAR(100)
 );
 
 CREATE TABLE clientes (
