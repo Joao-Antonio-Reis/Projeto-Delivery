@@ -83,7 +83,7 @@ public class Categoria {
     return null; // Retorna -1 se algo der errado
     }
 
-    private void carregarCategorias() {
+    private ArrayList<String> carregarCategoria() {
         try {
             Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
 
@@ -97,12 +97,15 @@ public class Categoria {
                 String nomeCategoria = resultSet.getString("categoria_nome");
                 listaDeCategoria.add(nomeCategoria);
             }
+            
 
             resultSet.close();
             statement.close();
             connection.close();
+            return listaDeCategoria;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
