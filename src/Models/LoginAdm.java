@@ -40,7 +40,7 @@ public class LoginAdm extends JLabel{
         add(loginField);
 
         JLabel senhaLabel = new JLabel("Senha:");
-        senhaLabel.setBounds(5, 30, 60, 20);
+        senhaLabel.setBounds(5, 25, 60, 20);
         senhaLabel.setFont(font);
         add(senhaLabel);
 
