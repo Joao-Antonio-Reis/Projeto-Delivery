@@ -1,6 +1,10 @@
 package Models;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,7 +25,7 @@ public class CadastroProduto {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
-               CadastroProduto window = new CadastroProduto();
+                CadastroProduto window = new CadastroProduto();
                 window.frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -95,6 +99,8 @@ public class CadastroProduto {
                     System.out.println("Digite o valor correto!");
                     valor = 0.0;
                 }
+
+                int 
 
                // Produto produto = new Produto(nome, categoria, descricao, valor);
 

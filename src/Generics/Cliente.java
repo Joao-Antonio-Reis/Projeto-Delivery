@@ -1,12 +1,12 @@
 package Generics;
 
 
-import ConexaoDB.ConexaoGeneric;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import ConexaoDB.ConexaoGeneric;
 
 public class Cliente {
 
@@ -50,7 +50,7 @@ public class Cliente {
         try {
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             
-            String sql = "INSERT INTO clientes (cliente_nome, cliente_telefone, endereco_id) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO cliente (cliente_nome, cliente_telefone, endereco_id) VALUES (?, ?, ?)";
             statement = conexao.prepareStatement(sql);
             statement.setString(1, nome);
             statement.setString(2, telefone);
