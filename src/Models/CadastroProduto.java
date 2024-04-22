@@ -100,7 +100,6 @@ public class CadastroProduto {
                     valor = 0.0;
                 }
 
-                int 
 
                // Produto produto = new Produto(nome, categoria, descricao, valor);
 

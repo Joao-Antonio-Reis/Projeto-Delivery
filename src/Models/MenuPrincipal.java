@@ -72,6 +72,17 @@ public class MenuPrincipal extends JFrame {
         loginMenu.add(cadastar);// Adiciona o item ao menu "Arquivo"
         loginMenu.add(login);// Adiciona o item ao menu "Arquivo"
 
+        JButton cadastroCategoria = new JButton("categoria");
+        cadastroCategoria.setBorder(BorderFactory.createLineBorder(cor,4));
+        cadastroCategoria.setBackground(cor);
+        cadastroCategoria.setForeground(Color.WHITE);
+        menuBar.add(cadastroCategoria);
+
+        JButton cadastroProduto= new JButton("produto");
+        cadastroProduto.setBorder(BorderFactory.createLineBorder(cor,4));
+        cadastroProduto.setBackground(cor);
+        cadastroProduto.setForeground(Color.WHITE);
+        menuBar.add(cadastroProduto);
 
         setJMenuBar(menuBar);//Setando o menu no frame
 
@@ -131,6 +142,27 @@ public class MenuPrincipal extends JFrame {
 
                 getContentPane().removeAll();
                 getContentPane().add(loginAdm);
+                revalidate();
+                repaint();
+            }
+        });
+        cadastroProduto.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                CadastroProduto cadastro_prod = new CadastroProduto();
+
+                getContentPane().removeAll();
+//                getContentPane().add(cadastro_prod);
+                revalidate();
+                repaint();
+            }
+        });
+
+        cadastroCategoria.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                CadastroCategoria cadastro_cat = new CadastroCategoria();
+
+                getContentPane().removeAll();
+                getContentPane().add(cadastro_cat);
                 revalidate();
                 repaint();
             }
