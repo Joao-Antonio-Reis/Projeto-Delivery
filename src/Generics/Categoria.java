@@ -18,8 +18,6 @@ public class Categoria {
     private String nome;
     private String descricao;
     
-    ArrayList<String> listaDeCategoria = new ArrayList<>();
-
     public Categoria(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
@@ -40,72 +38,49 @@ public class Categoria {
         this.descricao = descricao;
     }
 
-    public String inserirCategoria(String categoria_nome, String categoria_descricao){
-        Connection conexao = null;
-        PreparedStatement statement = null;
+    public String inserirCategoria(String categoria_nome, String categoria_descricao) {
+        try (
+            
+            Connection conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement statement = conexao.prepareStatement("INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)")) {
 
-        try {
-            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-
-            String sql = "INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)";
-            statement = conexao.prepareStatement(sql);
             statement.setString(1, categoria_nome);
             statement.setString(2, categoria_descricao);
 
             int linhasAfetadas = statement.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                ResultSet rs = statement.getGeneratedKeys();
-                if (rs.next()) {
-                    String categoriaNome = rs.getString(2);
-                    System.out.println("Endereço inserido com sucesso! ID: " + categoriaNome);
-                    return categoriaNome;
-                }
+                System.out.println("Categoria inserida com sucesso!");
+                return categoria_nome;
             }
 
-            System.out.println("Categoria inserida com sucesso!");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Erro ao inserir categoria!");
-        } finally {
-            try {
-                if(statement != null){
-                    statement.close();
-                }
-                if (conexao != null) {
-                    conexao.close();
-                    System.out.println("Conexão encerrada!");
-                }
-            } catch (SQLException e) {
-                System.out.println("Erro ao fechar a conexão com o Banco de dados!");
-            }
         }
-    return null; // Retorna -1 se algo der errado
+        return null;
     }
 
     private ArrayList<String> carregarCategoria() {
-        try {
+        
+        ArrayList<String> listaDeCategoria = new ArrayList<>();
+        
+        try (
+            
             Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement statement = connection.prepareStatement("SELECT categoria_nome FROM categoria");
 
-            String sql = "SELECT categoria_nome FROM categoria";
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
                 String nomeCategoria = resultSet.getString("categoria_nome");
                 listaDeCategoria.add(nomeCategoria);
             }
-            
 
-            resultSet.close();
-            statement.close();
-            connection.close();
-            return listaDeCategoria;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Erro ao carregar categorias!");
         }
-        return null;
+        return listaDeCategoria;
     }
 }
