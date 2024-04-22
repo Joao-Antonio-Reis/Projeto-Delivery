@@ -15,11 +15,11 @@ public class Produto {
     
     private int id;
     private String nome;
-    private Categoria categoria;
+    private String categoria;
     private String descricao;
     private Double valor;
     
-    public Produto(int id, String nome, Categoria categoria, String descricao, Double valor) {
+    public Produto(int id, String nome, String categoria, String descricao, Double valor) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
@@ -27,7 +27,7 @@ public class Produto {
         this.valor = valor;
     }
 
-    public Produto(String nome, Categoria categoria, String descricao, Double valor) {
+    public Produto(String nome, String categoria, String descricao, Double valor) {
         this.nome = nome;
         this.categoria = categoria;
         this.descricao = descricao;
@@ -46,10 +46,10 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
     public String getDescricao() {

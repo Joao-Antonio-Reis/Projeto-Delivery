@@ -1,11 +1,21 @@
 package Models;
 
-import Generics.Categoria;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import Generics.Categoria;
 
 public class CadastroCategoria extends JFrame{
 
@@ -93,7 +103,7 @@ public class CadastroCategoria extends JFrame{
                 String nome = catField.getText();
                 String descricao = descField.getText();
 
-                Categoria categoria = new Categoria(nome, descricao);
+                Categoria categoria = new Categoria();
                 categoria.inserirCategoria(nome, descricao);
 
             }
