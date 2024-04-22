@@ -1,4 +1,6 @@
 package Generics;
+import ConexaoDB.ConexaoGeneric;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,10 +9,9 @@ import java.sql.SQLException;
 
 public class Endereco {
 
-    static final String URL = "jdbc:mysql://localhost/japinha";
-    static final String USUARIO = "root";
-    static final String SENHA = "";
-    
+    private static final String URL = ConexaoGeneric.getURL();
+    private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
+    private static final String SENHA = ConexaoGeneric.getSENHA();
     private String bairro;
     private String rua;
     private String numero;
@@ -35,7 +36,7 @@ public class Endereco {
         try {
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             
-            String sql = "INSERT INTO enderecos (bairro, rua, numero, complemento) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO endereco (bairro, rua, numero, complemento) VALUES (?, ?, ?, ?)";
             statement = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, bairro);
             statement.setString(2, rua);

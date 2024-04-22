@@ -1,16 +1,19 @@
 package Generics;
 
+
+import ConexaoDB.ConexaoGeneric;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Cliente {
-    
-    static final String URL = "jdbc:mysql://localhost/japinha";
-    static final String USUARIO = "root";
-    static final String SENHA = "";
-    
+
+    private static final String URL = ConexaoGeneric.getURL();
+    private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
+    private static final String SENHA = ConexaoGeneric.getSENHA();
+
     private String nome;
     private String telefone;
     private Endereco endereço;

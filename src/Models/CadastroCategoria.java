@@ -1,7 +1,11 @@
 package Models;
 
+import Generics.Categoria;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CadastroCategoria extends JFrame{
 
@@ -26,7 +30,7 @@ public class CadastroCategoria extends JFrame{
         frame(); // Chama o metodo do frame para mais privacidade
     }
     private void frame() {
-        setTitle("Japinha Oriental Food - Cadastro Categoria");
+        setTitle("Japinha Oriental Food");
         setVisible(true); //Visibilidade true
         setSize(415,800); //Define o tamanho da tela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Fecha o programa quando fecha a janela
@@ -52,13 +56,6 @@ public class CadastroCategoria extends JFrame{
         setJMenuBar(menuBar);
 
 
-        JButton button = new JButton("Cadastrar");
-        button.setBounds(270, 695, 125, 40);
-        button.setFont(new Font("Arial", Font.BOLD, 15));
-        button.setForeground(Color.WHITE);
-        button.setBackground(cor);
-        add(button);
-
         JLabel nomeCatLabel = new JLabel("Nome Categoria: ");
         nomeCatLabel.setFont(font);
         nomeCatLabel.setBounds(5, 5, 200, 20);
@@ -83,7 +80,24 @@ public class CadastroCategoria extends JFrame{
         descField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(descField);
 
+        JButton button = new JButton("Cadastrar");
+        button.setBounds(270, 695, 125, 40);
+        button.setFont(new Font("Arial", Font.BOLD, 15));
+        button.setForeground(Color.WHITE);
+        button.setBackground(cor);
+        add(button);
+        button.addActionListener(new ActionListener() {
 
+            public void actionPerformed(ActionEvent e) {
 
+                String nome = catField.getText();
+                String descricao = descField.getText();
+
+                Categoria categoria = new Categoria(nome, descricao);
+                categoria.inserirCategoria(nome, descricao);
+
+            }
+        });
+        add(button);
     }
 }

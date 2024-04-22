@@ -6,11 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import Generics.Cliente;
 import Generics.Endereco;
@@ -22,7 +18,7 @@ public class ClientForm extends JPanel{
     private JTextField bairroField;
     private JTextField ruaField;
     private JTextField numeroField;
-    private JTextField complementoField;
+    private JTextArea compleArea;
 
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136,0, 12);
@@ -103,13 +99,19 @@ public class ClientForm extends JPanel{
         add(numeroField);
 
         //Label complemento
-        JLabel complementoLabel = new JLabel("Complemento:");
+        JLabel complementoLabel = new JLabel("Complemento");
+        complementoLabel.setBounds(5 , 75, 100, 20);
         complementoLabel.setFont(font);
         add(complementoLabel);
 
-        complementoField = new JTextField();
-        complementoField.setColumns(10);
-        add(complementoField);
+        compleArea = new JTextArea();
+        compleArea.setBounds(5 ,95, 390, 100);
+        compleArea.setFont(font);
+        compleArea.setAlignmentY(JTextField.TOP); //Ajustar no topo
+        compleArea.setLineWrap(true); // Quebra de linha automática
+        compleArea.setWrapStyleWord(true); // Quebra de palavra
+        compleArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(compleArea);
 
         //Button de submit
         JButton submitButton = new JButton("Submit");
@@ -129,7 +131,7 @@ public class ClientForm extends JPanel{
                 String bairro = bairroField.getText();
                 String rua = ruaField.getText();
                 String numero = numeroField.getText();
-                String complemento = complementoField.getText();
+                String complemento = compleArea.getText();
 
                 Endereco endereco = new Endereco(bairro, rua, numero, complemento);
                 Cliente cliente = new Cliente(nome, telefone, endereco);
