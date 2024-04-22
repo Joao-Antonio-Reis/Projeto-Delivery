@@ -1,23 +1,13 @@
 package Models;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
+import Generics.Categoria;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
-import Generics.Categoria;
-
-public class CadastroCategoria extends JFrame{
+public class CadastroCategoria extends JLabel{
 
     private JFrame frame;
     private JTextField catField;
@@ -40,31 +30,9 @@ public class CadastroCategoria extends JFrame{
         frame(); // Chama o metodo do frame para mais privacidade
     }
     private void frame() {
-        setTitle("Japinha Oriental Food");
         setVisible(true); //Visibilidade true
         setSize(415,800); //Define o tamanho da tela
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Fecha o programa quando fecha a janela
-        setResizable(false);//Não deixa mudar o tamanho
-        setLocationRelativeTo(null); //abre o frame no meio da tela
         setLayout(null);
-
-        JMenuBar menuBar = new JMenuBar();
-        // Cria os menus
-        JMenu categoriasMenu = new JMenu("Categoria");
-        JMenu carrinhoMenu = new JMenu("Carrinho");
-        JMenu loginMenu = new JMenu("Login");
-
-        menuBar.setBackground(cor);
-        categoriasMenu.setForeground(Color.WHITE);
-        carrinhoMenu.setForeground(Color.WHITE);
-        loginMenu.setForeground(Color.WHITE);
-
-        menuBar.add(categoriasMenu);
-        menuBar.add(carrinhoMenu);
-        menuBar.add(loginMenu);
-
-        setJMenuBar(menuBar);
-
 
         JLabel nomeCatLabel = new JLabel("Nome Categoria: ");
         nomeCatLabel.setFont(font);
@@ -91,7 +59,7 @@ public class CadastroCategoria extends JFrame{
         add(descField);
 
         JButton button = new JButton("Cadastrar");
-        button.setBounds(270, 695, 125, 40);
+        button.setBounds(270, 695, 120, 40);
         button.setFont(new Font("Arial", Font.BOLD, 15));
         button.setForeground(Color.WHITE);
         button.setBackground(cor);
@@ -103,7 +71,7 @@ public class CadastroCategoria extends JFrame{
                 String nome = catField.getText();
                 String descricao = descField.getText();
 
-                Categoria categoria = new Categoria();
+                Categoria categoria = new Categoria(nome, descricao);
                 categoria.inserirCategoria(nome, descricao);
 
             }

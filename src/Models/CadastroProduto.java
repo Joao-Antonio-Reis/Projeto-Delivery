@@ -8,104 +8,101 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-public class CadastroProduto {
+public class CadastroProduto extends JLabel {
 
-        private JFrame frame;
-        private JTextField nomeField;
-        private JTextField categoriaField;
-        private JTextField descricaoField;
-        private JTextField valorField;
+    private JFrame frame;
+    private JTextField nomeField;
+    private JTextArea descProdutoArea;
+    private JTextField precoField;
+    private Font font = new Font("Arial", Font.BOLD, 15);
+    private Color cor = new Color(136, 0, 12);
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                CadastroProduto window = new CadastroProduto();
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(() -> {
+//            try {
+//                CadastroProduto window = new CadastroProduto();
+//                window.frame.setVisible(true);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        });
+//    }
+
     public CadastroProduto() {
-        initialize();
+        produtoLabel();
     }
 
-    private void initialize() {
-        frame = new JFrame("Japinha Oriental Food - Cadastro Cliente");
-        frame.setSize(800,800);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.getContentPane().setLayout(new FlowLayout());
+    public void produtoLabel() {
+        setVisible(true); //Visibilidade true
+        setSize(415, 800); //Define o tamanho da tela
+        setLayout(null);
 
-        JLabel nomeLabel = new JLabel("Nome:");
-        nomeLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(nomeLabel);
+
+        JLabel nomeProdLabel = new JLabel("Nome: ");
+        nomeProdLabel.setFont(font);
+        nomeProdLabel.setBounds(5, 5, 50, 20);
+        add(nomeProdLabel);
 
         nomeField = new JTextField();
-        nomeField.setColumns(10);
-        nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        frame.getContentPane().add(nomeField);
+        nomeField.setBounds(60, 5, 270, 20);
+        nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(nomeField);
 
-        JLabel categoriaLabel = new JLabel("Categoria:");
-        categoriaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(categoriaLabel);
+        JLabel precoLabel = new JLabel("Preço: ");
+        precoLabel.setFont(font);
+        precoLabel.setBounds(5, 30, 50, 20);
+        add(precoLabel);
 
-        categoriaField = new JTextField();
-        categoriaField.setColumns(10);
-        frame.getContentPane().add(categoriaField);
+        precoField = new JTextField();
+        precoField.setBounds(60, 30, 100, 20);
+        precoField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(precoField);
 
-        JLabel valorLabel = new JLabel("Valor:");
-        valorLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(valorLabel);
 
-        valorField = new JTextField();
-        valorField.setColumns(10);
-        frame.getContentPane().add(valorField);
+        JLabel descCat = new JLabel("Descrição");
+        descCat.setBounds(5, 55, 100, 20);
+        descCat.setFont(font);
+        add(descCat);
 
-        JLabel descricaoLabel = new JLabel("Descrição:");
-        descricaoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        frame.getContentPane().add(descricaoLabel);
+        descProdutoArea = new JTextArea();
+        descProdutoArea.setBounds(5, 75, 390, 100);
+        descProdutoArea.setFont(font);
+        descProdutoArea.setAlignmentY(JTextField.TOP); //Ajustar no topo
+        descProdutoArea.setLineWrap(true); // Quebra de linha automática
+        descProdutoArea.setWrapStyleWord(true); // Quebra de palavra
+        descProdutoArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        add(descProdutoArea);
 
-        descricaoField = new JTextField();
-        descricaoField.setColumns(10);
-        frame.getContentPane().add(descricaoField);
+        JButton button = new JButton("Cadastrar");
+        button.setBounds(270, 695, 120, 40);
+        button.setFont(new Font("Arial", Font.BOLD, 15));
+        button.setForeground(Color.WHITE);
+        button.setBackground(cor);
+        add(button);
+        button.addActionListener(new ActionListener() {
 
-        JButton submitButton = new JButton("Submit");
-        submitButton.setSize(new Dimension(25,15));
-        //submitButton.setMargin(new Insets(10,10,10,10));
-        submitButton.setFont(new Font("Arial", Font.BOLD, 20));
-        submitButton.setBackground(Color.RED);
-        submitButton.setForeground(Color.WHITE);
-        submitButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        submitButton.addActionListener(new ActionListener() {
-        
             // Terminar de fazer o método depois de linkar as categorias para poder selecionar a cada produto adicionado.
             public void actionPerformed(ActionEvent e) {
-                
+
                 String nome = nomeField.getText();
-                String descricao = descricaoField.getText();
-                String categorianome = categoriaField.getText();
-                Double valor;
-                try {
-                    valor = Double.parseDouble(valorField.getText());
-                } catch (NumberFormatException ex){
-                    System.out.println("Digite o valor correto!");
-                    valor = 0.0;
-                }
+                String descricao = descProdutoArea.getText();
+//                String categorianome = categoriaField.getText();
+                String valor;
+//                try {
+//                    valor = Double.parseDouble(precoField.getText());
+//                } catch (NumberFormatException ex) {
+//                    System.out.println("Digite o valor correto!");
+//                    valor = 0.0;
+//                }
 
 
-               // Produto produto = new Produto(nome, categoria, descricao, valor);
+                // Produto produto = new Produto(nome, categoria, descricao, valor);
 
                 // Do something with the client object
             }
         });
-        frame.getContentPane().add(submitButton);
+        add(button);
     }
 }

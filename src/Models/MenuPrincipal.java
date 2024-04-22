@@ -55,13 +55,11 @@ public class MenuPrincipal extends JFrame {
         menuBar.add(cardaioMenu);
 
         //Criando a opção carrinho
-        JMenu carrinhoMenu = new JMenu("Carrinho");
-        carrinhoMenu.setForeground(Color.WHITE);
-        menuBar.add(carrinhoMenu);
-        JMenuItem verCarrinho = new JMenuItem("Ver Carrinho");// Cria o item do menu
-        carrinhoMenu.add(verCarrinho);// Adiciona o item ao menu "Arquivo"
-        JMenuItem finalizarCompra = new JMenuItem("Finalizar compra");
-        carrinhoMenu.add(finalizarCompra);
+        JButton carrinho = new JButton("Carrinho");
+        carrinho.setBorder(BorderFactory.createLineBorder(cor, 4));
+        carrinho.setForeground(Color.WHITE);
+        carrinho.setBackground(cor);
+        menuBar.add(carrinho);
 
         //Criando a opção login
         JMenu loginMenu = new JMenu("Login");
@@ -112,7 +110,7 @@ public class MenuPrincipal extends JFrame {
             }
         });
 
-        finalizarCompra.addActionListener(new ActionListener() {
+        carrinho.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 RealizarPedido finalizar = new RealizarPedido();
 
@@ -151,7 +149,7 @@ public class MenuPrincipal extends JFrame {
                 CadastroProduto cadastro_prod = new CadastroProduto();
 
                 getContentPane().removeAll();
-//                getContentPane().add(cadastro_prod);
+                getContentPane().add(cadastro_prod);
                 revalidate();
                 repaint();
             }
