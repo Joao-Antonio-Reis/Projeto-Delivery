@@ -1,5 +1,15 @@
 package Generics;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Endereco {
+
+    static final String URL = "jdbc:mysql://localhost/japinha";
+    static final String USUARIO = "root";
+    static final String SENHA = "";
     
     private String bairro;
     private String rua;
@@ -16,37 +26,49 @@ public class Endereco {
     public Endereco() {
     }
 
-    public String getBairro() {
-        return bairro;
-    }
+    // Getters e setters
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
+    public static int inserirEndereco(String bairro, String rua, String numero, String complemento) {
+        Connection conexao = null;
+        PreparedStatement statement = null;
 
-    public String getRua() {
-        return rua;
-    }
+        try {
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            
+            String sql = "INSERT INTO enderecos (bairro, rua, numero, complemento) VALUES (?, ?, ?, ?)";
+            statement = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            statement.setString(1, bairro);
+            statement.setString(2, rua);
+            statement.setString(3, numero);
+            statement.setString(4, complemento);
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
+            int linhasAfetadas = statement.executeUpdate();
 
-    public String getNumero() {
-        return numero;
+            if (linhasAfetadas > 0) {
+                ResultSet rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                    int enderecoId = rs.getInt(1);
+                    System.out.println("Endereço inserido com sucesso! ID: " + enderecoId);
+                    return enderecoId;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao inserir endereço!");
+        } finally {
+            try {
+                if(statement != null){
+                    statement.close();
+                }
+                if (conexao != null) {
+                    conexao.close();
+                    System.out.println("Conexão encerrada!");
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão com o Banco de dados!");
+            }
+        }
+        return -1; // Retorna -1 se algo der errado
     }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
     
 }

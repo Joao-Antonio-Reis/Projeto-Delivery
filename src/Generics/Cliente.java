@@ -1,6 +1,15 @@
 package Generics;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Cliente {
+    
+    static final String URL = "jdbc:mysql://localhost/japinha";
+    static final String USUARIO = "root";
+    static final String SENHA = "";
     
     private String nome;
     private String telefone;
@@ -31,12 +40,36 @@ public class Cliente {
         this.endereço = endereço;
     }
 
-    public void informacaoCliente(Cliente cliente) {
-        System.out.println(cliente.getNome());
-        System.out.println(cliente.getTelefone());
-        System.out.println(cliente.getEndereço().getBairro());
-        System.out.println(cliente.getEndereço().getRua());
-        System.out.println(cliente.getEndereço().getNumero());
-        System.out.println(cliente.getEndereço().getComplemento());
+    public static void inserirCliente(String nome, String telefone, int enderecoID) {
+        Connection conexao = null;
+        PreparedStatement statement = null;
+
+        try {
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            
+            String sql = "INSERT INTO clientes (cliente_nome, cliente_telefone, endereco_id) VALUES (?, ?, ?)";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, nome);
+            statement.setString(2, telefone);
+            statement.setInt(3, enderecoID);
+
+            statement.executeUpdate();
+            System.out.println("Cliente inserido com sucesso!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao inserir cliente!");
+        } finally {
+            try {
+                if(statement != null){
+                    statement.close();
+                }
+                if (conexao != null) {
+                    conexao.close();
+                    System.out.println("Conexão encerrada!");
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão com o Banco de dados!");
+            }
+        }
     }
 }

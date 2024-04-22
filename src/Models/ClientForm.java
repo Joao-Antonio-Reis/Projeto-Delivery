@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 
 import Generics.Cliente;
 import Generics.Endereco;
-import Generics.inserirCliente;
 
 
 public class ClientForm extends JPanel{
@@ -135,8 +134,8 @@ public class ClientForm extends JPanel{
                 Endereco endereco = new Endereco(bairro, rua, numero, complemento);
                 Cliente cliente = new Cliente(nome, telefone, endereco);
 
-                cliente.informacaoCliente(cliente);
-                inserirCliente.inserirCliente(nome, telefone);
+                int enderecoId = endereco.inserirEndereco(bairro, rua, numero, complemento);
+                cliente.inserirCliente(nome, telefone, enderecoId);
                 
 
                 // Do something with the client object
