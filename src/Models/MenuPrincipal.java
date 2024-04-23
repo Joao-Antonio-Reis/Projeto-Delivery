@@ -1,9 +1,18 @@
 package Models;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class MenuPrincipal extends JFrame {
     private JFrame frame;
@@ -98,7 +107,7 @@ public class MenuPrincipal extends JFrame {
             }
         });
 
-        //Action produtos
+        //Action produtosp
         cardaioMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Cardapio cardapio = new Cardapio();

@@ -70,8 +70,13 @@ public class CadastroProduto extends JLabel {
         precoField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(precoField);
 
+        JLabel categoriaLabel = new JLabel("Categoria: ");
+        categoriaLabel.setFont(font);
+        categoriaLabel.setBounds(5,55, 90, 20);
+        add(categoriaLabel);
+
         categoriaBox = new JComboBox<>();
-        categoriaBox.setBounds(5,55,100,20);
+        categoriaBox.setBounds(80,55,100,20);
         categoriaBox.setFont(font);
         for (String string : listaDeCategoria) {
             categoriaBox.addItem(string);
@@ -80,12 +85,12 @@ public class CadastroProduto extends JLabel {
 
 
         JLabel descCat = new JLabel("Descrição");
-        descCat.setBounds(5, 55, 100, 20);
+        descCat.setBounds(5, 75, 100, 20);
         descCat.setFont(font);
         add(descCat);
 
         descProdutoArea = new JTextArea();
-        descProdutoArea.setBounds(5, 75, 390, 100);
+        descProdutoArea.setBounds(5, 95, 390, 100);
         descProdutoArea.setFont(font);
         descProdutoArea.setAlignmentY(JTextField.TOP); //Ajustar no topo
         descProdutoArea.setLineWrap(true); // Quebra de linha automática
