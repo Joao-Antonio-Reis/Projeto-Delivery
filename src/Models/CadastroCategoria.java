@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -25,9 +24,6 @@ public class CadastroCategoria extends JLabel{
     private Color cor = new Color(136,0, 12);
 
     public static void main(String[] args) {
-        
-        Categoria categoria = new Categoria();
-        ArrayList<String> listaDeCategoria = categoria.carregarCategoria();
         
         //Testa a Label
         EventQueue.invokeLater(() -> {

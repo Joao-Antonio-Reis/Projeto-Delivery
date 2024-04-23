@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -21,6 +22,7 @@ public class CadastroProduto extends JLabel {
     private JTextField nomeField;
     private JTextArea descProdutoArea;
     private JTextField precoField;
+    private JComboBox categoriaBox;
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
 
@@ -36,12 +38,13 @@ public class CadastroProduto extends JLabel {
 //    }
 
     public CadastroProduto() {
-        Categoria categoria = new Categoria();
-        ArrayList<String> listaDeCategoria = categoria.carregarCategoria();
         produtoLabel();
     }
 
     public void produtoLabel() {
+        Categoria categoria = new Categoria();
+        ArrayList<String> listaDeCategoria = categoria.carregarCategoria();
+
         setVisible(true); //Visibilidade true
         setSize(415, 800); //Define o tamanho da tela
         setLayout(null);
@@ -67,6 +70,14 @@ public class CadastroProduto extends JLabel {
         precoField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(precoField);
 
+        categoriaBox = new JComboBox<>();
+        categoriaBox.setBounds(5,55,100,20);
+        categoriaBox.setFont(font);
+        for (String string : listaDeCategoria) {
+            categoriaBox.addItem(string);
+        }
+        add(categoriaBox);
+
 
         JLabel descCat = new JLabel("Descrição");
         descCat.setBounds(5, 55, 100, 20);
@@ -81,6 +92,7 @@ public class CadastroProduto extends JLabel {
         descProdutoArea.setWrapStyleWord(true); // Quebra de palavra
         descProdutoArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(descProdutoArea);
+        
 
         JButton button = new JButton("Cadastrar");
         button.setBounds(270, 695, 120, 40);
