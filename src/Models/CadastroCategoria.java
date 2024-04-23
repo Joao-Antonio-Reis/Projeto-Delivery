@@ -1,11 +1,20 @@
 package Models;
 
-import Generics.Categoria;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import Generics.Categoria;
 
 public class CadastroCategoria extends JLabel{
 
@@ -15,7 +24,12 @@ public class CadastroCategoria extends JLabel{
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136,0, 12);
 
-    public static void main(String[] args) { //Testa a Label
+    public static void main(String[] args) {
+        
+        Categoria categoria = new Categoria();
+        ArrayList<String> listaDeCategoria = categoria.carregarCategoria();
+        
+        //Testa a Label
         EventQueue.invokeLater(() -> {
             try {
                 CadastroCategoria window = new CadastroCategoria();

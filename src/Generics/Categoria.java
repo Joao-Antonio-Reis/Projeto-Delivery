@@ -38,30 +38,28 @@ public class Categoria {
         this.descricao = descricao;
     }
 
-    public String inserirCategoria(String categoria_nome, String categoria_descricao) {
+    public void inserirCategoria(String categoria_nome, String categoria_descricao) {
         try (
             
             Connection conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-            PreparedStatement statement = conexao.prepareStatement("INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)")) {
-
+            PreparedStatement statement = conexao.prepareStatement("INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)");
+        )
+        
+        {
             statement.setString(1, categoria_nome);
             statement.setString(2, categoria_descricao);
 
-            int linhasAfetadas = statement.executeUpdate();
+            statement.executeUpdate();
 
-            if (linhasAfetadas > 0) {
                 System.out.println("Categoria inserida com sucesso!");
-                return categoria_nome;
-            }
-
-        } catch (SQLException e) {
+        
+        }catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Erro ao inserir categoria!");
         }
-        return null;
     }
 
-    private ArrayList<String> carregarCategoria() {
+    public ArrayList<String> carregarCategoria() {
         
         ArrayList<String> listaDeCategoria = new ArrayList<>();
         
@@ -84,3 +82,4 @@ public class Categoria {
         return listaDeCategoria;
     }
 }
+

@@ -1,14 +1,19 @@
 package Models;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import Generics.Categoria;
 
 public class CadastroProduto extends JLabel {
 
@@ -31,6 +36,8 @@ public class CadastroProduto extends JLabel {
 //    }
 
     public CadastroProduto() {
+        Categoria categoria = new Categoria();
+        ArrayList<String> listaDeCategoria = categoria.carregarCategoria();
         produtoLabel();
     }
 
