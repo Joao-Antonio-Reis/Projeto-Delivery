@@ -23,8 +23,8 @@ CREATE TABLE categoria (
 CREATE TABLE produto (
     produto_id INT AUTO_INCREMENT PRIMARY KEY,
     produto_nome VARCHAR(30),
-    produto_categoria VARCHAR(20),
-    FOREIGN KEY (produto_categoria) REFERENCES categoria(categoria_nome),
+    produto_categoria_id INT,
+    FOREIGN KEY (produto_categoria_id) REFERENCES categoria(categoria_id),
     produto_descricao VARCHAR(100),
     produto_valor DOUBLE
 );
