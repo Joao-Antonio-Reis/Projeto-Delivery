@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -113,13 +114,13 @@ public class CadastroProduto extends JLabel {
 
                 String nome = nomeField.getText();
                 String valor = precoField.getText();
-                Double preco = 0.0;
+                valor = valor.replace(",", ".");
+                BigDecimal preco = BigDecimal.ZERO; // Usamos BigDecimal em vez de Double
                 try {
-                    preco = Double.parseDouble(valor);
+                    preco = new BigDecimal(valor);
                 } catch (NumberFormatException error) {
                     System.out.println("Erro ao converter o preço: ");
                     error.printStackTrace();
-
                 }
                 String categoriaSelecionada = (String) categoriaBox.getSelectedItem();
                 String descricao = descProdutoArea.getText();

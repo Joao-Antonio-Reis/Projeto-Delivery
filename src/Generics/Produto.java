@@ -1,5 +1,6 @@
 package Generics;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,9 +18,9 @@ public class Produto {
     private String nome;
     private String categoria;
     private String descricao;
-    private Double valor;
+    private BigDecimal valor;
     
-    public Produto(int id, String nome, String categoria, String descricao, Double valor) {
+    public Produto(int id, String nome, String categoria, String descricao, BigDecimal valor) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
@@ -27,7 +28,7 @@ public class Produto {
         this.valor = valor;
     }
 
-    public Produto(String nome, String categoria, String descricao, Double valor) {
+    public Produto(String nome, String categoria, String descricao, BigDecimal valor) {
         this.nome = nome;
         this.categoria = categoria;
         this.descricao = descricao;
@@ -58,14 +59,14 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public Double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    public void inserirProduto(String produto_nome, String produto_categoria, String produto_descricao, Double produto_valor){
+    public void inserirProduto(String produto_nome, String produto_categoria, String produto_descricao, BigDecimal produto_valor){
         
         Connection conexao = null;
         PreparedStatement statement = null;
@@ -78,7 +79,7 @@ public class Produto {
             statement.setString(1, produto_nome);
             statement.setString(2, produto_categoria);
             statement.setString(3, produto_descricao);
-            statement.setDouble(4, produto_valor);
+            statement.setBigDecimal(4, produto_valor);
 
             statement.executeUpdate();
 
