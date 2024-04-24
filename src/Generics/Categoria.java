@@ -74,6 +74,9 @@ public class Categoria {
                 String nomeCategoria = resultSet.getString("categoria_nome");
                 listaDeCategoria.add(nomeCategoria);
             }
+            
+            statement.close();
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

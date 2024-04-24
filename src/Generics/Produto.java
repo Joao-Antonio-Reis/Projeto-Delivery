@@ -65,7 +65,7 @@ public class Produto {
         this.valor = valor;
     }
 
-    public void inserirProduto(String produto_nome, int categoria_id, String produto_descricao, Double produto_valor){
+    public void inserirProduto(String produto_nome, String produto_categoria, String produto_descricao, Double produto_valor){
         
         Connection conexao = null;
         PreparedStatement statement = null;
@@ -73,19 +73,19 @@ public class Produto {
         try {
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
 
-            String sql = "INSERT INTO produto (produto_nome, categoria_id, produto_descricao, produto_valor) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO produto (produto_nome, produto_categoria, produto_descricao, produto_valor) VALUES (?, ?, ?, ?)";
             statement = conexao.prepareStatement(sql);
             statement.setString(1, produto_nome);
-            statement.setInt(2, categoria_id);
+            statement.setString(2, produto_categoria);
             statement.setString(3, produto_descricao);
             statement.setDouble(4, produto_valor);
 
             statement.executeUpdate();
 
-            System.out.println("Categoria inserida com sucesso!");
+            System.out.println("Produto inserido com sucesso!");
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Erro ao inserir categoria!");
+            System.out.println("Erro ao inserir produto!");
         } finally {
             try {
                 if(statement != null){

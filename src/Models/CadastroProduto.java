@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Generics.Categoria;
+import Generics.Produto;
 
 public class CadastroProduto extends JLabel {
 
@@ -111,16 +112,20 @@ public class CadastroProduto extends JLabel {
             public void actionPerformed(ActionEvent e) {
 
                 String nome = nomeField.getText();
-                String descricao = descProdutoArea.getText();
-//                String categorianome = categoriaField.getText();
-                String valor;
-//                try {
-//                    valor = Double.parseDouble(precoField.getText());
-//                } catch (NumberFormatException ex) {
-//                    System.out.println("Digite o valor correto!");
-//                    valor = 0.0;
-//                }
+                String valor = precoField.getText();
+                Double preco = 0.0;
+                try {
+                    preco = Double.parseDouble(valor);
+                } catch (NumberFormatException error) {
+                    System.out.println("Erro ao converter o preço: ");
+                    error.printStackTrace();
 
+                }
+                String categoriaSelecionada = (String) categoriaBox.getSelectedItem();
+                String descricao = descProdutoArea.getText();
+
+                Produto produto = new Produto(nome, categoriaSelecionada, descricao, preco);
+                produto.inserirProduto(nome, categoriaSelecionada, descricao, preco);
 
                 // Produto produto = new Produto(nome, categoria, descricao, valor);
 
