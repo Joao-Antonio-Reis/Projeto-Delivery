@@ -9,7 +9,7 @@ CREATE TABLE endereco (
 CREATE TABLE cliente (
     cliente_id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_nome VARCHAR(100),
-    cliente_telefone VARCHAR(10),
+    cliente_telefone VARCHAR(11),
     endereco_id INT,
     FOREIGN KEY (endereco_id) REFERENCES endereco(endereco_id)
 );
