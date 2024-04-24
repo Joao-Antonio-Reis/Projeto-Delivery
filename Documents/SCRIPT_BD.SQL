@@ -25,5 +25,5 @@ CREATE TABLE produto (
     produto_nome VARCHAR(30),
     produto_categoria VARCHAR(20),
     produto_descricao VARCHAR(100),
-    produto_valor DOUBLE
+    produto_valor DECIMAL(10,2)
 );
