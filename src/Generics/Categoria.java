@@ -41,8 +41,8 @@ public class Categoria {
     public void inserirCategoria(String categoria_nome, String categoria_descricao) {
         try (
             
-            Connection conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-            PreparedStatement statement = conexao.prepareStatement("INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)");
+            Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)");
         )
         
         {
@@ -50,8 +50,11 @@ public class Categoria {
             statement.setString(2, categoria_descricao);
 
             statement.executeUpdate();
+            
+            statement.close();
+            connection.close();
 
-                System.out.println("Categoria inserida com sucesso!");
+            System.out.println("Categoria inserida com sucesso!");
         
         }catch (SQLException e) {
             e.printStackTrace();
