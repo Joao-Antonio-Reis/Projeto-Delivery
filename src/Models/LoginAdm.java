@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -51,7 +50,7 @@ public class LoginAdm extends JLabel{
 
         loginButton = new JButton("Login");
         loginButton.setSize(new Dimension(25,20));
-        loginButton.setBounds(270, 695, 125, 40);
+        loginButton.setBounds(270, 690, 125, 40);
         loginButton.setFont(font);
         loginButton.setBackground(cor);
         loginButton.setForeground(Color.WHITE);

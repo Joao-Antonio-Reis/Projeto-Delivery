@@ -6,7 +6,12 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import Generics.Cliente;
 import Generics.Endereco;
@@ -116,7 +121,7 @@ public class ClientForm extends JPanel{
         //Button de submit
         JButton submitButton = new JButton("Submit");
         submitButton.setSize(new Dimension(25,20));
-        submitButton.setBounds(270, 695, 125, 40);
+        submitButton.setBounds(270, 690, 125, 40);
         submitButton.setFont(font);
         submitButton.setBackground(cor);
         submitButton.setForeground(Color.WHITE);

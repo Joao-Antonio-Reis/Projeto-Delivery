@@ -102,7 +102,7 @@ public class CadastroProduto extends JLabel {
         
 
         JButton button = new JButton("Cadastrar");
-        button.setBounds(270, 695, 120, 40);
+        button.setBounds(270, 690, 120, 40);
         button.setFont(new Font("Arial", Font.BOLD, 15));
         button.setForeground(Color.WHITE);
         button.setBackground(cor);

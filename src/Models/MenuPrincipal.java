@@ -1,6 +1,7 @@
 package Models;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -57,11 +58,11 @@ public class MenuPrincipal extends JFrame {
 
 
         //Criando a opção categoria
-        JButton cardaioMenu = new JButton("Cardapio");
-        cardaioMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
-        cardaioMenu.setBackground(cor);
-        cardaioMenu.setForeground(Color.WHITE);
-        menuBar.add(cardaioMenu);
+        JButton cardapioMenu = new JButton("Cardapio");
+        cardapioMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
+        cardapioMenu.setBackground(cor);
+        cardapioMenu.setForeground(Color.WHITE);
+        menuBar.add(cardapioMenu);
 
         //Criando a opção carrinho
         JButton carrinho = new JButton("Carrinho");
@@ -74,9 +75,9 @@ public class MenuPrincipal extends JFrame {
         JMenu loginMenu = new JMenu("Login");
         loginMenu.setForeground(Color.WHITE);
         menuBar.add(loginMenu);
-        JMenuItem cadastar = new JMenuItem("Cadastro");// Cria o item do menu
+        JMenuItem cadastrar = new JMenuItem("Cadastro");// Cria o item do menu
         JMenuItem login = new JMenuItem("Login");// Cria o item do menu
-        loginMenu.add(cadastar);// Adiciona o item ao menu "Arquivo"
+        loginMenu.add(cadastrar);// Adiciona o item ao menu "Arquivo"
         loginMenu.add(login);// Adiciona o item ao menu "Arquivo"
 
         JButton cadastroCategoria = new JButton("categoria");
@@ -93,9 +94,44 @@ public class MenuPrincipal extends JFrame {
 
         setJMenuBar(menuBar);//Setando o menu no frame
 
-        JLabel menuprin = new JLabel("Menu principal");
-        menuprin.setBounds(5, 5, 100,20);
+        JLabel menuprin = new JLabel();
         add(menuprin);
+
+        JButton cardapioButton = new JButton("Cardapio");
+        cardapioButton.setSize(new Dimension(25,20));
+        cardapioButton.setBounds(50,150, 300, 100);
+        cardapioButton.setFont(font);
+        cardapioButton.setBackground(cor);
+        cardapioButton.setForeground(Color.WHITE);
+        cardapioButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+        menuprin.add(cardapioButton);
+
+        JButton carrinhoButton = new JButton("Carrinho");
+        carrinhoButton.setSize(new Dimension(25,20));
+        carrinhoButton.setBounds(50, 255, 300, 100);
+        carrinhoButton.setFont(font);
+        carrinhoButton.setBackground(cor);
+        carrinhoButton.setForeground(Color.WHITE);
+        carrinhoButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+        menuprin.add(carrinhoButton);
+
+        JButton loginButton = new JButton("Login");
+        loginButton.setSize(new Dimension(25,20));
+        loginButton.setBounds(50, 360, 300, 100);
+        loginButton.setFont(font);
+        loginButton.setBackground(cor);
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+        menuprin.add(loginButton);
+
+        JButton cadastroButton = new JButton("Cadastro");
+        cadastroButton.setSize(new Dimension(25,20));
+        cadastroButton.setBounds(50, 465, 300, 100);
+        cadastroButton.setFont(font);
+        cadastroButton.setBackground(cor);
+        cadastroButton.setForeground(Color.WHITE);
+        cadastroButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+        menuprin.add(cadastroButton);
 
         voltaMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -107,13 +143,35 @@ public class MenuPrincipal extends JFrame {
             }
         });
 
-        //Action produtosp
-        cardaioMenu.addActionListener(new ActionListener() {
+        cardapioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Cardapio cardapio = new Cardapio();
+                Cardapio cardapioButton = new Cardapio();
 
                 getContentPane().removeAll();
-                getContentPane().add(cardapio);
+                getContentPane().add(cardapioButton);
+                revalidate();
+                repaint();
+            }
+        });
+
+        //Action produtosp
+        cardapioMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Cardapio cardapioButton = new Cardapio();
+
+                getContentPane().removeAll();
+                getContentPane().add(cardapioButton);
+                revalidate();
+                repaint();
+            }
+        });
+
+        carrinhoButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                RealizarPedido finalizar = new RealizarPedido();
+
+                getContentPane().removeAll();
+                getContentPane().add(finalizar);
                 revalidate();
                 repaint();
             }
@@ -129,9 +187,19 @@ public class MenuPrincipal extends JFrame {
                 repaint();
             }
         });
+        
+        cadastroButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ClientForm clientForm = new ClientForm();
 
+                getContentPane().removeAll();
+                getContentPane().add(clientForm);
+                revalidate();
+                repaint();
+            }
+        });
         //Action cadastrar
-        cadastar.addActionListener(new ActionListener() {
+        cadastrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ClientForm clientForm = new ClientForm();
 
@@ -142,6 +210,17 @@ public class MenuPrincipal extends JFrame {
             }
         });
 
+        loginButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                LoginAdm loginAdm = new LoginAdm();
+
+                getContentPane().removeAll();
+                getContentPane().add(loginAdm);
+                revalidate();
+                repaint();
+            }
+        });
+        
         //Action login
         login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -153,6 +232,7 @@ public class MenuPrincipal extends JFrame {
                 repaint();
             }
         });
+        //Action cadastrar produto
         cadastroProduto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CadastroProduto cadastro_prod = new CadastroProduto();

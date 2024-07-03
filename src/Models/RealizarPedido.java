@@ -1,8 +1,13 @@
 
 package Models;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class RealizarPedido extends JLabel {
     private Font font = new Font("Arial", Font.BOLD, 15);
@@ -35,7 +40,7 @@ public class RealizarPedido extends JLabel {
 
         JButton submitButton = new JButton("Finalizar compra");
         submitButton.setSize(new Dimension(25,20));
-        submitButton.setBounds(270, 695, 125, 40);
+        submitButton.setBounds(270, 690, 125, 40);
         submitButton.setFont(font);
         submitButton.setBackground(cor);
         submitButton.setForeground(Color.WHITE);
