@@ -145,7 +145,7 @@ public class MenuPrincipal extends JFrame {
 
         cardapioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Cardapio cardapioButton = new Cardapio();
+                Cardapio cardapioButton = new Cardapio(frame);
 
                 getContentPane().removeAll();
                 getContentPane().add(cardapioButton);
@@ -157,7 +157,7 @@ public class MenuPrincipal extends JFrame {
         //Action produtosp
         cardapioMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Cardapio cardapioButton = new Cardapio();
+                Cardapio cardapioButton = new Cardapio(frame);
 
                 getContentPane().removeAll();
                 getContentPane().add(cardapioButton);

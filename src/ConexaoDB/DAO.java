@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class DAO {
 
     public static void main(String[] args) {
-        final String URL = "jdbc:mysql://localhost:3306/mysql";
+        final String URL = "jdbc:mysql://localhost:3306/japinha";
         final String USER = "root";
         final String SENHA = "";
         try {
