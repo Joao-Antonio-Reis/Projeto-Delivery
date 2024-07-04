@@ -41,22 +41,38 @@ public class Cardapio extends JLabel {
         // Adição de produtos ao painel do cardápio
         for (int i = 1; i <= 20; i++) {
             JPanel productPanel = new JPanel();
-            productPanel.setLayout(new GridLayout(5, 1)); // Layout de grade com 5 linhas e 1 coluna
+            productPanel.setLayout(null);
             productPanel.setPreferredSize(new Dimension(380, 80)); // Tamanho do retângulo para cada produto
             productPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
+
+            JPanel imagem = new JPanel();
+            imagem.setBounds(5, 5, 100, 80);
+            // imagem.setPreferredSize(new Dimension(100, 80)); // Tamanho do retângulo para cada imagem
+            imagem.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
+            productPanel.add(imagem);
+
+            JPanel infoProduto = new JPanel();
+            infoProduto.setBounds(110, 5, 200, 80);
+            infoProduto.setLayout(new GridLayout(4, 1)); // Tamanho do retângulo para cada imagem
+            infoProduto.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
 
             // Criação dos componentes para cada produto
             JLabel labelProduto = new JLabel("Produto " + i);
             labelProduto.setFont(new Font("Arial", Font.BOLD, 14));
+            JLabel labelCat = new JLabel("Categoria: Temaki" + i);
+            labelCat.setFont(new Font("Arial", Font.BOLD, 11));
             JLabel labelDescricao = new JLabel("Descrição " + i);
             labelDescricao.setFont(new Font("Arial", Font.PLAIN, 12));
             JLabel labelPreco = new JLabel("Preço: R$" + (i * 10));
             labelPreco.setFont(new Font("Arial", Font.PLAIN, 12));
 
             // Adiciona os componentes ao painel do produto
-            productPanel.add(labelProduto);
-            productPanel.add(labelDescricao);
-            productPanel.add(labelPreco);
+            infoProduto.add(labelProduto);
+            infoProduto.add(labelCat);
+            infoProduto.add(labelDescricao);
+            infoProduto.add(labelPreco);
+
+            productPanel.add(infoProduto);
 
             // Adiciona o painel do produto ao painel do cardápio
             panelCardapio.add(productPanel);
