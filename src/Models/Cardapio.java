@@ -1,5 +1,6 @@
 package Models;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +22,7 @@ public class Cardapio extends JLabel {
     private JFrame frame;
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
+    private String path = "Imagens/";
 
     // Construtor que recebe o frame principal
     public Cardapio(JFrame frame) {
@@ -42,24 +45,28 @@ public class Cardapio extends JLabel {
         for (int i = 1; i <= 20; i++) {
             JPanel productPanel = new JPanel();
             productPanel.setLayout(null);
-            productPanel.setPreferredSize(new Dimension(380, 80)); // Tamanho do retângulo para cada produto
-            productPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
+            productPanel.setPreferredSize(new Dimension(380, 100)); // Tamanho do retângulo para cada produto
+            // productPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
 
-            JPanel imagem = new JPanel();
-            imagem.setBounds(5, 5, 100, 80);
-            // imagem.setPreferredSize(new Dimension(100, 80)); // Tamanho do retângulo para cada imagem
-            imagem.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
-            productPanel.add(imagem);
+            // Criação do painel de imagem
+            JPanel imagemPanel = new JPanel();
+            imagemPanel.setBounds(5, 5, 100, 80);
+            imagemPanel.setLayout(new BorderLayout());
+            ImageIcon imageIcon = new ImageIcon(path + "imagem1.png"); // Carrega a imagem + "produto" + i + ".jpg"
+            JLabel imageLabel = new JLabel(imageIcon);
+            imagemPanel.add(imageLabel, BorderLayout.CENTER);
+            productPanel.add(imagemPanel);
 
+            // Criação do painel de informações do produto
             JPanel infoProduto = new JPanel();
             infoProduto.setBounds(110, 5, 200, 80);
-            infoProduto.setLayout(new GridLayout(4, 1)); // Tamanho do retângulo para cada imagem
-            infoProduto.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
+            infoProduto.setLayout(new GridLayout(4, 1)); // Layout para organizar informações do produto
+            // infoProduto.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
 
             // Criação dos componentes para cada produto
             JLabel labelProduto = new JLabel("Produto " + i);
             labelProduto.setFont(new Font("Arial", Font.BOLD, 14));
-            JLabel labelCat = new JLabel("Categoria: Temaki" + i);
+            JLabel labelCat = new JLabel("Categoria: Temaki " + i);
             labelCat.setFont(new Font("Arial", Font.BOLD, 11));
             JLabel labelDescricao = new JLabel("Descrição " + i);
             labelDescricao.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -84,7 +91,7 @@ public class Cardapio extends JLabel {
         scrollPane.setBounds(0, 0, 400, 685); // Define a posição e tamanho do painel de rolagem
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS); // Sempre mostra a barra de rolagem vertical
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Nunca mostra a barra de rolagem horizontal
-        scrollPane.setBorder(BorderFactory.createLineBorder(Color.black, 2)); // Borda preta ao redor do painel de rolagem
+        // scrollPane.setBorder(BorderFactory.createLineBorder(Color.black, 2)); // Borda preta ao redor do painel de rolagem
         add(scrollPane);
 
         // Criação do botão "Carrinho"
