@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -15,6 +16,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import Generics.Categoria;
+
 public class MenuPrincipal extends JFrame {
     private JFrame frame;
 
@@ -22,6 +25,12 @@ public class MenuPrincipal extends JFrame {
     private Color cor = new Color(136,0, 12);
 
     public static void main(String[] args) {
+        Categoria categoria = new Categoria();
+        ArrayList<String> nomeCategorias = categoria.carregarCategoria();
+
+        for (String aux : nomeCategorias) {
+            categoria.consultarProdutosPorCategoria(aux);
+        }
         EventQueue.invokeLater(() -> {
             try {
                 MenuPrincipal window = new MenuPrincipal();
