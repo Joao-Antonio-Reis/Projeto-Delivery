@@ -61,7 +61,8 @@ public class LoginAdm extends JLabel{
 
             public void actionPerformed(ActionEvent e) {
 
-
+                loginField.setText("");
+                senhaField.setText("");
                 // Do something with the client object
             }
         });

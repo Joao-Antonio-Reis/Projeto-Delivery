@@ -144,7 +144,12 @@ public class ClientForm extends JPanel{
                 int enderecoId = endereco.inserirEndereco(bairro, rua, numero, complemento);
                 cliente.inserirCliente(nome, telefone, enderecoId);
                 
-
+                nomeField.setText("");
+                telefoneField.setText("");
+                numeroField.setText("");
+                ruaField.setText("");
+                bairroField.setText("");
+                compleArea.setText("");
                 // Do something with the client object
             }
         });

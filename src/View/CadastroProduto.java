@@ -138,6 +138,11 @@ public class CadastroProduto extends JLabel {
                 Produto produto = new Produto(nome, categoriaSelecionada, descricao, preco);
                 produto.inserirProduto(nome, categoriaSelecionada, descricao, preco, imagem);
 
+                nomeField.setText("");
+                precoField.setText("");
+                descProdutoArea.setText("");
+                imagemField.setText("");
+
                 // Produto produto = new Produto(nome, categoria, descricao, valor);
 
                 // Do something with the client object

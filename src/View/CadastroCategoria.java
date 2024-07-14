@@ -84,6 +84,9 @@ public class CadastroCategoria extends JLabel{
                 Categoria categoria = new Categoria();
                 categoria.inserirCategoria(nome, descricao);
 
+                catField.setText("");
+                descField.setText("");
+
             }
         });
         add(button);
