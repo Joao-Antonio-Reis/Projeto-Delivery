@@ -119,7 +119,7 @@ public class ClientForm extends JPanel{
         add(compleArea);
 
         //Button de submit
-        JButton submitButton = new JButton("Submit");
+        JButton submitButton = new JButton("Cadastrar");
         submitButton.setSize(new Dimension(25,20));
         submitButton.setBounds(270, 690, 125, 40);
         submitButton.setFont(font);

@@ -37,6 +37,12 @@ public class RealizarPedido extends JLabel {
         panelPedido.setLayout(new BoxLayout(panelPedido, BoxLayout.Y_AXIS)); // Layout para organizar componentes verticalmente
         panelPedido.setPreferredSize(new Dimension(400, 2000));
 
+        JLabel label1 = new JLabel("1x Gunkan   R$28,90");
+        panelPedido.add(label1);
+
+        JLabel label2 = new JLabel("1x Entrega R$5,00");
+        panelPedido.add(label2);
+
         JScrollPane scrollPane = new JScrollPane(panelPedido);
         scrollPane.setBounds(0, 0, 400, 450); // Define a posição e tamanho do painel de rolagem
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS); // Sempre mostra a barra de rolagem vertical
@@ -100,6 +106,11 @@ public class RealizarPedido extends JLabel {
         observacaoArea.setWrapStyleWord(true); // Quebra de palavra
         observacaoArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(observacaoArea);
+
+        JLabel valorFinal = new JLabel("Valor total: R$00,00");
+        valorFinal.setBounds(20, 695, 200, 30);
+        valorFinal.setFont(font);
+        add(valorFinal);
 
         JButton submitButton = new JButton("Finalizar compra");
         submitButton.setSize(new Dimension(125, 40));
