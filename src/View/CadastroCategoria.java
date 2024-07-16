@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,12 +9,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.MatteBorder;
 
 import Models.Categoria;
 
-public class CadastroCategoria extends JLabel{
+public class CadastroCategoria extends JPanel{
 
     private JFrame frame;
     private JTextField catField;
@@ -23,18 +24,18 @@ public class CadastroCategoria extends JLabel{
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136,0, 12);
 
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
         
-        //Testa a Label
-        EventQueue.invokeLater(() -> {
-            try {
-                CadastroCategoria window = new CadastroCategoria();
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+    //     //Testa a Label
+    //     EventQueue.invokeLater(() -> {
+    //         try {
+    //             CadastroCategoria window = new CadastroCategoria();
+    //             window.frame.setVisible(true);
+    //         } catch (Exception e) {
+    //             e.printStackTrace();
+    //         }
+    //     });
+    // }
 
     public CadastroCategoria() {
         frame(); // Chama o metodo do frame para mais privacidade
@@ -51,7 +52,7 @@ public class CadastroCategoria extends JLabel{
 
         catField = new JTextField();
         catField.setBounds(125, 5, 270, 20);
-        catField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        catField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         add(catField);
 
         JLabel descCat = new JLabel("Descrição");
@@ -65,7 +66,7 @@ public class CadastroCategoria extends JLabel{
         descField.setAlignmentY(JTextField.TOP); //Ajustar no topo
         descField.setLineWrap(true); // Quebra de linha automática
         descField.setWrapStyleWord(true); // Quebra de palavra
-        descField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        descField.setBorder(BorderFactory.createLineBorder(cor, 2));
         add(descField);
 
         JButton button = new JButton("Cadastrar");

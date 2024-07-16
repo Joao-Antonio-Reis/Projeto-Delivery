@@ -12,13 +12,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.MatteBorder;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 
 import Models.Categoria;
 import Models.Produto;
 
-public class CadastroProduto extends JLabel {
+public class CadastroProduto extends JPanel {
 
     private JFrame frame;
     private JTextField nomeField;
@@ -59,7 +62,7 @@ public class CadastroProduto extends JLabel {
 
         nomeField = new JTextField();
         nomeField.setBounds(60, 5, 270, 20);
-        nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        nomeField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         add(nomeField);
 
         JLabel precoLabel = new JLabel("Preço: ");
@@ -69,7 +72,7 @@ public class CadastroProduto extends JLabel {
 
         precoField = new JTextField();
         precoField.setBounds(60, 30, 100, 20);
-        precoField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        precoField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         add(precoField);
 
         JLabel categoriaLabel = new JLabel("Categoria: ");
@@ -78,7 +81,16 @@ public class CadastroProduto extends JLabel {
         add(categoriaLabel);
 
         categoriaBox = new JComboBox<>();
-        categoriaBox.setBounds(80,55,100,20);
+        categoriaBox.setBounds(80,55,150,20);
+        categoriaBox.setUI(new BasicComboBoxUI() {
+            @Override
+            protected void installDefaults() {
+                super.installDefaults();
+                categoriaBox.setBorder(BorderFactory.createEmptyBorder());
+                categoriaBox.setBorder(new MatteBorder(0, 0, 2, 0, cor));
+            }
+    
+        });
         categoriaBox.setFont(font);
         for (String string : listaDeCategoria) {
             categoriaBox.addItem(string);
@@ -92,7 +104,7 @@ public class CadastroProduto extends JLabel {
 
         JTextField imagemField = new JTextField();
         imagemField.setBounds(100, 80, 235, 20);
-        imagemField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        imagemField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         add(imagemField);
 
         JLabel descCat = new JLabel("Descrição");
@@ -106,7 +118,7 @@ public class CadastroProduto extends JLabel {
         descProdutoArea.setAlignmentY(JTextField.TOP); //Ajustar no topo
         descProdutoArea.setLineWrap(true); // Quebra de linha automática
         descProdutoArea.setWrapStyleWord(true); // Quebra de palavra
-        descProdutoArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        descProdutoArea.setBorder(BorderFactory.createLineBorder(cor, 2));
         add(descProdutoArea);
         
 

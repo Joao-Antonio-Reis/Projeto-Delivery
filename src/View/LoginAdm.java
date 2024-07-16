@@ -9,23 +9,25 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class LoginAdm extends JLabel{
+public class LoginAdm extends JPanel {
 
     private JTextField loginField;
     private JTextField senhaField;
     private JButton loginButton;
-    private Color cor = new Color(136,0, 12);
+    private Color cor = new Color(136, 0, 12);
     private Font font = new Font("Arial", Font.BOLD, 15);
+    private MenuPrincipal menuPrincipal; // Referência para o MenuPrincipal
 
-    public LoginAdm(){
+    public LoginAdm() {
         panelAdm();
     }
 
     private void panelAdm() {
 
-        setVisible(true); //Visibilidade true
+        setVisible(true); // Visibilidade true
         setLayout(null);
 
         JLabel loginLabel = new JLabel("Login:");
@@ -34,7 +36,7 @@ public class LoginAdm extends JLabel{
         add(loginLabel);
 
         loginField = new JTextField();
-        loginField.setBounds(60, 5, 200,20);
+        loginField.setBounds(60, 5, 200, 20);
         loginField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(loginField);
 
@@ -44,12 +46,13 @@ public class LoginAdm extends JLabel{
         add(senhaLabel);
 
         senhaField = new JTextField();
-        senhaField.setBounds(60, 30,200,20);
+        senhaField.setBounds(60, 30, 200, 20);
         senhaField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(senhaField);
 
+
         loginButton = new JButton("Login");
-        loginButton.setSize(new Dimension(25,20));
+        loginButton.setSize(new Dimension(25, 20));
         loginButton.setBounds(270, 690, 125, 40);
         loginButton.setFont(font);
         loginButton.setBackground(cor);
@@ -60,15 +63,30 @@ public class LoginAdm extends JLabel{
         loginButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
+                String login = loginField.getText();
+                String senha = senhaField.getText();
+                
+                // Verifica se o login e senha são corretos
+                // Lógica de autenticação
+                if ("admin".equals(login) && "admin".equals(senha)) {
+                    // Login bem-sucedido: mostra a JMenuBar do JFrame principal
+                    if (menuPrincipal != null) {
+                        menuPrincipal.mostrarAdmMenu(true);
+                    }
 
-                loginField.setText("");
-                senhaField.setText("");
-                // Do something with the client object
+                    loginField.setText("");
+                    senhaField.setText("");
+                    
+                    // Ações adicionais após o login, como mudar de tela, etc.
+                } else {
+                    // Login falhou: ações de feedback ao usuário, se necessário
+                    System.out.println("Login falhou");
+                }
             }
+            
         });
-        add(loginButton);
+    }
+    public void setMenuPrincipal(MenuPrincipal menuPrincipal) {
+        this.menuPrincipal = menuPrincipal;
     }
 }
-
-
-

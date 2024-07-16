@@ -3,6 +3,7 @@ package View;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,8 +11,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.MatteBorder;
 
 import Models.Cliente;
 import Models.Endereco;
@@ -23,7 +24,7 @@ public class ClientForm extends JPanel{
     private JTextField bairroField;
     private JTextField ruaField;
     private JTextField numeroField;
-    private JTextArea compleArea;
+    private JTextField compleArea;
 
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136,0, 12);
@@ -47,76 +48,93 @@ public class ClientForm extends JPanel{
         setVisible(true);
         setLayout(null);
 
+        JPanel formPanel = new JPanel();
+        formPanel.setLayout(new GridLayout(14,1));
+        formPanel.setBounds(50, 50, 300, 400);
+        
+        add(formPanel);
         //Label Nome
-        JLabel nomeLabel = new JLabel("Nome:");
+        JLabel nomeLabel = new JLabel("Nome");
         nomeLabel.setFont(font);
-        nomeLabel.setBounds(5, 5, 50, 20);
-        add(nomeLabel);
+        // nomeLabel.setBounds(5, 5, 50, 20);
+        formPanel.add(nomeLabel);
 
         nomeField = new JTextField();
-        nomeField.setBounds(55, 5, 320,20);
-        nomeField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        add(nomeField);
+        // nomeField.setBounds(55, 5, 320,20);
+        nomeField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
+        formPanel.add(nomeField);
+
+        JLabel emailLabel = new JLabel("Email");
+        emailLabel.setFont(font);
+        // emailLabel.setBounds(5, 5, 50, 20);
+        formPanel.add(emailLabel);
+
+        JTextField emailField = new JTextField();
+        // emailField.setBounds(55, 5, 320,20);
+        emailField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
+        formPanel.add(emailField);
 
         //Label telefone
-        JLabel telefoneLabel = new JLabel("Telefone:");
+        JLabel telefoneLabel = new JLabel("Telefone");
         telefoneLabel.setBounds(5, 30, 80, 20);
         telefoneLabel.setFont(font);
-        add(telefoneLabel);
+        formPanel.add(telefoneLabel);
 
         telefoneField = new JTextField();
         telefoneField.setBounds(75, 30,100,20);
-        telefoneField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        add(telefoneField);
+        telefoneField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
+        formPanel.add(telefoneField);
 
         //Label bairro
-        JLabel bairroLabel = new JLabel("Bairro:");
+        JLabel bairroLabel = new JLabel("Bairro");
         bairroLabel.setBounds(185, 30, 80, 20);
         bairroLabel.setFont(font);
-        add(bairroLabel);
+        formPanel.add(bairroLabel);
 
         bairroField = new JTextField();
         bairroField.setBounds(235, 30, 140, 20);
-        bairroField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        add(bairroField);
+        bairroField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
+        formPanel.add(bairroField);
 
         //Label rua
-        JLabel ruaLabel = new JLabel("Rua:");
-        ruaLabel.setBounds(5, 55, 38, 20);
+        JLabel ruaLabel = new JLabel("Rua");
+        // ruaLabel.setBounds(5, 55, 38, 20);
         ruaLabel.setFont(font);
-        add(ruaLabel);
+        formPanel.add(ruaLabel);
 
         ruaField = new JTextField();
-        ruaField.setBounds(38, 55, 200, 20);
-        ruaField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        add(ruaField);
+        // ruaField.setBounds(38, 55, 200, 20);
+        ruaField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
+        formPanel.add(ruaField);
 
         //Label Numeri
-        JLabel numeroLabel = new JLabel("N°:");
-        numeroLabel.setBounds(245, 55, 25, 20);
+        JLabel numeroLabel = new JLabel("N°");
+        // numeroLabel.setBounds(245, 55, 25, 20);
         numeroLabel.setFont(font);
-        add(numeroLabel);
+        formPanel.add(numeroLabel);
 
         numeroField = new JTextField();
-        numeroField.setBounds(268, 55, 68, 20);
-        numeroField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        // numeroField.setBounds(268, 55, 68, 20);
+        numeroField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         numeroField.setColumns(10);
-        add(numeroField);
+        formPanel.add(numeroField);
 
         //Label complemento
         JLabel complementoLabel = new JLabel("Complemento");
-        complementoLabel.setBounds(5 , 75, 100, 20);
+        // complementoLabel.setBounds(5 , 75, 100, 20);
         complementoLabel.setFont(font);
-        add(complementoLabel);
+        formPanel.add(complementoLabel);
 
-        compleArea = new JTextArea();
-        compleArea.setBounds(5 ,95, 390, 100);
-        compleArea.setFont(font);
-        compleArea.setAlignmentY(JTextField.TOP); //Ajustar no topo
-        compleArea.setLineWrap(true); // Quebra de linha automática
-        compleArea.setWrapStyleWord(true); // Quebra de palavra
-        compleArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        add(compleArea);
+        compleArea = new JTextField();
+
+        // compleArea = new JTextArea();
+        // compleArea.setBounds(5 ,95, 390, 100);
+        // compleArea.setFont(font);
+        // compleArea.setAlignmentY(JTextField.TOP); //Ajustar no topo
+        // compleArea.setLineWrap(true); // Quebra de linha automática
+        // compleArea.setWrapStyleWord(true); // Quebra de palavra
+        compleArea.setBorder(new MatteBorder(0, 0, 2, 0, cor));
+        formPanel.add(compleArea);
 
         //Button de submit
         JButton submitButton = new JButton("Cadastrar");
