@@ -10,12 +10,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.MatteBorder;
 
 public class LoginAdm extends JPanel {
 
     private JTextField loginField;
-    private JTextField senhaField;
+    private JPasswordField senhaField;
     private JButton loginButton;
     private Color cor = new Color(136, 0, 12);
     private Font font = new Font("Arial", Font.BOLD, 15);
@@ -32,28 +34,32 @@ public class LoginAdm extends JPanel {
 
         JLabel loginLabel = new JLabel("Login:");
         loginLabel.setFont(font);
-        loginLabel.setBounds(5, 5, 50, 20);
+        loginLabel.setBounds(100, 250, 50, 20);
         add(loginLabel);
 
         loginField = new JTextField();
-        loginField.setBounds(60, 5, 200, 20);
-        loginField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        loginField.setBounds(100, 270, 200, 20);
+        loginField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         add(loginField);
 
         JLabel senhaLabel = new JLabel("Senha:");
-        senhaLabel.setBounds(5, 25, 60, 20);
+        senhaLabel.setBounds(100, 290, 60, 20);
         senhaLabel.setFont(font);
         add(senhaLabel);
 
-        senhaField = new JTextField();
-        senhaField.setBounds(60, 30, 200, 20);
-        senhaField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        senhaField = new JPasswordField();
+        senhaField.setBounds(100, 310, 200, 20);
+        senhaField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         add(senhaField);
+
+        JLabel logado = new JLabel();
+        logado.setBounds(110, 340, 200, 20);
+        add(logado);
 
 
         loginButton = new JButton("Login");
         loginButton.setSize(new Dimension(25, 20));
-        loginButton.setBounds(270, 690, 125, 40);
+        loginButton.setBounds(130, 370, 130, 40);
         loginButton.setFont(font);
         loginButton.setBackground(cor);
         loginButton.setForeground(Color.WHITE);
@@ -72,6 +78,7 @@ public class LoginAdm extends JPanel {
                     // Login bem-sucedido: mostra a JMenuBar do JFrame principal
                     if (menuPrincipal != null) {
                         menuPrincipal.mostrarAdmMenu(true);
+                        logado.setText("Login efetuado com sucesso");
                     }
 
                     loginField.setText("");

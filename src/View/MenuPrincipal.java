@@ -6,7 +6,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -15,8 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
-import Models.Categoria;
 
 public class MenuPrincipal extends JFrame {
     private JFrame frame;
@@ -29,12 +26,12 @@ public class MenuPrincipal extends JFrame {
     private boolean logado = false; // Flag para controle de login
 
     public static void main(String[] args) {
-        Categoria categoria = new Categoria();
-        ArrayList<String> nomeCategorias = categoria.carregarCategoria();
+        // Categoria categoria = new Categoria();
+        // ArrayList<String> nomeCategorias = categoria.carregarCategoria();
 
-        for (String aux : nomeCategorias) {
-            categoria.consultarProdutosPorCategoria(aux);
-        }
+        // for (String aux : nomeCategorias) {
+        //     categoria.consultarProdutosPorCategoria(aux);
+        // }
         EventQueue.invokeLater(() -> {
             try {
                 MenuPrincipal window = new MenuPrincipal();
@@ -48,7 +45,7 @@ public class MenuPrincipal extends JFrame {
         frame();
     }
 
-    public void frame() {
+    private void frame() {
 
         setTitle("Japinha Oriental Food");
         setVisible(true); //Visibilidade true
@@ -56,7 +53,8 @@ public class MenuPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Fecha o programa quando fecha a janela
         setResizable(false);//Não deixa mudar o tamanho
         setLocationRelativeTo(null); //abre o frame no meio da tela
-        
+        setBackground(menuBackgroundColor);
+        this.repaint();
 
         // Cria os menus
         menuBar = new JMenuBar();
