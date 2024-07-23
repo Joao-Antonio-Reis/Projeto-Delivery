@@ -22,14 +22,13 @@ import javax.swing.ScrollPaneConstants;
 import Models.Produto;
 
 public class Cardapio extends JLabel {
-    private JFrame frame;
+
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
     private String path = "Imagens/";
 
     // Construtor que recebe o frame principal
-    public Cardapio(JFrame frame) {
-        this.frame = frame;
+    public Cardapio() {
         frame();
     }
 
@@ -119,16 +118,16 @@ public class Cardapio extends JLabel {
         add(submitButton);
 
         // Adiciona ação ao botão "Carrinho"
-        submitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                RealizarPedido finalizar = new RealizarPedido();
-
-                // Remove todos os componentes do contentPane do JFrame e adiciona o novo painel
-                frame.getContentPane().removeAll();
-                frame.getContentPane().add(finalizar);
-                frame.revalidate();
-                frame.repaint();
-            }
-        });
+//        submitButton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                RealizarPedido finalizar = new RealizarPedido();
+//
+//                // Remove todos os componentes do contentPane do JFrame e adiciona o novo painel
+//                getContentPane().removeAll();
+//                getContentPane().add(finalizar);
+//                revalidate();
+//                repaint();
+//            }
+//        });
     }
 }

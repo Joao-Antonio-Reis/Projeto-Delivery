@@ -21,7 +21,7 @@ public class LoginAdm extends JPanel {
     private JButton loginButton;
     private Color cor = new Color(136, 0, 12);
     private Font font = new Font("Arial", Font.BOLD, 15);
-    private MenuPrincipal menuPrincipal; // Referência para o MenuPrincipal
+    private MenuPrincipalView menuPrincipal; // Referência para o MenuPrincipal
 
     public LoginAdm() {
         panelAdm();
@@ -93,7 +93,7 @@ public class LoginAdm extends JPanel {
             
         });
     }
-    public void setMenuPrincipal(MenuPrincipal menuPrincipal) {
+    public void setMenuPrincipal(MenuPrincipalView menuPrincipal) {
         this.menuPrincipal = menuPrincipal;
     }
 }
