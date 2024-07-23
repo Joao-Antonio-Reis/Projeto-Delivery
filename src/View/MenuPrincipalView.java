@@ -3,8 +3,6 @@ package View;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -22,13 +20,18 @@ public class MenuPrincipalView extends JFrame {
     private JButton loginButton;
     private JMenuItem cadastroCategoria;
     private JMenuItem cadastroProduto;
+    private JButton loginMenu;
+    private JButton carrinhoMenu;
+    private JButton cardapioMenu;
+    private JButton voltaMenu;
+
 
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
     private Color menuBackgroundColor = Color.DARK_GRAY;
     private JMenuBar menuBar;
     private JMenu admMenu;
-    private boolean logado = false; // Flag para controle de login
+    private boolean logado = false; // Flag para controle de loginMenu
 
 //    public static void main(String[] args) {
 //        // Categoria categoria = new Categoria();
@@ -66,7 +69,7 @@ public class MenuPrincipalView extends JFrame {
         menuBar.setBackground(cor);
 
         //Criando a opção categoria
-        JButton voltaMenu = new JButton("Menu");
+        voltaMenu = new JButton("Menu");
         voltaMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
         voltaMenu.setBackground(cor);
         voltaMenu.setForeground(Color.WHITE);
@@ -74,48 +77,38 @@ public class MenuPrincipalView extends JFrame {
 
 
         //Criando a opção categoria
-        JButton cardapioMenu = new JButton("Cardapio");
+        cardapioMenu = new JButton("Cardapio");
         cardapioMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
         cardapioMenu.setBackground(cor);
         cardapioMenu.setForeground(Color.WHITE);
         menuBar.add(cardapioMenu);
 
-        //Criando a opção carrinho
-        JButton carrinho = new JButton("Carrinho");
-        carrinho.setBorder(BorderFactory.createLineBorder(cor, 4));
-        carrinho.setForeground(Color.WHITE);
-        carrinho.setBackground(cor);
-        menuBar.add(carrinho);
+        //Criando a opção carrinhoMenu
+        carrinhoMenu = new JButton("Carrinho");
+        carrinhoMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
+        carrinhoMenu.setForeground(Color.WHITE);
+        carrinhoMenu.setBackground(cor);
+        menuBar.add(carrinhoMenu);
 
-        //Criando a opção login
-        JMenu loginMenu = new JMenu("Login");
+
+        loginMenu = new JButton("Login");// Cria o item do menu
+        loginMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
+        loginMenu.setBackground(cor);
         loginMenu.setForeground(Color.WHITE);
-        menuBar.add(loginMenu);
-
-        JMenuItem cadastrar = new JMenuItem("Cadastro");// Cria o item do menu
-        cadastrar.setBorder(BorderFactory.createLineBorder(cor, 4));
-        cadastrar.setBackground(cor);
-        cadastrar.setForeground(Color.WHITE);
-        loginMenu.add(cadastrar);// Adiciona o item ao menu "Arquivo"
-
-        JMenuItem login = new JMenuItem("Login");// Cria o item do menu
-        login.setBorder(BorderFactory.createLineBorder(cor, 4));
-        login.setBackground(cor);
-        login.setForeground(Color.WHITE);
-        loginMenu.add(login);// Adiciona o item ao menu "Arquivo"
+        menuBar.add(loginMenu);// Adiciona o item ao menu "Arquivo"
 
         admMenu = new JMenu("ADM");
         admMenu.setForeground(Color.WHITE);
         menuBar.add(admMenu);
         mostrarAdmMenu(logado); // Inicialmente esconde o menu ADM
 
-        JMenuItem cadastroCategoria = new JMenuItem("Cadastrar Categoria");
+        cadastroCategoria = new JMenuItem("Cadastrar Categoria");
         cadastroCategoria.setBorder(BorderFactory.createLineBorder(cor, 4));
         cadastroCategoria.setBackground(cor);
         cadastroCategoria.setForeground(Color.WHITE);
         admMenu.add(cadastroCategoria);
 
-        JMenuItem cadastroProduto = new JMenuItem("Cadastrar Produto");
+        cadastroProduto = new JMenuItem("Cadastrar Produto");
         cadastroProduto.setBorder(BorderFactory.createLineBorder(cor, 4));
         cadastroProduto.setBackground(cor);
         cadastroProduto.setForeground(Color.WHITE);
@@ -206,7 +199,7 @@ public class MenuPrincipalView extends JFrame {
 //            }
 //        });
 //
-//        carrinho.addActionListener(new ActionListener() {
+//        carrinhoMenu.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
 //                RealizarPedido finalizar = new RealizarPedido();
 //
@@ -250,8 +243,8 @@ public class MenuPrincipalView extends JFrame {
 //            }
 //        });
 //
-//        //Action login
-//        login.addActionListener(new ActionListener() {
+//        //Action loginMenu
+//        loginMenu.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
 //                LoginAdm loginAdm = new LoginAdm();
 //                loginAdm.setMenuPrincipal(MenuPrincipalView.this); // Passa a referência do MenuPrincipal para LoginAdm
@@ -323,6 +316,22 @@ public class MenuPrincipalView extends JFrame {
 
     public JMenuItem getCadastrarProdutoItem() {
         return cadastroProduto;
+    }
+
+    public JButton getLoginMenu() {
+        return loginMenu;
+    }
+
+    public JButton getCarrinhoMenu() {
+        return carrinhoMenu;
+    }
+
+    public JButton getCardapioMenu() {
+        return cardapioMenu;
+    }
+
+    public JButton getVoltaMenu() {
+        return voltaMenu;
     }
 
     public void changeContent(JLabel newContent){

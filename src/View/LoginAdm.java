@@ -14,7 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
-public class LoginAdm extends JPanel {
+public class LoginAdm extends JLabel {
 
     private JTextField loginField;
     private JPasswordField senhaField;

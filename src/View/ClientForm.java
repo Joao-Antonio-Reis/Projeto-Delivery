@@ -18,7 +18,7 @@ import Models.Cliente;
 import Models.Endereco;
 
 
-public class ClientForm extends JPanel{
+public class ClientForm extends JLabel{
     private JTextField nomeField;
     private JTextField telefoneField;
     private JTextField bairroField;

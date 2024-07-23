@@ -21,7 +21,7 @@ import javax.swing.plaf.basic.BasicComboBoxUI;
 import Models.Categoria;
 import Models.Produto;
 
-public class CadastroProduto extends JPanel {
+public class CadastroProduto extends JLabel {
 
     private JFrame frame;
     private JTextField nomeField;

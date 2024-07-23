@@ -16,7 +16,7 @@ import javax.swing.border.MatteBorder;
 
 import Models.Categoria;
 
-public class CadastroCategoria extends JPanel{
+public class CadastroCategoria extends JLabel{
 
     private JFrame frame;
     private JTextField catField;
