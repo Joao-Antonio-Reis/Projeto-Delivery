@@ -34,7 +34,7 @@ public class ControllerMenuPrincipal {
         menuView.getLoginButton().addActionListener(e -> abrirLogin());
         menuView.getCadastrarCategoriaItem().addActionListener(e -> abrirCadastroCategoria());
         menuView.getCadastrarProdutoItem().addActionListener(e -> abrirCadastroProduto());
-//        menuView.getVoltaMenu().addActionListener(e -> );
+        menuView.getVoltaMenu().addActionListener(e ->showMainMenu() );
         menuView.getCardapioMenu().addActionListener(e -> abrirCardapio());
         menuView.getCarrinhoMenu().addActionListener(e -> abrirCarrinho());
         menuView.getLoginMenu().addActionListener(e -> abrirLogin());
@@ -70,6 +70,11 @@ public class ControllerMenuPrincipal {
     private void abrirCadastroProduto() {
         CadastroProduto cadastroProduto = new CadastroProduto();
         menuView.changeContent(cadastroProduto);
+    }
+
+    private void showMainMenu() {
+        MenuPrincipalView menuprin = new MenuPrincipalView();
+        menuView.changeContent(menuprin.getMenuprin());
 
     }
 

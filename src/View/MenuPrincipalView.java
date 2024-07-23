@@ -4,13 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.*;
 
 public class MenuPrincipalView extends JFrame {
     private JFrame frame;
@@ -24,6 +18,9 @@ public class MenuPrincipalView extends JFrame {
     private JButton carrinhoMenu;
     private JButton cardapioMenu;
     private JButton voltaMenu;
+    private JLabel menuprin;
+
+    private JPanel mainMenuPanel;
 
 
     private Font font = new Font("Arial", Font.BOLD, 15);
@@ -116,7 +113,7 @@ public class MenuPrincipalView extends JFrame {
 
         setJMenuBar(menuBar);//Setando o menu no frame
 
-        JLabel menuprin = new JLabel();
+        menuprin = new JLabel();
         add(menuprin);
 
         cardapioButton = new JButton("Cardapio");
@@ -155,145 +152,12 @@ public class MenuPrincipalView extends JFrame {
         cadastroButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
         menuprin.add(cadastroButton);
 
-//        voltaMenu.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                // Limpa o contêiner principal e adiciona novamente o conteúdo inicial
-//                getContentPane().removeAll();
-//                frame(); // Recria o menu principal
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        cardapioButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                Cardapio cardapioButton = new Cardapio(frame);
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(cardapioButton);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        //Action produtos
-//        cardapioMenu.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                Cardapio cardapioButton = new Cardapio(frame);
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(cardapioButton);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        carrinhoButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                RealizarPedido finalizar = new RealizarPedido();
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(finalizar);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        carrinhoMenu.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                RealizarPedido finalizar = new RealizarPedido();
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(finalizar);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        cadastroButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                ClientForm clientForm = new ClientForm();
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(clientForm);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//        //Action cadastrar
-//        cadastrar.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                ClientForm clientForm = new ClientForm();
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(clientForm);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        loginButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                LoginAdm loginAdm = new LoginAdm();
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(loginAdm);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        //Action loginMenu
-//        loginMenu.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                LoginAdm loginAdm = new LoginAdm();
-//                loginAdm.setMenuPrincipal(MenuPrincipalView.this); // Passa a referência do MenuPrincipal para LoginAdm
-//
-//                getContentPane().removeAll();
-//                getContentPane().add(loginAdm);
-//                revalidate();
-//                repaint();
-//            }
-//        });
-//
-//        // Ação para cadastrar categoria
-//        cadastroCategoria.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                if (logado) {
-//                    // Abre a tela de cadastro de categoria
-//                    CadastroCategoria cadastroCategoriaForm = new CadastroCategoria();
-//
-//                    getContentPane().removeAll();
-//                    getContentPane().add(cadastroCategoriaForm);
-//                    revalidate();
-//                    repaint();
-//                } else {
-//                    // Mostra mensagem ou ação de não autorizado
-//                    System.out.println("Você precisa estar logado como ADM para acessar esta funcionalidade.");
-//                }
-//            }
-//        });
-//
-//        // Ação para cadastrar produto
-//        cadastroProduto.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                if (logado) {
-//                    // Abre a tela de cadastro de produto
-//                    CadastroProduto cadastroProdutoForm = new CadastroProduto();
-//
-//                    getContentPane().removeAll();
-//                    getContentPane().add(cadastroProdutoForm);
-//                    revalidate();
-//                    repaint();
-//                } else {
-//                    // Mostra mensagem ou ação de não autorizado
-//                    System.out.println("Você precisa estar logado como ADM para acessar esta funcionalidade.");
-//                }
-//            }
-//        });
-//    }
-
     }
+
+    public JLabel getMenuprin() {
+        return menuprin;
+    }
+
     public JButton getCardapioButton() {
         return cardapioButton;
     }
@@ -332,6 +196,10 @@ public class MenuPrincipalView extends JFrame {
 
     public JButton getVoltaMenu() {
         return voltaMenu;
+    }
+
+    public JPanel getMainMenuPanel() {
+        return mainMenuPanel;
     }
 
     public void changeContent(JLabel newContent){
