@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
+import ConexaoDB.CategoriaDAO;
 import Models.Categoria;
 import Models.Produto;
 
@@ -47,7 +48,7 @@ public class CadastroProduto extends JLabel {
     }
 
     public void produtoLabel() {
-        Categoria categoria = new Categoria();
+        CategoriaDAO categoria = new CategoriaDAO();
         ArrayList<String> listaDeCategoria = categoria.carregarCategoria();
 
         setVisible(true); //Visibilidade true

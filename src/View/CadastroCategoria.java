@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import ConexaoDB.CategoriaDAO;
 import Models.Categoria;
 
 public class CadastroCategoria extends JLabel{
@@ -82,7 +83,7 @@ public class CadastroCategoria extends JLabel{
                 String nome = catField.getText();
                 String descricao = descField.getText();
 
-                Categoria categoria = new Categoria();
+                CategoriaDAO categoria = new CategoriaDAO();
                 categoria.inserirCategoria(nome, descricao);
 
                 catField.setText("");

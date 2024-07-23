@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import ConexaoDB.ClienteDAO;
+import ConexaoDB.EnderecoDAO;
 import Models.Cliente;
 import Models.Endereco;
 
@@ -159,8 +161,10 @@ public class ClientForm extends JLabel{
                 Endereco endereco = new Endereco(bairro, rua, numero, complemento);
                 Cliente cliente = new Cliente(nome, telefone, endereco);
 
-                int enderecoId = endereco.inserirEndereco(bairro, rua, numero, complemento);
-                cliente.inserirCliente(nome, telefone, enderecoId);
+                ClienteDAO clienteDAO = new ClienteDAO();
+                EnderecoDAO enderecoDAO = new EnderecoDAO();
+                int enderecoId = enderecoDAO.inserirEndereco(bairro, rua, numero, complemento);
+                clienteDAO.inserirCliente(nome, telefone, enderecoId);
                 
                 nomeField.setText("");
                 telefoneField.setText("");
@@ -168,6 +172,7 @@ public class ClientForm extends JLabel{
                 ruaField.setText("");
                 bairroField.setText("");
                 compleArea.setText("");
+                emailField.setText("");
                 // Do something with the client object
             }
         });
