@@ -51,11 +51,11 @@ public class Cardapio extends JLabel {
         for (Produto produto : produtos) {
             JPanel productPanel = new JPanel();
             productPanel.setLayout(null);
-            productPanel.setPreferredSize(new Dimension(380, 80)); // Tamanho do retângulo para cada produto
+            productPanel.setPreferredSize(new Dimension(380, 70)); // Tamanho do retângulo para cada produto
             // productPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
 
             JPanel imagemPanel = new JPanel();
-            imagemPanel.setBounds(5, 5, 100, 80);
+            imagemPanel.setBounds(5, 5, 100, 70);
             imagemPanel.setLayout(new BorderLayout());
             // imagemPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
             ImageIcon imageIcon = new ImageIcon(path + produto.getImagem()+".png"); // Carrega a imagem
@@ -64,7 +64,7 @@ public class Cardapio extends JLabel {
             productPanel.add(imagemPanel);
 
             JPanel infoProduto = new JPanel();
-            infoProduto.setBounds(110, 5, 200, 80);
+            infoProduto.setBounds(110, 5, 200, 70);
             infoProduto.setLayout(new GridLayout(4, 1)); // Layout para os componentes do produto
             // infoProduto.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
 

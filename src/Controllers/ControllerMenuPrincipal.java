@@ -32,13 +32,13 @@ public class ControllerMenuPrincipal {
         menuView.getCarrinhoButton().addActionListener(e -> abrirCarrinho());
         menuView.getCadastroButton().addActionListener(e -> abrirCadastro());
         menuView.getLoginButton().addActionListener(e -> abrirLogin());
-        menuView.getCadastrarCategoriaItem().addActionListener(e -> abrirCadastroCategoria());
-        menuView.getCadastrarProdutoItem().addActionListener(e -> abrirCadastroProduto());
-        menuView.getVoltaMenu().addActionListener(e ->showMainMenu() );
+
         menuView.getCardapioMenu().addActionListener(e -> abrirCardapio());
         menuView.getCarrinhoMenu().addActionListener(e -> abrirCarrinho());
         menuView.getLoginMenu().addActionListener(e -> abrirLogin());
-
+        menuView.getCadastrarCategoriaItem().addActionListener(e -> abrirCadastroCategoria());
+        menuView.getCadastrarProdutoItem().addActionListener(e -> abrirCadastroProduto());
+        menuView.getVoltaMenu().addActionListener(e ->showMainMenu());
     }
 
     private void abrirCardapio(){
@@ -73,8 +73,7 @@ public class ControllerMenuPrincipal {
     }
 
     private void showMainMenu() {
-        MenuPrincipalView menuprin = new MenuPrincipalView();
-        menuView.changeContent(menuprin.getMenuprin());
+        menuView.changeContent(menuView.getMenuprin());
 
     }
 
