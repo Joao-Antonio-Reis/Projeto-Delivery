@@ -43,4 +43,35 @@ public class ClienteDAO {
             }
         }
     }
+    public static void removerCliente(String nome) {
+        Connection conexao = null;
+        PreparedStatement statement = null;
+
+        try {
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+
+            String sql = "DELETE FROM cliente WHERE nome = ?";
+            statement = conexao.prepareStatement(sql);
+
+            statement.setString(1, nome);
+
+            statement.executeUpdate();
+            System.out.println("Cliente removido com sucesso!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao remover cliente!");
+        } finally {
+            try {
+                if(statement != null){
+                    statement.close();
+                }
+                if (conexao != null) {
+                    conexao.close();
+                    System.out.println("Conexão encerrada!");
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão com o Banco de dados!");
+            }
+        }
+    }
 }

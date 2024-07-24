@@ -17,8 +17,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
+import java.math.BigDecimal;
 
 import ConexaoDB.CategoriaDAO;
+import ConexaoDB.ProdutoDAO;
 import Models.Categoria;
 import Models.Produto;
 
@@ -148,8 +150,8 @@ public class CadastroProduto extends JLabel {
                 String categoriaSelecionada = (String) categoriaBox.getSelectedItem();
                 String descricao = descProdutoArea.getText();
 
-                Produto produto = new Produto(nome, categoriaSelecionada, descricao, preco);
-                produto.inserirProduto(nome, categoriaSelecionada, descricao, preco, imagem);
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                produtoDAO.inserirProduto(nome, categoriaSelecionada, descricao, preco, imagem);
 
                 nomeField.setText("");
                 precoField.setText("");

@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import ConexaoDB.ProdutoDAO;
 import Models.Produto;
 
 public class Cardapio extends JLabel {
@@ -44,7 +45,7 @@ public class Cardapio extends JLabel {
         panelCardapio.setPreferredSize(new Dimension(400, 2000)); // Define o tamanho preferido do painel
 
         // Obtenção da lista de produtos ordenados
-        Produto produtoList = new Produto();
+        ProdutoDAO produtoList = new ProdutoDAO();
         List<Produto> produtos = produtoList.obterProdutosOrdenados();
 
         // Adição de produtos ao painel do cardápio
