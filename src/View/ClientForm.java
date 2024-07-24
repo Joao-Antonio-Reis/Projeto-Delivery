@@ -23,6 +23,7 @@ import Models.Endereco;
 public class ClientForm extends JLabel{
     private JTextField nomeField;
     private JTextField telefoneField;
+    private JTextField emailField;
     private JTextField bairroField;
     private JTextField ruaField;
     private JTextField numeroField;
@@ -154,12 +155,13 @@ public class ClientForm extends JLabel{
                 String nome = nomeField.getText();
                 String telefone = telefoneField.getText();
                 String bairro = bairroField.getText();
+                String email = emailField.getText();
                 String rua = ruaField.getText();
                 String numero = numeroField.getText();
                 String complemento = compleArea.getText();
 
                 Endereco endereco = new Endereco(bairro, rua, numero, complemento);
-                Cliente cliente = new Cliente(nome, telefone, endereco);
+                Cliente cliente = new Cliente(nome, telefone, email, endereco);
 
                 ClienteDAO clienteDAO = new ClienteDAO();
                 EnderecoDAO enderecoDAO = new EnderecoDAO();

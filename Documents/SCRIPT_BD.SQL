@@ -17,16 +17,17 @@ CREATE TABLE IF NOT EXISTS cliente (
     cliente_id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_nome VARCHAR(100),
     cliente_telefone VARCHAR(11),
+    cliente_email VARCHAR(120),
     endereco_id INT,
     FOREIGN KEY (endereco_id) REFERENCES endereco(endereco_id)
 );
 
-INSERT INTO cliente (cliente_nome, cliente_telefone, endereco_id) VALUES
-                                                                      ('João Silva', '11987654321', 1),
-                                                                      ('Maria Oliveira', '21987654321', 2),
-                                                                      ('Pedro Santos', '31987654321', 3),
-                                                                      ('Ana Souza', '41987654321', 4),
-                                                                      ('Carlos Lima', '51987654321', 5);
+INSERT INTO cliente (cliente_nome, cliente_telefone, cliente_email, endereco_id) VALUES
+                                                            ('João Silva', '11987654321', 'joao.silva@example.com', 1),
+                                                            ('Maria Oliveira', '21987654321', 'maria.oliveira@example.com', 2),
+                                                            ('Pedro Santos', '31987654321', 'pedro.santos@example.com', 3),
+                                                            ('Ana Souza', '41987654321', 'ana.souza@example.com', 4),
+                                                            ('Carlos Lima', '51987654321', 'carlos.lima@example.com', 5);
 
 CREATE TABLE IF NOT EXISTS categoria (
     categoria_id INT AUTO_INCREMENT PRIMARY KEY,
