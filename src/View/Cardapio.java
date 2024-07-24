@@ -59,7 +59,7 @@ public class Cardapio extends JLabel {
             imagemPanel.setBounds(5, 5, 100, 70);
             imagemPanel.setLayout(new BorderLayout());
             // imagemPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
-            ImageIcon imageIcon = new ImageIcon(path + produto.getImagem()+".png"); // Carrega a imagem
+            ImageIcon imageIcon = new ImageIcon(produto.getImagem()); // Carrega a imagem
             JLabel imageLabel = new JLabel(imageIcon);
             imagemPanel.add(imageLabel, BorderLayout.CENTER);
             productPanel.add(imagemPanel);

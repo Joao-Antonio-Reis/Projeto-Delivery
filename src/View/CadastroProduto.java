@@ -4,17 +4,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.math.BigDecimal;
@@ -31,6 +28,8 @@ public class CadastroProduto extends JLabel {
     private JTextArea descProdutoArea;
     private JTextField precoField;
     private JComboBox categoriaBox;
+    private JLabel imageLabel;
+    private File selectedFile;
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
 
@@ -100,6 +99,10 @@ public class CadastroProduto extends JLabel {
         }
         add(categoriaBox);
 
+        JButton uploadButton = new JButton("Upload Imagem");
+        uploadButton.setBounds(10, 170, 150, 25);
+        add(uploadButton);
+
         JLabel imagemLabel = new JLabel("URL Imagem: ");
         imagemLabel.setBounds(5, 80, 100, 20);
         imagemLabel.setFont(font);
@@ -114,6 +117,16 @@ public class CadastroProduto extends JLabel {
         descCat.setBounds(5, 100, 100, 20);
         descCat.setFont(font);
         add(descCat);
+        uploadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                int result = fileChooser.showOpenDialog(null);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    selectedFile = fileChooser.getSelectedFile();
+                    imageLabel.setText(selectedFile.getName());
+                }
+            }
+        });
 
         descProdutoArea = new JTextArea();
         descProdutoArea.setBounds(5, 120, 390, 100);
@@ -140,18 +153,34 @@ public class CadastroProduto extends JLabel {
                 String valor = precoField.getText();
                 valor = valor.replace(",", ".");
                 BigDecimal preco = BigDecimal.ZERO; // Usamos BigDecimal em vez de Double
-                String imagem = imagemField.getText();
+                String caminhoImagem = (selectedFile != null ? selectedFile.getName() : "");
+                if (selectedFile != null) {
+                    File destFile = new File(caminhoImagem);
+                    try {
+                        Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
                 try {
                     preco = new BigDecimal(valor);
                 } catch (NumberFormatException error) {
                     System.out.println("Erro ao converter o preço: ");
                     error.printStackTrace();
                 }
+
+                File destFile = new File(caminhoImagem);
+                try {
+                    Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+
                 String categoriaSelecionada = (String) categoriaBox.getSelectedItem();
                 String descricao = descProdutoArea.getText();
 
                 ProdutoDAO produtoDAO = new ProdutoDAO();
-                produtoDAO.inserirProduto(nome, categoriaSelecionada, descricao, preco, imagem);
+                produtoDAO.inserirProduto(nome, categoriaSelecionada, descricao, preco, caminhoImagem);
 
                 nomeField.setText("");
                 precoField.setText("");
