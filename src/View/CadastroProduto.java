@@ -100,18 +100,13 @@ public class CadastroProduto extends JLabel {
         add(categoriaBox);
 
         JButton uploadButton = new JButton("Upload Imagem");
-        uploadButton.setBounds(10, 170, 150, 25);
+        uploadButton.setFont(new Font("Arial", Font.BOLD, 15));
+        uploadButton.setBorder(BorderFactory.createLineBorder(cor, 1));
+        uploadButton.setForeground(Color.WHITE);
+        uploadButton.setBackground(cor);
+        uploadButton.setBounds(10, 80, 150, 20);
         add(uploadButton);
 
-        JLabel imagemLabel = new JLabel("URL Imagem: ");
-        imagemLabel.setBounds(5, 80, 100, 20);
-        imagemLabel.setFont(font);
-        add(imagemLabel);
-
-        JTextField imagemField = new JTextField();
-        imagemField.setBounds(100, 80, 235, 20);
-        imagemField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
-        add(imagemField);
 
         JLabel descCat = new JLabel("Descrição");
         descCat.setBounds(5, 100, 100, 20);
@@ -185,7 +180,7 @@ public class CadastroProduto extends JLabel {
                 nomeField.setText("");
                 precoField.setText("");
                 descProdutoArea.setText("");
-                imagemField.setText("");
+
 
                 // Produto produto = new Produto(nome, categoria, descricao, valor);
 

@@ -30,21 +30,6 @@ public class MenuPrincipalView extends JFrame {
     private JMenu admMenu;
     private boolean logado = false; // Flag para controle de loginMenu
 
-//    public static void main(String[] args) {
-//        // Categoria categoria = new Categoria();
-//        // ArrayList<String> nomeCategorias = categoria.carregarCategoria();
-//
-//        // for (String aux : nomeCategorias) {
-//        //     categoria.consultarProdutosPorCategoria(aux);
-//        // }
-//        EventQueue.invokeLater(() -> {
-//            try {
-//                MenuPrincipalView window = new MenuPrincipalView();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        });
-//    }
 
     public MenuPrincipalView() {
         frame();
@@ -135,7 +120,6 @@ public class MenuPrincipalView extends JFrame {
         menuprin.add(carrinhoButton);
 
         loginButton = new JButton("Login");
-        loginButton.setSize(new Dimension(25, 20));
         loginButton.setBounds(50, 360, 300, 100);
         loginButton.setFont(font);
         loginButton.setBackground(cor);
@@ -144,7 +128,6 @@ public class MenuPrincipalView extends JFrame {
         menuprin.add(loginButton);
 
         cadastroButton = new JButton("Cadastro");
-        cadastroButton.setSize(new Dimension(25, 20));
         cadastroButton.setBounds(50, 465, 300, 100);
         cadastroButton.setFont(font);
         cadastroButton.setBackground(cor);

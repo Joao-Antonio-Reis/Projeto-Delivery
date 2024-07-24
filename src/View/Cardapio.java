@@ -42,7 +42,7 @@ public class Cardapio extends JLabel {
         // Criação do painel para o cardápio
         JPanel panelCardapio = new JPanel();
         panelCardapio.setLayout(new BoxLayout(panelCardapio, BoxLayout.Y_AXIS)); // Layout para organizar componentes verticalmente
-        panelCardapio.setPreferredSize(new Dimension(400, 2000)); // Define o tamanho preferido do painel
+        panelCardapio.setPreferredSize(new Dimension(400, 4000)); // Define o tamanho preferido do painel
 
         // Obtenção da lista de produtos ordenados
         ProdutoDAO produtoList = new ProdutoDAO();
