@@ -10,18 +10,19 @@ public class ClienteDAO {
     private static final String URL = ConexaoGeneric.getURL();
     private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
     private static final String SENHA = ConexaoGeneric.getSENHA();
-    public static void inserirCliente(String nome, String telefone, int enderecoID) {
+    public static void inserirCliente(String nome, String telefone, String email, int enderecoID) {
         Connection conexao = null;
         PreparedStatement statement = null;
 
         try {
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
 
-            String sql = "INSERT INTO cliente (cliente_nome, cliente_telefone, endereco_id) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO cliente (cliente_nome, cliente_telefone, cliente_email, endereco_id) VALUES (?, ?, ?)";
             statement = conexao.prepareStatement(sql);
             statement.setString(1, nome);
             statement.setString(2, telefone);
-            statement.setInt(3, enderecoID);
+            statement.setString(3, email);
+            statement.setInt(4, enderecoID);
 
             statement.executeUpdate();
             System.out.println("Cliente inserido com sucesso!");

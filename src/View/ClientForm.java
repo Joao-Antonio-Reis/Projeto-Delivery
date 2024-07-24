@@ -166,7 +166,7 @@ public class ClientForm extends JLabel{
                 ClienteDAO clienteDAO = new ClienteDAO();
                 EnderecoDAO enderecoDAO = new EnderecoDAO();
                 int enderecoId = enderecoDAO.inserirEndereco(bairro, rua, numero, complemento);
-                clienteDAO.inserirCliente(nome, telefone, enderecoId);
+                clienteDAO.inserirCliente(nome, telefone, email, enderecoId);
                 
                 nomeField.setText("");
                 telefoneField.setText("");
