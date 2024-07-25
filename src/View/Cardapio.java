@@ -42,7 +42,7 @@ public class Cardapio extends JLabel {
         // Criação do painel para o cardápio
         JPanel panelCardapio = new JPanel();
         panelCardapio.setLayout(new BoxLayout(panelCardapio, BoxLayout.Y_AXIS)); // Layout para organizar componentes verticalmente
-        panelCardapio.setPreferredSize(new Dimension(400, 4000)); // Define o tamanho preferido do painel
+//        panelCardapio.setPreferredSize(new Dimension(400, 4000)); // Define o tamanho preferido do painel
 
         // Obtenção da lista de produtos ordenados
         ProdutoDAO produtoList = new ProdutoDAO();
@@ -52,7 +52,7 @@ public class Cardapio extends JLabel {
         for (Produto produto : produtos) {
             JPanel productPanel = new JPanel();
             productPanel.setLayout(null);
-            productPanel.setPreferredSize(new Dimension(380, 70)); // Tamanho do retângulo para cada produto
+            productPanel.setPreferredSize(new Dimension(380, 80)); // Tamanho do retângulo para cada produto
             // productPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
 
             JPanel imagemPanel = new JPanel();
@@ -89,7 +89,7 @@ public class Cardapio extends JLabel {
             JButton adicionarButton = new JButton("+");
             adicionarButton.setBackground(cor);
             adicionarButton.setForeground(Color.WHITE);
-            adicionarButton.setBounds(320, 60, 50, 25);
+            adicionarButton.setBounds(320, 30, 50, 25);
             adicionarButton.setFocusPainted(false);
             adicionarButton.setRolloverEnabled(false);
 
