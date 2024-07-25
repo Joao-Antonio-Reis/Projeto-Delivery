@@ -53,14 +53,14 @@ public class ProdutoDAO {
         }
     }
 
-    public static void removerProduto(String produto_nome) {
+    public void removerProduto(String produto_nome) {
         Connection conexao = null;
         PreparedStatement statement = null;
 
         try {
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
 
-            String sql = "DELETE FROM produto WHERE nome = ?";
+            String sql = "DELETE FROM produto WHERE nome =  ?";
             statement = conexao.prepareStatement(sql);
 
             statement.setString(1, produto_nome);

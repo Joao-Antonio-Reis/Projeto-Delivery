@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.math.BigDecimal;
 import java.util.List;
@@ -29,6 +31,8 @@ public class CadastroProduto extends JLabel {
     private JTextField precoField;
     private JComboBox categoriaBox;
     private JLabel imageLabel;
+    private JButton removerProduto;
+    private JLabel labelProduto;
     private File selectedFile;
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
@@ -98,6 +102,10 @@ public class CadastroProduto extends JLabel {
         }
         add(categoriaBox);
 
+        imageLabel = new JLabel();
+        imageLabel.setBounds(170, 80, 100, 20);
+        add(imageLabel);
+
         JButton uploadButton = new JButton("Upload Imagem");
         uploadButton.setFont(new Font("Arial", Font.BOLD, 15));
         uploadButton.setBorder(BorderFactory.createLineBorder(cor, 1));
@@ -153,13 +161,13 @@ public class CadastroProduto extends JLabel {
 
 
             // Criação dos componentes para cada produto
-            JLabel labelProduto = new JLabel(produto.getNome());
+            labelProduto = new JLabel(produto.getNome());
             labelProduto.setBounds(5, 5 ,200, 20);
             labelProduto.setFont(new Font("Arial", Font.BOLD, 14));
             productPanel.add(labelProduto);
 
 
-            JButton removerProduto = new JButton("Remover");
+            removerProduto = new JButton("Remover");
             removerProduto.setBackground(cor);
             removerProduto.setForeground(Color.WHITE);
             removerProduto.setBounds(250, 5, 100, 25);
@@ -188,6 +196,13 @@ public class CadastroProduto extends JLabel {
         button.setBackground(cor);
         add(button);
 
+        removerProduto,addAncestorListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                produtoDAO.removerProduto(precoLabel.getText());
+            }
+        });
 
         button.addActionListener(new ActionListener() {
 
@@ -238,5 +253,6 @@ public class CadastroProduto extends JLabel {
             }
         });
         add(button);
+
     }
 }
