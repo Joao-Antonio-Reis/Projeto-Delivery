@@ -60,7 +60,7 @@ public class ProdutoDAO {
         try {
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
 
-            String sql = "DELETE FROM produto WHERE nome =  ?";
+            String sql = "DELETE FROM produto WHERE produto_nome = ?";
             statement = conexao.prepareStatement(sql);
 
             statement.setString(1, produto_nome);

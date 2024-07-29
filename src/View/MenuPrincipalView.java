@@ -181,10 +181,6 @@ public class MenuPrincipalView extends JFrame {
         return voltaMenu;
     }
 
-    public JPanel getMainMenuPanel() {
-        return mainMenuPanel;
-    }
-
     public void changeContent(JLabel newContent){
         getContentPane().removeAll();
         getContentPane().add(newContent);

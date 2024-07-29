@@ -1,7 +1,6 @@
 package View;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -13,8 +12,11 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.math.BigDecimal;
+import java.util.List;
 
 import ConexaoDB.CategoriaDAO;
 import ConexaoDB.ProdutoDAO;
@@ -29,6 +31,8 @@ public class CadastroProduto extends JLabel {
     private JTextField precoField;
     private JComboBox categoriaBox;
     private JLabel imageLabel;
+    private JButton removerProduto;
+    private JLabel labelProduto;
     private File selectedFile;
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
@@ -55,7 +59,6 @@ public class CadastroProduto extends JLabel {
         setVisible(true); //Visibilidade true
         setSize(415, 800); //Define o tamanho da tela
         setLayout(null);
-
 
         JLabel nomeProdLabel = new JLabel("Nome: ");
         nomeProdLabel.setFont(font);
@@ -99,6 +102,10 @@ public class CadastroProduto extends JLabel {
         }
         add(categoriaBox);
 
+        imageLabel = new JLabel();
+        imageLabel.setBounds(170, 80, 100, 20);
+        add(imageLabel);
+
         JButton uploadButton = new JButton("Upload Imagem");
         uploadButton.setFont(new Font("Arial", Font.BOLD, 15));
         uploadButton.setBorder(BorderFactory.createLineBorder(cor, 1));
@@ -131,62 +138,161 @@ public class CadastroProduto extends JLabel {
         descProdutoArea.setWrapStyleWord(true); // Quebra de palavra
         descProdutoArea.setBorder(BorderFactory.createLineBorder(cor, 2));
         add(descProdutoArea);
-        
 
-        JButton button = new JButton("Cadastrar");
-        button.setBounds(270, 690, 120, 40);
-        button.setFont(new Font("Arial", Font.BOLD, 15));
-        button.setForeground(Color.WHITE);
-        button.setBackground(cor);
-        add(button);
-        button.addActionListener(new ActionListener() {
+        JLabel removerLabel = new JLabel("Remover produtos");
+        removerLabel.setBounds(5, 240, 300, 20);
+        removerLabel.setFont(font);
+        add(removerLabel);
 
-            // Terminar de fazer o método depois de linkar as categorias para poder selecionar a cada produto adicionado.
+        JPanel panelRemover = new JPanel();
+        panelRemover.setLayout(new BoxLayout(panelRemover, BoxLayout.Y_AXIS)); // Layout para organizar componentes verticalmente
+        panelRemover.setSize(400, 200);
+
+        // Obtenção da lista de produtos ordenados
+        ProdutoDAO produtoList = new ProdutoDAO();
+        List<Produto> produtos = produtoList.obterProdutosOrdenados();
+
+
+        for (Produto produto : produtos) {
+            JPanel productPanel = new JPanel();
+            productPanel.setLayout(null);
+            productPanel.setPreferredSize(new Dimension(380, 30)); // Tamanho do retângulo para cada produto
+            //productPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
+
+
+            // Criação dos componentes para cada produto
+            labelProduto = new JLabel(produto.getNome());
+            labelProduto.setBounds(5, 5 ,200, 20);
+            labelProduto.setFont(new Font("Arial", Font.BOLD, 14));
+            productPanel.add(labelProduto);
+
+
+            removerProduto = new JButton("Remover");
+            removerProduto.setBackground(cor);
+            removerProduto.setForeground(Color.WHITE);
+            removerProduto.setBounds(250, 5, 100, 25);
+            removerProduto.setFocusPainted(false);
+            removerProduto.setRolloverEnabled(false);
+
+            productPanel.add(removerProduto);
+
+            // Adiciona o painel do produto ao painel do cardápio
+            panelRemover.add(productPanel);
+
+            removerProduto.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ProdutoDAO produtoDAO = new ProdutoDAO();
+                    produtoDAO.removerProduto(produto.getNome());
+                    productPanel.setVisible(false);
+                }
+            });
+        }
+
+        // Criação do painel de rolagem para o remover produto
+        JScrollPane scrollPane = new JScrollPane(panelRemover);
+        scrollPane.setBounds(5, 265, 400, 300); // Define a posição e tamanho do painel de rolagem
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS); // Sempre mostra a barra de rolagem vertical
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Nunca mostra a barra de rolagem horizontal
+        // scrollPane.setBorder(BorderFactory.createLineBorder(Color.black, 2)); // Borda preta ao redor do painel de rolagem
+        add(scrollPane);
+
+
+        JButton cadastrarButton = new JButton("Cadastrar");
+        cadastrarButton.setBounds(270, 690, 120, 40);
+        cadastrarButton.setFont(new Font("Arial", Font.BOLD, 15));
+        cadastrarButton.setForeground(Color.WHITE);
+        cadastrarButton.setBackground(cor);
+        add(cadastrarButton);
+
+
+        cadastrarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                 String nome = nomeField.getText();
                 String valor = precoField.getText();
                 valor = valor.replace(",", ".");
-                BigDecimal preco = BigDecimal.ZERO; // Usamos BigDecimal em vez de Double
-                String caminhoImagem = (selectedFile != null ? selectedFile.getName() : "");
+                BigDecimal preco = BigDecimal.ZERO;
+
                 if (selectedFile != null) {
+                    String caminhoImagem = "Imagens/" + selectedFile.getName();
                     File destFile = new File(caminhoImagem);
+
+                    File imagensDir = new File("Imagens");
+                    if (!imagensDir.exists()) {
+                        imagensDir.mkdir();
+                    }
+
                     try {
                         Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
+
+                    try {
+                        preco = new BigDecimal(valor);
+                    } catch (NumberFormatException error) {
+                        System.out.println("Erro ao converter o preço: ");
+                        error.printStackTrace();
+                    }
+
+                    String categoriaSelecionada = (String) categoriaBox.getSelectedItem();
+                    String descricao = descProdutoArea.getText();
+
+                    ProdutoDAO produtoDAO = new ProdutoDAO();
+                    produtoDAO.inserirProduto(nome, categoriaSelecionada, descricao, preco, caminhoImagem);
+
+                    nomeField.setText("");
+                    precoField.setText("");
+                    descProdutoArea.setText("");
+                    imageLabel.setText("");
+
+                    System.out.println("Produto cadastrado com sucesso!");
+                } else {
+                    System.out.println("Por favor, selecione uma imagem!");
                 }
-                try {
-                    preco = new BigDecimal(valor);
-                } catch (NumberFormatException error) {
-                    System.out.println("Erro ao converter o preço: ");
-                    error.printStackTrace();
-                }
-
-                File destFile = new File(caminhoImagem);
-                try {
-                    Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-
-                String categoriaSelecionada = (String) categoriaBox.getSelectedItem();
-                String descricao = descProdutoArea.getText();
-
-                ProdutoDAO produtoDAO = new ProdutoDAO();
-                produtoDAO.inserirProduto(nome, categoriaSelecionada, descricao, preco, caminhoImagem);
-
-                nomeField.setText("");
-                precoField.setText("");
-                descProdutoArea.setText("");
-
-
-                // Produto produto = new Produto(nome, categoria, descricao, valor);
-
-                // Do something with the client object
             }
         });
-        add(button);
+        add(cadastrarButton);
+
+    }
+
+    public JTextField getNomeField() {
+        return nomeField;
+    }
+
+    public void setNomeField(JTextField nomeField) {
+        this.nomeField = nomeField;
+    }
+
+    public JTextArea getDescProdutoArea() {
+        return descProdutoArea;
+    }
+
+    public void setDescProdutoArea(JTextArea descProdutoArea) {
+        this.descProdutoArea = descProdutoArea;
+    }
+
+    public JTextField getPrecoField() {
+        return precoField;
+    }
+
+    public void setPrecoField(JTextField precoField) {
+        this.precoField = precoField;
+    }
+
+    public JComboBox getCategoriaBox() {
+        return categoriaBox;
+    }
+
+    public void setCategoriaBox(JComboBox categoriaBox) {
+        this.categoriaBox = categoriaBox;
+    }
+
+    public JLabel getImageLabel() {
+        return imageLabel;
+    }
+
+    public void setImageLabel(JLabel imageLabel) {
+        this.imageLabel = imageLabel;
     }
 }
