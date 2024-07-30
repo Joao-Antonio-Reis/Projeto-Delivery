@@ -16,7 +16,8 @@ public class ProdutoDAO {
     private static final String URL = ConexaoGeneric.getURL();
     private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
     private static final String SENHA = ConexaoGeneric.getSENHA();
-    public void inserirProduto(String produto_nome, String produto_categoria, String produto_descricao, BigDecimal produto_valor, String produto_imagem){
+
+    public static void inserirProduto(String produto_nome, String produto_categoria, String produto_descricao, BigDecimal produto_valor, String produto_imagem){
 
         Connection conexao = null;
         PreparedStatement statement = null;

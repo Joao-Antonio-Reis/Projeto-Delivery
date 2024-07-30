@@ -8,9 +8,6 @@ import View.LoginAdm;
 import View.CadastroCategoria;
 import View.CadastroProduto;
 
-
-import javax.swing.*;
-
 public class ControllerMenuPrincipal {
     private MenuPrincipalView menuView;
     private boolean logado;
@@ -69,6 +66,7 @@ public class ControllerMenuPrincipal {
 
     private void abrirCadastroProduto() {
         CadastroProduto cadastroProduto = new CadastroProduto();
+        ControllerProduto controllerCadastroProduto = new ControllerProduto(cadastroProduto);
         menuView.changeContent(cadastroProduto);
     }
 

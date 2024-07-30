@@ -20,11 +20,13 @@ import java.util.List;
 
 import ConexaoDB.CategoriaDAO;
 import ConexaoDB.ProdutoDAO;
+import Controllers.ControllerProduto;
 import Models.Categoria;
 import Models.Produto;
 
 public class CadastroProduto extends JLabel {
 
+    public JComboBox<String> getCategoriaBox;
     private JFrame frame;
     private JTextField nomeField;
     private JTextArea descProdutoArea;
@@ -34,8 +36,10 @@ public class CadastroProduto extends JLabel {
     private JButton removerProduto;
     private JLabel labelProduto;
     private File selectedFile;
+    private JButton cadastrarButton;
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
+
 
 //    public static void main(String[] args) {
 //        EventQueue.invokeLater(() -> {
@@ -53,10 +57,8 @@ public class CadastroProduto extends JLabel {
     }
 
     public void produtoLabel() {
-        CategoriaDAO categoria = new CategoriaDAO();
-        ArrayList<String> listaDeCategoria = categoria.carregarCategoria();
+        ControllerProduto controllerProduto = new ControllerProduto();
 
-        setVisible(true); //Visibilidade true
         setSize(415, 800); //Define o tamanho da tela
         setLayout(null);
 
@@ -64,7 +66,6 @@ public class CadastroProduto extends JLabel {
         nomeProdLabel.setFont(font);
         nomeProdLabel.setBounds(5, 5, 50, 20);
         add(nomeProdLabel);
-
         nomeField = new JTextField();
         nomeField.setBounds(60, 5, 270, 20);
         nomeField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
@@ -74,7 +75,6 @@ public class CadastroProduto extends JLabel {
         precoLabel.setFont(font);
         precoLabel.setBounds(5, 30, 60, 20);
         add(precoLabel);
-
         precoField = new JTextField();
         precoField.setBounds(60, 30, 100, 20);
         precoField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
@@ -84,7 +84,6 @@ public class CadastroProduto extends JLabel {
         categoriaLabel.setFont(font);
         categoriaLabel.setBounds(5,55, 90, 20);
         add(categoriaLabel);
-
         categoriaBox = new JComboBox<>();
         categoriaBox.setBounds(80,55,150,20);
         categoriaBox.setUI(new BasicComboBoxUI() {
@@ -96,10 +95,8 @@ public class CadastroProduto extends JLabel {
             }
     
         });
+        controllerProduto.carregaCategoria();
         categoriaBox.setFont(font);
-        for (String string : listaDeCategoria) {
-            categoriaBox.addItem(string);
-        }
         add(categoriaBox);
 
         imageLabel = new JLabel();
@@ -114,11 +111,6 @@ public class CadastroProduto extends JLabel {
         uploadButton.setBounds(10, 80, 150, 20);
         add(uploadButton);
 
-
-        JLabel descCat = new JLabel("Descrição");
-        descCat.setBounds(5, 100, 100, 20);
-        descCat.setFont(font);
-        add(descCat);
         uploadButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
@@ -130,6 +122,10 @@ public class CadastroProduto extends JLabel {
             }
         });
 
+        JLabel descCat = new JLabel("Descrição");
+        descCat.setBounds(5, 100, 100, 20);
+        descCat.setFont(font);
+        add(descCat);
         descProdutoArea = new JTextArea();
         descProdutoArea.setBounds(5, 120, 390, 100);
         descProdutoArea.setFont(font);
@@ -166,7 +162,6 @@ public class CadastroProduto extends JLabel {
             labelProduto.setFont(new Font("Arial", Font.BOLD, 14));
             productPanel.add(labelProduto);
 
-
             removerProduto = new JButton("Remover");
             removerProduto.setBackground(cor);
             removerProduto.setForeground(Color.WHITE);
@@ -191,108 +186,53 @@ public class CadastroProduto extends JLabel {
 
         // Criação do painel de rolagem para o remover produto
         JScrollPane scrollPane = new JScrollPane(panelRemover);
-        scrollPane.setBounds(5, 265, 400, 300); // Define a posição e tamanho do painel de rolagem
+        scrollPane.setBounds(0, 265, 400, 300); // Define a posição e tamanho do painel de rolagem
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS); // Sempre mostra a barra de rolagem vertical
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Nunca mostra a barra de rolagem horizontal
         // scrollPane.setBorder(BorderFactory.createLineBorder(Color.black, 2)); // Borda preta ao redor do painel de rolagem
         add(scrollPane);
 
-
-        JButton cadastrarButton = new JButton("Cadastrar");
+        cadastrarButton = new JButton("Cadastrar");
         cadastrarButton.setBounds(270, 690, 120, 40);
         cadastrarButton.setFont(new Font("Arial", Font.BOLD, 15));
         cadastrarButton.setForeground(Color.WHITE);
         cadastrarButton.setBackground(cor);
         add(cadastrarButton);
 
-
-        cadastrarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String nome = nomeField.getText();
-                String valor = precoField.getText();
-                valor = valor.replace(",", ".");
-                BigDecimal preco = BigDecimal.ZERO;
-
-                if (selectedFile != null) {
-                    String caminhoImagem = "Imagens/" + selectedFile.getName();
-                    File destFile = new File(caminhoImagem);
-
-                    File imagensDir = new File("Imagens");
-                    if (!imagensDir.exists()) {
-                        imagensDir.mkdir();
-                    }
-
-                    try {
-                        Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
-
-                    try {
-                        preco = new BigDecimal(valor);
-                    } catch (NumberFormatException error) {
-                        System.out.println("Erro ao converter o preço: ");
-                        error.printStackTrace();
-                    }
-
-                    String categoriaSelecionada = (String) categoriaBox.getSelectedItem();
-                    String descricao = descProdutoArea.getText();
-
-                    ProdutoDAO produtoDAO = new ProdutoDAO();
-                    produtoDAO.inserirProduto(nome, categoriaSelecionada, descricao, preco, caminhoImagem);
-
-                    nomeField.setText("");
-                    precoField.setText("");
-                    descProdutoArea.setText("");
-                    imageLabel.setText("");
-
-                    System.out.println("Produto cadastrado com sucesso!");
-                } else {
-                    System.out.println("Por favor, selecione uma imagem!");
-                }
-            }
-        });
-        add(cadastrarButton);
-
     }
 
-    public JTextField getNomeField() {
-        return nomeField;
+    public String getNome() {
+        return nomeField.getText();
     }
 
-    public void setNomeField(JTextField nomeField) {
-        this.nomeField = nomeField;
+    public String getDescricao() {
+        return descProdutoArea.getText();
     }
 
-    public JTextArea getDescProdutoArea() {
-        return descProdutoArea;
+    public String getPreco() {
+        return precoField.getText();
     }
 
-    public void setDescProdutoArea(JTextArea descProdutoArea) {
-        this.descProdutoArea = descProdutoArea;
+    public String getCategoria() {
+        return (String) categoriaBox.getSelectedItem();
     }
 
-    public JTextField getPrecoField() {
-        return precoField;
+    public String getCaminhoImagem() {
+        return (selectedFile != null) ? selectedFile.getName() : "";
     }
 
-    public void setPrecoField(JTextField precoField) {
-        this.precoField = precoField;
+    public JButton getCadastrarButton() {
+        return cadastrarButton;
     }
 
-    public JComboBox getCategoriaBox() {
-        return categoriaBox;
+    public void carregarCategoriaBox(String categoria) {
+        categoriaBox.addItem(categoria);
     }
 
-    public void setCategoriaBox(JComboBox categoriaBox) {
-        this.categoriaBox = categoriaBox;
-    }
+    public void limparCampos(){
+        nomeField.setText("");
+        precoField.setText("");
+        descProdutoArea.setText("");
 
-    public JLabel getImageLabel() {
-        return imageLabel;
-    }
-
-    public void setImageLabel(JLabel imageLabel) {
-        this.imageLabel = imageLabel;
     }
 }
