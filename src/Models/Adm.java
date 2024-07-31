@@ -17,6 +17,7 @@ public class Adm {
         this.senha = senha;
     }
 
+
     public int getId() {
         return id;
     }

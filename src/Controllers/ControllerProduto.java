@@ -15,7 +15,7 @@ import java.util.List;
 import Models.Produto;
 import View.MenuPrincipalView;
 
-public class ControllerProduto {
+public class ControllerProduto implements ControllerAbstract{
     private CadastroProduto cadastroProdutoView;
     private File selectedFile;
     private File destFile;
