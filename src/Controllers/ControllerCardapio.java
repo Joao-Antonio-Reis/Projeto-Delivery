@@ -1,6 +1,6 @@
 package Controllers;
 
-public class ControllerCardapio implements ControllerInterface {
+public class ControllerCardapio implements InterfaceController {
     @Override
     public void initView() {
 

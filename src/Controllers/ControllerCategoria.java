@@ -6,7 +6,7 @@ import View.CadastroCategoria;
 
 import java.util.ArrayList;
 
-public class ControllerCategoria implements ControllerInterface {
+public class ControllerCategoria implements InterfaceController {
     private CadastroCategoria cadastroCategoriaView;
 
     public ControllerCategoria() {}

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import ConexaoDB.ConexaoGeneric;
 
-public class Cliente {
+public class Cliente{
 
     private String nome;
     private String telefone;
