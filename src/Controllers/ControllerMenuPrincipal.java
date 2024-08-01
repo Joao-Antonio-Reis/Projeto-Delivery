@@ -61,6 +61,7 @@ public class ControllerMenuPrincipal {
 
     private void abrirCadastroCategoria() {
         CadastroCategoria cadastroCategoria = new CadastroCategoria();
+        ControllerCategoria controllerCategoria = new ControllerCategoria(cadastroCategoria);
         menuView.changeContent(cadastroCategoria);
     }
 

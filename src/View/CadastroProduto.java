@@ -29,7 +29,6 @@ public class CadastroProduto extends JLabel {
     private JLabel labelProduto;
     private File selectedFile;
     private JButton cadastrarButton;
-    private ControllerProduto controllerProduto = new ControllerProduto();
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
     private JPanel panelRemover;
@@ -107,7 +106,6 @@ public class CadastroProduto extends JLabel {
         add(descCat);
         descProdutoArea = new JTextArea();
         descProdutoArea.setBounds(5, 120, 390, 100);
-        descProdutoArea.setFont(font);
         descProdutoArea.setAlignmentY(JTextField.TOP); // Ajustar no topo
         descProdutoArea.setLineWrap(true); // Quebra de linha automática
         descProdutoArea.setWrapStyleWord(true); // Quebra de palavra
@@ -174,6 +172,12 @@ public class CadastroProduto extends JLabel {
         nomeField.setText("");
         precoField.setText("");
         descProdutoArea.setText("");
+    }
+
+    public void limparProdutosParaRemover() {
+        panelRemover.removeAll();
+        panelRemover.revalidate();
+        panelRemover.repaint();
     }
 
     public void adicionarProdutoParaRemover(Produto produto, ActionListener removerAction) {

@@ -8,23 +8,25 @@ import java.sql.SQLException;
 
 import ConexaoDB.ConexaoGeneric;
 
-public class Cliente  extends Pessoa{
+public class Cliente {
+
+    private String nome;
     private String telefone;
     private String email;
     private Endereco endereço;
 
     public Cliente(String nome, String telefone, String email, Endereco endereço) {
-        super(nome);
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.endereço = endereço;
     }
 
     public String getNome() {
-        return super.getNome();
+        return nome;
     }
     public void setNome(String nome) {
-        this.setNome(nome);
+        this.nome = nome;
     }
     public String getTelefone() {
         return telefone;
@@ -36,7 +38,7 @@ public class Cliente  extends Pessoa{
         return email;
     }
     public void setEmail(String email) {
-        this.email = email;
+        this.nome = email;
     }
     public Endereco getEndereço() {
         return endereço;

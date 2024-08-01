@@ -2,6 +2,7 @@ package Controllers;
 
 import ConexaoDB.CategoriaDAO;
 import ConexaoDB.ProdutoDAO;
+import Models.Categoria;
 import View.CadastroProduto;
 
 import java.io.File;
@@ -13,9 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.Produto;
-import View.MenuPrincipalView;
 
-public class ControllerProduto implements ControllerAbstract{
+public class ControllerProduto implements ControllerInterface {
     private CadastroProduto cadastroProdutoView;
     private File selectedFile;
     private File destFile;
@@ -28,13 +28,13 @@ public class ControllerProduto implements ControllerAbstract{
         initController();
     }
 
-    private void initView() {
+    public void initView() {
         cadastroProdutoView.setVisible(true);
         carregaCategoria();
         carregaProdutos();
     }
 
-    private void initController() {
+    public void initController() {
         cadastroProdutoView.getCadastrarButton().addActionListener(e -> cadastrar());
     }
 
@@ -84,15 +84,16 @@ public class ControllerProduto implements ControllerAbstract{
 
     private void carregaCategoria() {
         CategoriaDAO categoriaDAO = new CategoriaDAO();
-        ArrayList<String> listaCategorias = categoriaDAO.carregarCategoria();
-        for (String categoria : listaCategorias) {
-            cadastroProdutoView.carregarCategoriaBox(categoria);
+        ArrayList<Categoria> listaCategorias = categoriaDAO.buscarCategoria();
+        for (Categoria categoria : listaCategorias) {
+            cadastroProdutoView.carregarCategoriaBox(categoria.getNome());
         }
     }
 
     private void carregaProdutos() {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         List<Produto> produtos = produtoDAO.obterProdutosOrdenados();
+        cadastroProdutoView.limparProdutosParaRemover();
 
         for (Produto produto : produtos) {
             cadastroProdutoView.adicionarProdutoParaRemover(produto, e -> removerProduto(produto));
@@ -102,5 +103,6 @@ public class ControllerProduto implements ControllerAbstract{
     private void removerProduto(Produto produto) {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         produtoDAO.removerProduto(produto.getNome());
+        carregaProdutos();
     }
 }

@@ -1,6 +1,6 @@
 package ConexaoDB;
 
-import ConexaoDB.ConexaoGeneric;
+import Models.Categoria;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -35,9 +35,9 @@ public class CategoriaDAO {
         }
     }
 
-    public ArrayList<String> carregarCategoria() {
+    public ArrayList<Categoria> buscarCategoria() {
 
-        ArrayList<String> listaDeCategoria = new ArrayList<>();
+        ArrayList<Categoria> listaDeCategoria = new ArrayList<>();
 
         try (
 
@@ -47,8 +47,9 @@ public class CategoriaDAO {
                 ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-                String nomeCategoria = resultSet.getString("categoria_nome");
-                listaDeCategoria.add(nomeCategoria);
+                Categoria categoria = new Categoria();
+                categoria.setNome(resultSet.getString("categoria_nome"));
+                listaDeCategoria.add(categoria);
             }
 
             statement.close();
@@ -93,6 +94,24 @@ public class CategoriaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Erro ao consultar produtos por categoria!");
+        }
+    }
+
+    public void apagarCategoria(String nome){
+        try (
+                Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM categoria WHERE categoria_nome = ?");
+        ) {
+            statement.setString(1, nome);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Categoria apagada com sucesso!");
+            } else {
+                System.out.println("Categoria não encontrada!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao apagar categoria!");
         }
     }
 
