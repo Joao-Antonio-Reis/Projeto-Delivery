@@ -6,10 +6,10 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CategoriaDAO {
-    private static final String URL = ConexaoGeneric.getURL();
-    private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
-    private static final String SENHA = ConexaoGeneric.getSENHA();
+public class CategoriaDAO extends ConexaoGeneric{
+    private static final String URL = getURL();
+    private static final String  USUARIO = getUSUARIO();
+    private static final String SENHA = getSENHA();
 
     public void inserirCategoria(String categoria_nome, String categoria_descricao) {
         try (

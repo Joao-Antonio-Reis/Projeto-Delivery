@@ -7,10 +7,9 @@ public class Pedido {
     private Double valor_Total_Pedido;
     private String forma_Pagamento;
 
-    public Pedido(Cliente cliente, Produto produto, ArrayList<Produto> lista_produtos, Double valor_Total_Pedido,
+    public Pedido(Cliente cliente, ArrayList<Produto> lista_produtos, Double valor_Total_Pedido,
             String forma_Pagamento) {
         this.cliente = cliente;
-        this.produto = produto;
         this.lista_produtos = lista_produtos;
         this.valor_Total_Pedido = valor_Total_Pedido;
         this.forma_Pagamento = forma_Pagamento;

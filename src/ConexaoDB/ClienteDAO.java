@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import ConexaoDB.ConexaoGeneric;
-public class ClienteDAO {
-    private static final String URL = ConexaoGeneric.getURL();
-    private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
-    private static final String SENHA = ConexaoGeneric.getSENHA();
+public class ClienteDAO extends ConexaoGeneric{
+    private static final String URL = getURL();
+    private static final String  USUARIO = getUSUARIO();
+    private static final String SENHA = getSENHA();
     public static void inserirCliente(String nome, String telefone, String email, int enderecoID) {
         Connection conexao = null;
         PreparedStatement statement = null;

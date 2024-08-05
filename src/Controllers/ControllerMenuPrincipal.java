@@ -3,12 +3,12 @@ package Controllers;
 import View.MenuPrincipalView;
 import View.Cardapio;
 import View.ClientForm;
-import View.RealizarPedido;
+import View.Carrinho;
 import View.LoginAdm;
 import View.CadastroCategoria;
 import View.CadastroProduto;
 
-public class ControllerMenuPrincipal {
+public class ControllerMenuPrincipal implements InterfaceController {
     private MenuPrincipalView menuView;
     private boolean logado;
 
@@ -19,12 +19,12 @@ public class ControllerMenuPrincipal {
         initController();
     }
 
-    private void initView() {
+    public void initView() {
         menuView.setVisible(true);
         menuView.mostrarAdmMenu(logado);
     }
 
-    private void initController (){
+    public void initController (){
         menuView.getCardapioButton().addActionListener(e -> abrirCardapio());
         menuView.getCarrinhoButton().addActionListener(e -> abrirCarrinho());
         menuView.getCadastroButton().addActionListener(e -> abrirCadastro());
@@ -44,7 +44,7 @@ public class ControllerMenuPrincipal {
     }
 
     private void abrirCarrinho() {
-        RealizarPedido realizarPedido = new RealizarPedido();
+        Carrinho realizarPedido = new Carrinho();
         menuView.changeContent(realizarPedido);
     }
 

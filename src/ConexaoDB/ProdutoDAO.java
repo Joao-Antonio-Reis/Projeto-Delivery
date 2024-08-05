@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProdutoDAO {
-    private static final String URL = ConexaoGeneric.getURL();
-    private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
-    private static final String SENHA = ConexaoGeneric.getSENHA();
+public class ProdutoDAO extends ConexaoGeneric{
+    private static final String URL = getURL();
+    private static final String  USUARIO = getUSUARIO();
+    private static final String SENHA = getSENHA();
 
     public static void inserirProduto(String produto_nome, String produto_categoria, String produto_descricao, BigDecimal produto_valor, String produto_imagem){
 

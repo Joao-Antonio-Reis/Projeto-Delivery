@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ConexaoDB.ConexaoGeneric;
-public class EnderecoDAO {
-    private static final String URL = ConexaoGeneric.getURL();
-    private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
-    private static final String SENHA = ConexaoGeneric.getSENHA();
+public class EnderecoDAO extends ConexaoGeneric {
+    private static final String URL = getURL();
+    private static final String  USUARIO = getUSUARIO();
+    private static final String SENHA = getSENHA();
 
     public static int inserirEndereco(String bairro, String rua, String numero, String complemento) {
         Connection conexao = null;
