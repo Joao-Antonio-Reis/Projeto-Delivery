@@ -1,23 +1,19 @@
 package ConexaoDB;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import ConexaoDB.ConexaoGeneric;
-public class EnderecoDAO extends ConexaoGeneric {
-    private static final String URL = getURL();
-    private static final String  USUARIO = getUSUARIO();
-    private static final String SENHA = getSENHA();
+public class EnderecoDAO extends Conexao {
+    private static Conexao dao = new Conexao();
 
     public static int inserirEndereco(String bairro, String rua, String numero, String complemento) {
         Connection conexao = null;
         PreparedStatement statement = null;
 
         try {
-            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            conexao = dao.getConnection();
 
             String sql = "INSERT INTO endereco (bairro, rua, numero, complemento) VALUES (?, ?, ?, ?)";
             statement = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);

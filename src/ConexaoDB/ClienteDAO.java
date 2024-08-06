@@ -1,21 +1,17 @@
 package ConexaoDB;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import ConexaoDB.ConexaoGeneric;
-public class ClienteDAO extends ConexaoGeneric{
-    private static final String URL = getURL();
-    private static final String  USUARIO = getUSUARIO();
-    private static final String SENHA = getSENHA();
+public class ClienteDAO extends Conexao {
+    private static Conexao dao = new Conexao();
     public static void inserirCliente(String nome, String telefone, String email, int enderecoID) {
         Connection conexao = null;
         PreparedStatement statement = null;
 
         try {
-            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            conexao = dao.getConnection();
 
             String sql = "INSERT INTO cliente (cliente_nome, cliente_telefone, cliente_email, endereco_id) VALUES (?, ?, ?, ?)";
             statement = conexao.prepareStatement(sql);
@@ -48,7 +44,7 @@ public class ClienteDAO extends ConexaoGeneric{
         PreparedStatement statement = null;
 
         try {
-            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            conexao = dao.getConnection();
 
             String sql = "DELETE FROM cliente WHERE nome = ?";
             statement = conexao.prepareStatement(sql);

@@ -1,14 +1,9 @@
 package Models;
 
-import ConexaoDB.ConexaoGeneric;
 import java.math.BigDecimal;
 
 public class Produto {
 
-    private static final String URL = ConexaoGeneric.getURL();
-    private static final String  USUARIO = ConexaoGeneric.getUSUARIO();
-    private static final String SENHA = ConexaoGeneric.getSENHA();
-    
     private int id;
     private String nome;
     private String categoria;

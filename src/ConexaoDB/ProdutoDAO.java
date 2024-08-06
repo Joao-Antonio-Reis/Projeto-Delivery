@@ -4,7 +4,6 @@ import Models.Produto;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,10 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProdutoDAO extends ConexaoGeneric{
-    private static final String URL = getURL();
-    private static final String  USUARIO = getUSUARIO();
-    private static final String SENHA = getSENHA();
+public class ProdutoDAO extends Conexao {
+    private static Conexao dao = new Conexao();
 
     public static void inserirProduto(String produto_nome, String produto_categoria, String produto_descricao, BigDecimal produto_valor, String produto_imagem){
 
@@ -23,7 +20,7 @@ public class ProdutoDAO extends ConexaoGeneric{
         PreparedStatement statement = null;
 
         try {
-            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            conexao = dao.getConnection();
 
             String sql = "INSERT INTO produto (produto_nome, produto_categoria, produto_descricao, produto_valor, produto_imagem) VALUES (?, ?, ?, ?, ?)";
             statement = conexao.prepareStatement(sql);
@@ -59,7 +56,7 @@ public class ProdutoDAO extends ConexaoGeneric{
         PreparedStatement statement = null;
 
         try {
-            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            conexao = dao.getConnection();
 
             String sql = "DELETE FROM produto WHERE produto_nome = ?";
             statement = conexao.prepareStatement(sql);
@@ -90,7 +87,7 @@ public class ProdutoDAO extends ConexaoGeneric{
         List<Produto> produtos = new ArrayList<>();
         String sql = "SELECT * FROM produto ORDER BY produto_categoria, produto_nome, produto_imagem";
 
-        try (Connection conn = DriverManager.getConnection(URL, USUARIO, SENHA);
+        try (Connection conn = dao.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             ResultSet rs = stmt.executeQuery();

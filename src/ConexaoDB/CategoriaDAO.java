@@ -6,18 +6,14 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CategoriaDAO extends ConexaoGeneric{
-    private static final String URL = getURL();
-    private static final String  USUARIO = getUSUARIO();
-    private static final String SENHA = getSENHA();
+public class CategoriaDAO{
+    private static Conexao dao = new Conexao();
 
     public void inserirCategoria(String categoria_nome, String categoria_descricao) {
         try (
-
-                Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
+                Connection connection = dao.getConnection();
                 PreparedStatement statement = connection.prepareStatement("INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)");
         )
-
         {
             statement.setString(1, categoria_nome);
             statement.setString(2, categoria_descricao);
@@ -41,8 +37,8 @@ public class CategoriaDAO extends ConexaoGeneric{
 
         try (
 
-                Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
-                PreparedStatement statement = connection.prepareStatement("SELECT categoria_nome FROM categoria");
+                Connection connection = dao.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT categoria_nome FROM categoria");
 
                 ResultSet resultSet = statement.executeQuery()) {
 
@@ -70,7 +66,7 @@ public class CategoriaDAO extends ConexaoGeneric{
 
         try (
                 // Estabelece a conexão com o banco de dados
-                Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
+                Connection connection = dao.getConnection();
 
                 // Prepara a declaração SQL com um parâmetro
                 PreparedStatement statement = connection.prepareStatement(sql)
@@ -99,7 +95,7 @@ public class CategoriaDAO extends ConexaoGeneric{
 
     public void apagarCategoria(String nome){
         try (
-                Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA);
+                Connection connection = dao.getConnection();
                 PreparedStatement statement = connection.prepareStatement("DELETE FROM categoria WHERE categoria_nome = ?");
         ) {
             statement.setString(1, nome);
