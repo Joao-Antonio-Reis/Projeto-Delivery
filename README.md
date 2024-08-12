@@ -60,6 +60,7 @@ Para mais informações, entre em contato com o desenvolvedor:
 
 João Antônio Reis
 Email: 
+
 Jorge Afonso Rabelo de Araujo
 Email: jorge.afonso@estudante.ifgoiano.edu.br
 
