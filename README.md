@@ -53,19 +53,13 @@ Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou fazer pull requests.
 
 Licença
-Este projeto está licenciado sob a licença MIT - consulte o arquivo LICENSE para mais detalhes.
+
 
 Contato
 Para mais informações, entre em contato com o desenvolvedor:
 
 João Antônio Reis
-Email: joao@example.com
-markdown
-Copiar código
+Email: 
+Jorge Afonso Rabelo de Araujo
+Email: jorge.afonso@estudante.ifgoiano.edu.br
 
-### Instruções Adicionais
-
-- **Licença**: Inclua um arquivo de licença no repositório, se necessário.
-- **Contato**: Substitua o e-mail de contato por um endereço válido.
-
-Este `README.md` oferece uma descrição abrangente e instruções de uso para os usuários e de
