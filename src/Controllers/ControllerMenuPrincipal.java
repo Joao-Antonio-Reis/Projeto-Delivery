@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Produto;
 import View.MenuPrincipalView;
 import View.Cardapio;
 import View.ClientForm;
@@ -8,9 +9,14 @@ import View.LoginAdm;
 import View.CadastroCategoria;
 import View.CadastroProduto;
 
+import java.util.ArrayList;
+
 public class ControllerMenuPrincipal implements InterfaceController {
+    public ArrayList<Produto> produtosMain = new ArrayList<Produto>();
     private MenuPrincipalView menuView;
     private boolean logado;
+
+
 
     public ControllerMenuPrincipal(MenuPrincipalView view){
         this.menuView = view;
@@ -40,12 +46,14 @@ public class ControllerMenuPrincipal implements InterfaceController {
 
     private void abrirCardapio(){
         Cardapio cardapio = new Cardapio();
+        ControllerCardapio controllerCardapio = new ControllerCardapio(cardapio, produtosMain);
         menuView.changeContent(cardapio);
     }
 
     private void abrirCarrinho() {
-        Carrinho realizarPedido = new Carrinho();
-        menuView.changeContent(realizarPedido);
+        Carrinho carrinho = new Carrinho();
+        ControllerCarrinho controllerCarrinho = new ControllerCarrinho(carrinho, produtosMain);
+        menuView.changeContent(carrinho);
     }
 
     private void abrirCadastro() {
@@ -76,5 +84,12 @@ public class ControllerMenuPrincipal implements InterfaceController {
 
     }
 
+    public ArrayList<Produto> getProdutosMain() {
+        return produtosMain;
+    }
+
+    public void setProdutosMain(ArrayList<Produto> produtosMain) {
+        this.produtosMain = produtosMain;
+    }
 
 }

@@ -43,10 +43,10 @@ public class ClientForm extends JLabel{
 //    }
 
     public ClientForm() {
-        panelClienteForm();
+        frameForm();
     }
 
-    public void panelClienteForm() {
+    public void frameForm() {
 
         setVisible(true);
         setLayout(null);

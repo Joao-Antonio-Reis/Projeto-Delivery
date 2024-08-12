@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
@@ -23,10 +22,10 @@ public class LoginAdm extends JLabel {
     private MenuPrincipalView menuPrincipal; // Referência para o MenuPrincipal
 
     public LoginAdm() {
-        panelAdm();
+        frameLogin();
     }
 
-    private void panelAdm() {
+    private void frameLogin() {
 
         setVisible(true); // Visibilidade true
         setLayout(null);

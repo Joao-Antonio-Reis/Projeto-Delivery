@@ -20,9 +20,10 @@ public class CadastroCategoria extends JLabel{
     private Color cor = new Color(136,0, 12);
 
     public CadastroCategoria() {
-        frame(); // Chama o metodo do frame para mais privacidade
+        frameCadastroCategoria(); // Chama o metodo do frame para mais privacidade
     }
-    private void frame() {
+
+    private void frameCadastroCategoria() {
         setVisible(true); //Visibilidade true
         setSize(415,800); //Define o tamanho da tela
         setLayout(null);

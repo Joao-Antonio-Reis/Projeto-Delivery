@@ -98,7 +98,7 @@ public class ProdutoDAO extends Conexao {
                 produto.setNome(rs.getString("produto_nome"));
                 produto.setCategoria(rs.getString("produto_categoria"));
                 produto.setDescricao(rs.getString("produto_descricao"));
-                produto.setValor(rs.getBigDecimal("produto_valor"));
+                produto.setValor(rs.getDouble("produto_valor"));
                 produto.setImagem(rs.getString("produto_imagem"));
                 produtos.add(produto);
             }

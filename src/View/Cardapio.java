@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -13,7 +12,6 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,26 +21,27 @@ import ConexaoDB.ProdutoDAO;
 import Models.Produto;
 
 public class Cardapio extends JLabel {
-
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
     private String path = "Imagens/";
 
+    private JPanel panelCardapio = new JPanel();
+    private JButton adicionarButton;
+
     // Construtor que recebe o frame principal
     public Cardapio() {
-        frame();
+        frameCardapio();
     }
 
     // Método para configurar o frame
-    private void frame() {
+    private void frameCardapio() {
         setVisible(true);
         setSize(415, 800);
         setLayout(null);
 
-        // Criação do painel para o cardápio
-        JPanel panelCardapio = new JPanel();
+
         panelCardapio.setLayout(new BoxLayout(panelCardapio, BoxLayout.Y_AXIS)); // Layout para organizar componentes verticalmente
-//        panelCardapio.setPreferredSize(new Dimension(400, 4000)); // Define o tamanho preferido do painel
+
 
         // Obtenção da lista de produtos ordenados
         ProdutoDAO produtoList = new ProdutoDAO();
@@ -50,53 +49,7 @@ public class Cardapio extends JLabel {
 
         // Adição de produtos ao painel do cardápio
         for (Produto produto : produtos) {
-            JPanel productPanel = new JPanel();
-            productPanel.setLayout(null);
-            productPanel.setPreferredSize(new Dimension(380, 80)); // Tamanho do retângulo para cada produto
-            // productPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
 
-            JPanel imagemPanel = new JPanel();
-            imagemPanel.setBounds(5, 5, 100, 70);
-            imagemPanel.setLayout(new BorderLayout());
-            // imagemPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
-            ImageIcon imageIcon = new ImageIcon(produto.getImagem()); // Carrega a imagem
-            JLabel imageLabel = new JLabel(imageIcon);
-            imagemPanel.add(imageLabel, BorderLayout.CENTER);
-            productPanel.add(imagemPanel);
-
-            JPanel infoProduto = new JPanel();
-            infoProduto.setBounds(110, 5, 200, 70);
-            infoProduto.setLayout(new GridLayout(4, 1)); // Layout para os componentes do produto
-            // infoProduto.setBorder(BorderFactory.createLineBorder(Color.black, 1)); // Borda preta ao redor do painel
-
-            // Criação dos componentes para cada produto
-            JLabel labelProduto = new JLabel(produto.getNome());
-            labelProduto.setFont(new Font("Arial", Font.BOLD, 14));
-            JLabel labelCat = new JLabel("Categoria: " + produto.getCategoria());
-            labelCat.setFont(new Font("Arial", Font.BOLD, 11));
-            JLabel labelDescricao = new JLabel("Descrição: " + produto.getDescricao());
-            labelDescricao.setFont(new Font("Arial", Font.PLAIN, 12));
-            JLabel labelPreco = new JLabel("Preço: R$" + produto.getValor());
-            labelPreco.setFont(new Font("Arial", Font.PLAIN, 12));
-
-            // Adiciona os componentes ao painel do produto
-            infoProduto.add(labelProduto);
-            infoProduto.add(labelCat);
-            infoProduto.add(labelDescricao);
-            infoProduto.add(labelPreco);
-            productPanel.add(infoProduto);
-
-            JButton adicionarButton = new JButton("+");
-            adicionarButton.setBackground(cor);
-            adicionarButton.setForeground(Color.WHITE);
-            adicionarButton.setBounds(320, 30, 50, 25);
-            adicionarButton.setFocusPainted(false);
-            adicionarButton.setRolloverEnabled(false);
-
-            productPanel.add(adicionarButton);
-
-            // Adiciona o painel do produto ao painel do cardápio
-            panelCardapio.add(productPanel);
         }
 
         // Criação do painel de rolagem para o cardápio
@@ -118,17 +71,51 @@ public class Cardapio extends JLabel {
         
         add(submitButton);
 
-        // Adiciona ação ao botão "Carrinho"
-//        submitButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                RealizarPedido finalizar = new RealizarPedido();
-//
-//                // Remove todos os componentes do contentPane do JFrame e adiciona o novo painel
-//                getContentPane().removeAll();
-//                getContentPane().add(finalizar);
-//                revalidate();
-//                repaint();
-//            }
-//        });
+    }
+
+    //Metodos de apoio
+
+    public void adicionarProduto(Produto produto, ActionListener adicionarListner) {
+        JPanel productPanel = new JPanel();
+        productPanel.setLayout(null);
+        productPanel.setPreferredSize(new Dimension(380, 80)); // Tamanho do retângulo para cada produto
+
+        JPanel imagemPanel = new JPanel();
+        imagemPanel.setBounds(5, 5, 100, 70);
+        imagemPanel.setLayout(new BorderLayout());
+        ImageIcon imageIcon = new ImageIcon(produto.getImagem()); // Carrega a imagem
+        JLabel imageLabel = new JLabel(imageIcon);
+        imagemPanel.add(imageLabel, BorderLayout.CENTER);
+        productPanel.add(imagemPanel);
+
+        JPanel infoProduto = new JPanel();
+        infoProduto.setBounds(110, 5, 200, 70);
+        infoProduto.setLayout(new GridLayout(4, 1)); // Layout para os componentes do produto
+
+        JLabel labelProduto = new JLabel(produto.getNome());
+        labelProduto.setFont(new Font("Arial", Font.BOLD, 14));
+        JLabel labelCat = new JLabel("Categoria: " + produto.getCategoria());
+        labelCat.setFont(new Font("Arial", Font.BOLD, 11));
+        JLabel labelDescricao = new JLabel("Descrição: " + produto.getDescricao());
+        labelDescricao.setFont(new Font("Arial", Font.PLAIN, 12));
+        JLabel labelPreco = new JLabel("Preço: R$" + produto.getValor());
+        labelPreco.setFont(new Font("Arial", Font.PLAIN, 12));
+
+        infoProduto.add(labelProduto);
+        infoProduto.add(labelCat);
+        infoProduto.add(labelDescricao);
+        infoProduto.add(labelPreco);
+        productPanel.add(infoProduto);
+
+        adicionarButton = new JButton("+");
+        adicionarButton.setBackground(cor);
+        adicionarButton.setForeground(Color.WHITE);
+        adicionarButton.setBounds(320, 30, 50, 25);
+        adicionarButton.setFocusPainted(false);
+        adicionarButton.setRolloverEnabled(false);
+        adicionarButton.addActionListener(adicionarListner);
+
+        productPanel.add(adicionarButton);
+        panelCardapio.add(productPanel);
     }
 }

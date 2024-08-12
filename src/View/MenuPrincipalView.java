@@ -32,10 +32,10 @@ public class MenuPrincipalView extends JFrame {
 
 
     public MenuPrincipalView() {
-        frame();
+        frameMenu();
     }
 
-    private void frame() {
+    private void frameMenu() {
 
         setTitle("Japinha Oriental Food");
 //        setVisible(true); //Visibilidade true

@@ -4,17 +4,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
-import ConexaoDB.CategoriaDAO;
-import ConexaoDB.ProdutoDAO;
-import Controllers.ControllerProduto;
-import Models.Categoria;
 import Models.Produto;
 
 public class CadastroProduto extends JLabel {
@@ -36,10 +29,10 @@ public class CadastroProduto extends JLabel {
     public CadastroProduto() {
         setSize(415, 800); // Define o tamanho da tela
         setLayout(null);
-        produtoLabel();
+        frameCadastroProduto();
     }
 
-    private void produtoLabel() {
+    private void frameCadastroProduto() {
 
 
         JLabel nomeProdLabel = new JLabel("Nome: ");
