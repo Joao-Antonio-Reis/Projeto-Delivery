@@ -52,8 +52,6 @@ Finalização de Compras: No carrinho, revise e finalize seus pedidos escolhendo
 Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou fazer pull requests.
 
-Licença
-
 
 Contato
 Para mais informações, entre em contato com o desenvolvedor:
