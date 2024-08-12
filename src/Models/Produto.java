@@ -8,14 +8,14 @@ public class Produto {
     private String nome;
     private String categoria;
     private String descricao;
-    private BigDecimal valor;
+    private Double valor;
     private String imagem;
     
     public Produto(){
         
     }
     
-    public Produto(int id, String nome, String categoria, String descricao, BigDecimal valor) {
+    public Produto(int id, String nome, String categoria, String descricao, Double valor) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
@@ -23,10 +23,14 @@ public class Produto {
         this.valor = valor;
     }
 
-    public Produto(String nome, String categoria, String descricao, BigDecimal valor) {
+    public Produto(String nome, String categoria, String descricao, Double valor) {
         this.nome = nome;
         this.categoria = categoria;
         this.descricao = descricao;
+        this.valor = valor;
+    }
+    public Produto(String nome, Double valor) {
+        this.nome = nome;
         this.valor = valor;
     }
 
@@ -54,10 +58,10 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public BigDecimal getValor() {
+    public Double getValor() {
         return valor;
     }
-    public void setValor(BigDecimal valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
     public String getImagem() {
@@ -66,4 +70,5 @@ public class Produto {
     public void setImagem(String imagem) {
         this.imagem = imagem;
     }
+
 }

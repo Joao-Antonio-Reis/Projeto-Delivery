@@ -22,67 +22,57 @@ public class MenuPrincipalView extends JFrame {
 
     private JPanel mainMenuPanel;
 
-
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
     private Color menuBackgroundColor = Color.DARK_GRAY;
     private JMenuBar menuBar;
     private JMenu admMenu;
-    private boolean logado = false; // Flag para controle de loginMenu
-
+    private boolean logado = false;
 
     public MenuPrincipalView() {
-        frame();
+        frameMenu();
     }
 
-    private void frame() {
-
+    private void frameMenu() {
         setTitle("Japinha Oriental Food");
-//        setVisible(true); //Visibilidade true
-        setSize(415, 800); //Define o tamanho da tela
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Fecha o programa quando fecha a janela
-        setResizable(false);//Não deixa mudar o tamanho
-        setLocationRelativeTo(null); //abre o frame no meio da tela
+        setSize(415, 800);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
         setBackground(menuBackgroundColor);
         this.repaint();
 
-        // Cria os menus
         menuBar = new JMenuBar();
         menuBar.setBackground(cor);
 
-        //Criando a opção categoria
         voltaMenu = new JButton("Menu");
         voltaMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
         voltaMenu.setBackground(cor);
         voltaMenu.setForeground(Color.WHITE);
         menuBar.add(voltaMenu);
 
-
-        //Criando a opção categoria
         cardapioMenu = new JButton("Cardapio");
         cardapioMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
         cardapioMenu.setBackground(cor);
         cardapioMenu.setForeground(Color.WHITE);
         menuBar.add(cardapioMenu);
 
-        //Criando a opção carrinhoMenu
         carrinhoMenu = new JButton("Carrinho");
         carrinhoMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
         carrinhoMenu.setForeground(Color.WHITE);
         carrinhoMenu.setBackground(cor);
         menuBar.add(carrinhoMenu);
 
-
-        loginMenu = new JButton("Login");// Cria o item do menu
+        loginMenu = new JButton("Login");
         loginMenu.setBorder(BorderFactory.createLineBorder(cor, 4));
         loginMenu.setBackground(cor);
         loginMenu.setForeground(Color.WHITE);
-        menuBar.add(loginMenu);// Adiciona o item ao menu "Arquivo"
+        menuBar.add(loginMenu);
 
         admMenu = new JMenu("ADM");
         admMenu.setForeground(Color.WHITE);
         menuBar.add(admMenu);
-        mostrarAdmMenu(logado); // Inicialmente esconde o menu ADM
+        mostrarAdmMenu(logado);
 
         cadastroCategoria = new JMenuItem("Cadastrar Categoria");
         cadastroCategoria.setBorder(BorderFactory.createLineBorder(cor, 4));
@@ -96,7 +86,7 @@ public class MenuPrincipalView extends JFrame {
         cadastroProduto.setForeground(Color.WHITE);
         admMenu.add(cadastroProduto);
 
-        setJMenuBar(menuBar);//Setando o menu no frame
+        setJMenuBar(menuBar);
 
         menuprin = new JLabel();
         add(menuprin);
@@ -134,7 +124,6 @@ public class MenuPrincipalView extends JFrame {
         cadastroButton.setForeground(Color.WHITE);
         cadastroButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
         menuprin.add(cadastroButton);
-
     }
 
     public JLabel getMenuprin() {
@@ -181,7 +170,7 @@ public class MenuPrincipalView extends JFrame {
         return voltaMenu;
     }
 
-    public void changeContent(JLabel newContent){
+    public void changeContent(JLabel newContent) {
         getContentPane().removeAll();
         getContentPane().add(newContent);
         revalidate();
@@ -191,5 +180,9 @@ public class MenuPrincipalView extends JFrame {
     public void mostrarAdmMenu(boolean logado) {
         this.logado = logado;
         admMenu.setVisible(logado);
+    }
+
+    public boolean isLogado() {
+        return logado;
     }
 }

@@ -2,13 +2,11 @@ package View;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
 import Models.Categoria;
 
-public class CadastroCategoria extends JLabel{
+public class CadastroCategoria extends JLabel {
 
     private JPanel panelRemover;
     private JTextField nomeCategoria;
@@ -17,14 +15,15 @@ public class CadastroCategoria extends JLabel{
     private JLabel labelCategoria;
     private JButton removerCategoria;
     private Font font = new Font("Arial", Font.BOLD, 15);
-    private Color cor = new Color(136,0, 12);
+    private Color cor = new Color(136, 0, 12);
 
     public CadastroCategoria() {
-        frame(); // Chama o metodo do frame para mais privacidade
+        frameCadastroCategoria();
     }
-    private void frame() {
-        setVisible(true); //Visibilidade true
-        setSize(415,800); //Define o tamanho da tela
+
+    private void frameCadastroCategoria() {
+        setVisible(true);
+        setSize(415, 800);
         setLayout(null);
 
         JLabel nomeCatLabel = new JLabel("Nome Categoria: ");
@@ -38,15 +37,15 @@ public class CadastroCategoria extends JLabel{
         add(nomeCategoria);
 
         JLabel descCat = new JLabel("Descrição");
-        descCat.setBounds(5 , 30, 100, 20);
+        descCat.setBounds(5, 30, 100, 20);
         descCat.setFont(font);
         add(descCat);
 
         descricaoCategoria = new JTextArea();
-        descricaoCategoria.setBounds(5 ,50, 390, 200);
-        descricaoCategoria.setAlignmentY(JTextField.TOP); //Ajustar no topo
-        descricaoCategoria.setLineWrap(true); // Quebra de linha automática
-        descricaoCategoria.setWrapStyleWord(true); // Quebra de palavra
+        descricaoCategoria.setBounds(5, 50, 390, 200);
+        descricaoCategoria.setAlignmentY(JTextField.TOP);
+        descricaoCategoria.setLineWrap(true);
+        descricaoCategoria.setWrapStyleWord(true);
         descricaoCategoria.setBorder(BorderFactory.createLineBorder(cor, 2));
         add(descricaoCategoria);
 
@@ -56,14 +55,13 @@ public class CadastroCategoria extends JLabel{
         add(removerLabel);
 
         panelRemover = new JPanel();
-        panelRemover.setLayout(new BoxLayout(panelRemover, BoxLayout.Y_AXIS)); // Layout para organizar componentes verticalmente
+        panelRemover.setLayout(new BoxLayout(panelRemover, BoxLayout.Y_AXIS));
         panelRemover.setSize(400, 200);
 
-        // Criação do painel de rolagem para o remover produto
         JScrollPane scrollPane = new JScrollPane(panelRemover);
-        scrollPane.setBounds(0, 305, 400, 300); // Define a posição e tamanho do painel de rolagem
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS); // Sempre mostra a barra de rolagem vertical
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Nunca mostra a barra de rolagem horizontal
+        scrollPane.setBounds(0, 305, 400, 300);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane);
 
         cadastrarButton = new JButton("Cadastrar");
@@ -100,7 +98,7 @@ public class CadastroCategoria extends JLabel{
     public void adicionarCategoriaParaRemover(Categoria categoria, ActionListener removerAction) {
         JPanel productPanel = new JPanel();
         productPanel.setLayout(null);
-        productPanel.setPreferredSize(new Dimension(380, 30)); // Tamanho do retângulo para cada produto
+        productPanel.setPreferredSize(new Dimension(380, 30));
 
         labelCategoria = new JLabel(categoria.getNome());
         labelCategoria.setBounds(5, 5, 200, 20);
