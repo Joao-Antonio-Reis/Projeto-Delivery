@@ -76,7 +76,7 @@ public class Cardapio extends JLabel {
         labelCat.setFont(new Font("Arial", Font.BOLD, 11));
         JLabel labelDescricao = new JLabel("Descrição: " + produto.getDescricao());
         labelDescricao.setFont(new Font("Arial", Font.PLAIN, 12));
-        JLabel labelPreco = new JLabel("Preço: R$" + produto.getValor());
+        JLabel labelPreco = new JLabel("Preço: R$" + String.format("%.2f", produto.getValor()));
         labelPreco.setFont(new Font("Arial", Font.PLAIN, 12));
 
         infoProduto.add(labelProduto);
