@@ -29,6 +29,16 @@ INSERT INTO cliente (cliente_nome, cliente_telefone, cliente_email, endereco_id)
                                                             ('Ana Souza', '41987654321', 'ana.souza@example.com', 4),
                                                             ('Carlos Lima', '51987654321', 'carlos.lima@example.com', 5);
 
+CREATE TABLE Pedidos (
+    PedidoID INT PRIMARY KEY AUTO_INCREMENT,
+    ClienteID INT NOT NULL,
+    DataPedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ValorTotal DECIMAL(10, 2),
+    FormaPagamento VARCHAR(255),
+    FOREIGN KEY (ClienteID) REFERENCES cliente(cliente_id)
+);
+
+
 CREATE TABLE IF NOT EXISTS categoria (
     categoria_id INT AUTO_INCREMENT PRIMARY KEY,
     categoria_nome VARCHAR(20),

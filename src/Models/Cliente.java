@@ -3,6 +3,7 @@ package Models;
 
 public class Cliente{
 
+    private int ClienteId;
     private String nome;
     private String telefone;
     private String email;
@@ -15,6 +16,12 @@ public class Cliente{
         this.endereço = endereço;
     }
 
+    public int getClienteId() {
+        return ClienteId;
+    }
+    public void setClienteId(int clienteId) {
+        ClienteId = clienteId;
+    }
     public String getNome() {
         return nome;
     }
