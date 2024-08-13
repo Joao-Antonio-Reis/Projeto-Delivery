@@ -1,8 +1,6 @@
 package View;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.*;
 
 import javax.swing.*;
 
@@ -10,7 +8,6 @@ public class MenuPrincipalView extends JFrame {
     private JFrame frame;
     private JButton cardapioButton;
     private JButton carrinhoButton;
-    private JButton cadastroButton;
     private JButton loginButton;
     private JMenuItem cadastroCategoria;
     private JMenuItem cadastroProduto;
@@ -91,9 +88,16 @@ public class MenuPrincipalView extends JFrame {
         menuprin = new JLabel();
         add(menuprin);
 
+        JPanel imagemPanel = new JPanel();
+        imagemPanel.setBounds(5, 0, 405, 205);
+        ImageIcon imagemIcon = new ImageIcon("Imagens/Logo.jpeg");
+        JLabel imagemLabel = new JLabel(imagemIcon);
+        imagemPanel.add(imagemLabel);
+        menuprin.add(imagemPanel);
+
         cardapioButton = new JButton("Cardapio");
         cardapioButton.setSize(new Dimension(25, 20));
-        cardapioButton.setBounds(50, 150, 300, 100);
+        cardapioButton.setBounds(50, 260, 300, 100);
         cardapioButton.setFont(font);
         cardapioButton.setBackground(cor);
         cardapioButton.setForeground(Color.WHITE);
@@ -102,7 +106,7 @@ public class MenuPrincipalView extends JFrame {
 
         carrinhoButton = new JButton("Carrinho");
         carrinhoButton.setSize(new Dimension(25, 20));
-        carrinhoButton.setBounds(50, 255, 300, 100);
+        carrinhoButton.setBounds(50, 365, 300, 100);
         carrinhoButton.setFont(font);
         carrinhoButton.setBackground(cor);
         carrinhoButton.setForeground(Color.WHITE);
@@ -110,20 +114,13 @@ public class MenuPrincipalView extends JFrame {
         menuprin.add(carrinhoButton);
 
         loginButton = new JButton("Login");
-        loginButton.setBounds(50, 360, 300, 100);
+        loginButton.setBounds(50, 470, 300, 100);
         loginButton.setFont(font);
         loginButton.setBackground(cor);
         loginButton.setForeground(Color.WHITE);
         loginButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
         menuprin.add(loginButton);
 
-        cadastroButton = new JButton("Cadastro");
-        cadastroButton.setBounds(50, 465, 300, 100);
-        cadastroButton.setFont(font);
-        cadastroButton.setBackground(cor);
-        cadastroButton.setForeground(Color.WHITE);
-        cadastroButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
-        menuprin.add(cadastroButton);
     }
 
     public JLabel getMenuprin() {
@@ -136,10 +133,6 @@ public class MenuPrincipalView extends JFrame {
 
     public JButton getCarrinhoButton() {
         return carrinhoButton;
-    }
-
-    public JButton getCadastroButton() {
-        return cadastroButton;
     }
 
     public JButton getLoginButton() {

@@ -1,3 +1,10 @@
+CREATE TABLE IF NOT EXISTS administador(
+    id_adm INT AUTO_INCREMENT PRIMARY KEY ,
+    login VARCHAR(100),
+    senha VARCHAR(100)
+);
+
+
 CREATE TABLE IF NOT EXISTS endereco (
     endereco_id INT AUTO_INCREMENT PRIMARY KEY,
     bairro VARCHAR(100),

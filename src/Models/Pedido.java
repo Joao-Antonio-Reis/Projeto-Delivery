@@ -6,13 +6,15 @@ public class Pedido {
     private ArrayList<Produto> lista_produtos;
     private Double valor_Total_Pedido;
     private String forma_Pagamento;
+    private boolean entregar;
 
     public Pedido(Cliente cliente, ArrayList<Produto> lista_produtos, Double valor_Total_Pedido,
-            String forma_Pagamento) {
+            String forma_Pagamento, boolean entrega) {
         this.cliente = cliente;
         this.lista_produtos = lista_produtos;
         this.valor_Total_Pedido = valor_Total_Pedido;
         this.forma_Pagamento = forma_Pagamento;
+        this.entregar = entrega;
     }
 
     public Pedido() {

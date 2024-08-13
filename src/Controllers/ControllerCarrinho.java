@@ -1,7 +1,10 @@
 package Controllers;
 
+import Models.Cliente;
 import Models.Produto;
 import View.Carrinho;
+import View.ClientForm;
+import View.MenuPrincipalView;
 
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ItemEvent;
@@ -9,7 +12,8 @@ import java.util.ArrayList;
 
 // Controlador para gerenciar a interface e a lógica do carrinho de compras
 public class ControllerCarrinho implements InterfaceController {
-    private Carrinho carrinhoView;  // Interface gráfica do carrinho
+    private Carrinho carrinhoView;// Interface gráfica do carrinho
+    private MenuPrincipalView menuView;
     private DefaultTableModel tableModel;  // Modelo de tabela para exibir produtos no carrinho
     private ArrayList<Produto> produtosMain;  // Lista principal de produtos no carrinho
     private double valorTotal = 0.0;  // Valor total dos produtos no carrinho
@@ -17,9 +21,10 @@ public class ControllerCarrinho implements InterfaceController {
     private boolean entregaAdicionada = false;  // Rastreador de status da entrega
 
     // Construtor que inicializa a vista do carrinho e a lista de produtos
-    public ControllerCarrinho(Carrinho carrinhoView, ArrayList<Produto> produtosMain) {
+    public ControllerCarrinho(Carrinho carrinhoView, ArrayList<Produto> produtosMain, MenuPrincipalView menuView) {
         this.carrinhoView = carrinhoView;
         this.produtosMain = produtosMain;
+        this.menuView = menuView;
         initView();  // Inicializa a interface gráfica
         initController();  // Inicializa controladores e eventos
     }
@@ -35,7 +40,7 @@ public class ControllerCarrinho implements InterfaceController {
     @Override
     public void initController() {
         // Adiciona um ouvinte de ação ao botão de finalização de compra
-        carrinhoView.getSubmitButton().addActionListener(e -> finalizarCompra());
+        carrinhoView.getSubmitButton().addActionListener(e -> cadastroCliente());
 
         // Adiciona ou remove o custo de entrega baseado na seleção do checkbox de entrega
         carrinhoView.getEntregaCheckBox().addItemListener(e -> {
@@ -92,16 +97,9 @@ public class ControllerCarrinho implements InterfaceController {
     }
 
     // Finaliza a compra, realizando ações necessárias após o usuário confirmar a compra
-    private void finalizarCompra() {
-        // Obtém a forma de pagamento selecionada pelo usuário
-        String formaPagamento = carrinhoView.getFormaPagamentoSelecionada();
-        System.out.println("Compra finalizada com pagamento via: " + formaPagamento);
-        // Imprime a observação adicionada pelo usuário
-        System.out.println("Observação: " + carrinhoView.getObservacao());
-
-        // Limpa os produtos do carrinho após a compra ser finalizada
-        produtosMain.clear();
-        tableModel.setRowCount(0);  // Limpa a tabela de produtos na interface
-        atualizarValorTotal();  // Atualiza o valor total para refletir o carrinho vazio
+    private void cadastroCliente() {
+        ClientForm clientForm = new ClientForm();
+        ControllerClientForm controllerClientForm = new ControllerClientForm(clientForm);
+        menuView.changeContent(clientForm);
     }
 }

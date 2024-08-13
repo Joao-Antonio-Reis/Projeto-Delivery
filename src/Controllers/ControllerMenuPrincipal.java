@@ -36,7 +36,6 @@ public class ControllerMenuPrincipal implements InterfaceController {
         // Configura ouvintes de ação para botões do menu
         menuView.getCardapioButton().addActionListener(e -> abrirCardapio());
         menuView.getCarrinhoButton().addActionListener(e -> abrirCarrinho());
-        menuView.getCadastroButton().addActionListener(e -> abrirCadastro());
         menuView.getLoginButton().addActionListener(e -> abrirLogin());
 
         // Configura ouvintes de ação para itens da menu Bar
@@ -58,14 +57,8 @@ public class ControllerMenuPrincipal implements InterfaceController {
     // Abre a view do carrinho de compras
     private void abrirCarrinho() {
         Carrinho carrinho = new Carrinho();  // Cria a interface do carrinho
-        ControllerCarrinho controllerCarrinho = new ControllerCarrinho(carrinho, produtosMain);  // Inicializa o controlador do carrinho
+        ControllerCarrinho controllerCarrinho = new ControllerCarrinho(carrinho, produtosMain, menuView);  // Inicializa o controlador do carrinho
         menuView.changeContent(carrinho);  // Troca o conteúdo da interface para o carrinho
-    }
-
-    // Abre o formulário de cadastro de clientes
-    private void abrirCadastro() {
-        ClientForm clientForm = new ClientForm();  // Cria o formulário de cadastro de cliente
-        menuView.changeContent(clientForm);  // Troca o conteúdo da interface para o formulário de cadastro
     }
 
     // Abre a view de login do administrador
