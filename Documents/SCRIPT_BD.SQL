@@ -39,11 +39,12 @@ INSERT INTO cliente (cliente_nome, cliente_telefone, cliente_email, endereco_id)
 CREATE TABLE Pedidos (
     PedidoID INT PRIMARY KEY AUTO_INCREMENT,
     ClienteID INT NOT NULL,
-    DataPedido DATETIME DEFAULT CURRENT_TIMESTAMP,
     ValorTotal DECIMAL(10, 2),
     FormaPagamento VARCHAR(255),
-    FOREIGN KEY (ClienteID) REFERENCES cliente(cliente_id)
+    DataPedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
 );
+
 
 CREATE TABLE ItensPedido (
     ItemPedidoID INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,7 +53,7 @@ CREATE TABLE ItensPedido (
     Quantidade INT NOT NULL,
     PrecoUnitario DECIMAL(10, 2),
     FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID),
-    FOREIGN KEY (ProdutoID) REFERENCES Produtos(ProdutoID)
+    FOREIGN KEY (ProdutoID) REFERENCES produto(produto_id)
 );
 
 CREATE TABLE IF NOT EXISTS categoria (
