@@ -57,7 +57,7 @@ public class ControllerMenuPrincipal implements InterfaceController {
     // Abre a view do carrinho de compras
     private void abrirCarrinho() {
         Carrinho carrinho = new Carrinho();  // Cria a interface do carrinho
-        ControllerCarrinho controllerCarrinho = new ControllerCarrinho(carrinho, produtosMain);  // Inicializa o controlador do carrinho
+        ControllerCarrinho controllerCarrinho = new ControllerCarrinho(carrinho, produtosMain, menuView);  // Inicializa o controlador do carrinho
         menuView.changeContent(carrinho);  // Troca o conteúdo da interface para o carrinho
     }
 

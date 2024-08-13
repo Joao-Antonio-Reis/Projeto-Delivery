@@ -27,6 +27,7 @@ public class ClientForm extends JLabel {
     private JTextField ruaField;
     private JTextField numeroField;
     private JTextField compleArea;
+    private JButton submitButton;
 
     private Font font = new Font("Arial", Font.BOLD, 15);
     private Color cor = new Color(136, 0, 12);
@@ -57,7 +58,7 @@ public class ClientForm extends JLabel {
         emailLabel.setFont(font);
         formPanel.add(emailLabel);
 
-        JTextField emailField = new JTextField();
+        emailField = new JTextField();
         emailField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         formPanel.add(emailField);
 
@@ -106,7 +107,7 @@ public class ClientForm extends JLabel {
         compleArea.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         formPanel.add(compleArea);
 
-        JButton submitButton = new JButton("Cadastrar");
+        submitButton = new JButton("Cadastrar");
         submitButton.setSize(new Dimension(25, 20));
         submitButton.setBounds(270, 690, 125, 40);
         submitButton.setFont(font);
@@ -114,33 +115,38 @@ public class ClientForm extends JLabel {
         submitButton.setForeground(Color.WHITE);
         submitButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 
-        submitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String nome = nomeField.getText();
-                String telefone = telefoneField.getText();
-                String bairro = bairroField.getText();
-                String email = emailField.getText();
-                String rua = ruaField.getText();
-                String numero = numeroField.getText();
-                String complemento = compleArea.getText();
-
-                Endereco endereco = new Endereco(bairro, rua, numero, complemento);
-                Cliente cliente = new Cliente(nome, telefone, email, endereco);
-
-                ClienteDAO clienteDAO = new ClienteDAO();
-                EnderecoDAO enderecoDAO = new EnderecoDAO();
-                int enderecoId = enderecoDAO.inserirEndereco(bairro, rua, numero, complemento);
-                clienteDAO.inserirCliente(nome, telefone, email, enderecoId);
-
-                nomeField.setText("");
-                telefoneField.setText("");
-                numeroField.setText("");
-                ruaField.setText("");
-                bairroField.setText("");
-                compleArea.setText("");
-                emailField.setText("");
-            }
-        });
         add(submitButton);
+    }
+
+    public JButton getSubmitButton() {
+        return submitButton;
+    }
+
+    public JTextField getNomeField() {
+        return nomeField;
+    }
+
+    public JTextField getTelefoneField() {
+        return telefoneField;
+    }
+
+    public JTextField getEmailField() {
+        return emailField;
+    }
+
+    public JTextField getBairroField() {
+        return bairroField;
+    }
+
+    public JTextField getRuaField() {
+        return ruaField;
+    }
+
+    public JTextField getNumeroField() {
+        return numeroField;
+    }
+
+    public JTextField getCompleArea() {
+        return compleArea;
     }
 }
