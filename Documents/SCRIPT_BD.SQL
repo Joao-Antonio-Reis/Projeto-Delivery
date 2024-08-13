@@ -45,6 +45,15 @@ CREATE TABLE Pedidos (
     FOREIGN KEY (ClienteID) REFERENCES cliente(cliente_id)
 );
 
+CREATE TABLE ItensPedido (
+    ItemPedidoID INT PRIMARY KEY AUTO_INCREMENT,
+    PedidoID INT NOT NULL,
+    ProdutoID INT NOT NULL,
+    Quantidade INT NOT NULL,
+    PrecoUnitario DECIMAL(10, 2),
+    FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID),
+    FOREIGN KEY (ProdutoID) REFERENCES Produtos(ProdutoID)
+);
 
 CREATE TABLE IF NOT EXISTS categoria (
     categoria_id INT AUTO_INCREMENT PRIMARY KEY,
