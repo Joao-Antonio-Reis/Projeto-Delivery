@@ -57,7 +57,7 @@ Contato
 Para mais informações, entre em contato com o desenvolvedor:
 
 João Antônio Reis
-Email: 
+Email:
 
 Jorge Afonso Rabelo de Araujo
 Email: jorge.afonso@estudante.ifgoiano.edu.br

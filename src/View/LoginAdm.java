@@ -1,33 +1,24 @@
 package View;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import java.awt.*;
 
-public class LoginAdm extends JLabel {
+public class LoginAdm extends JLabel { // Changed from JLabel to JPanel
     private JTextField loginField;
     private JPasswordField senhaField;
     private JButton loginButton;
     private Color cor = new Color(136, 0, 12);
     private Font font = new Font("Arial", Font.BOLD, 15);
-    private MenuPrincipalView menuPrincipal; // Referência para o MenuPrincipal
+    private MenuPrincipalView menuPrincipal; // Reference to MenuPrincipal
+    private JLabel logado;
 
     public LoginAdm() {
         frameLogin();
     }
 
     private void frameLogin() {
-
-        setVisible(true); // Visibilidade true
+        setVisible(true); // Visibility true
         setLayout(null);
 
         JLabel loginLabel = new JLabel("Login:");
@@ -50,10 +41,9 @@ public class LoginAdm extends JLabel {
         senhaField.setBorder(new MatteBorder(0, 0, 2, 0, cor));
         add(senhaField);
 
-        JLabel logado = new JLabel();
+        logado = new JLabel();
         logado.setBounds(110, 340, 200, 20);
         add(logado);
-
 
         loginButton = new JButton("Login");
         loginButton.setSize(new Dimension(25, 20));
@@ -63,35 +53,31 @@ public class LoginAdm extends JLabel {
         loginButton.setForeground(Color.WHITE);
         loginButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
         add(loginButton);
-
-        loginButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                String login = loginField.getText();
-                String senha = senhaField.getText();
-                
-                // Verifica se o login e senha são corretos
-                // Lógica de autenticação
-                if ("admin".equals(login) && "admin".equals(senha)) {
-                    // Login bem-sucedido: mostra a JMenuBar do JFrame principal
-                    if (menuPrincipal != null) {
-                        menuPrincipal.mostrarAdmMenu(true);
-                        logado.setText("Login efetuado com sucesso");
-                    }
-
-                    loginField.setText("");
-                    senhaField.setText("");
-                    
-                    // Ações adicionais após o login, como mudar de tela, etc.
-                } else {
-                    // Login falhou: ações de feedback ao usuário, se necessário
-                    System.out.println("Login falhou");
-                }
-            }
-            
-        });
     }
+
     public void setMenuPrincipal(MenuPrincipalView menuPrincipal) {
         this.menuPrincipal = menuPrincipal;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public JTextField getLoginField() {
+        return loginField;
+    }
+
+    public JPasswordField getSenhaField() {
+        return senhaField;
+    }
+
+    public void mostrarAdmMenu(boolean b) {
+        if (menuPrincipal != null) {
+            menuPrincipal.mostrarAdmMenu(b);
+        }
+    }
+
+    public JLabel getLogado() {
+        return logado;
     }
 }

@@ -27,14 +27,12 @@ public class CadastroProduto extends JLabel {
     private JPanel panelRemover;
 
     public CadastroProduto() {
-        setSize(415, 800); // Define o tamanho da tela
+        setSize(415, 800);
         setLayout(null);
         frameCadastroProduto();
     }
 
     private void frameCadastroProduto() {
-
-
         JLabel nomeProdLabel = new JLabel("Nome: ");
         nomeProdLabel.setFont(font);
         nomeProdLabel.setBounds(5, 5, 50, 20);
@@ -99,9 +97,9 @@ public class CadastroProduto extends JLabel {
         add(descCat);
         descProdutoArea = new JTextArea();
         descProdutoArea.setBounds(5, 120, 390, 100);
-        descProdutoArea.setAlignmentY(JTextField.TOP); // Ajustar no topo
-        descProdutoArea.setLineWrap(true); // Quebra de linha automática
-        descProdutoArea.setWrapStyleWord(true); // Quebra de palavra
+        descProdutoArea.setAlignmentY(JTextField.TOP);
+        descProdutoArea.setLineWrap(true);
+        descProdutoArea.setWrapStyleWord(true);
         descProdutoArea.setBorder(BorderFactory.createLineBorder(cor, 2));
         add(descProdutoArea);
 
@@ -111,14 +109,13 @@ public class CadastroProduto extends JLabel {
         add(removerLabel);
 
         panelRemover = new JPanel();
-        panelRemover.setLayout(new BoxLayout(panelRemover, BoxLayout.Y_AXIS)); // Layout para organizar componentes verticalmente
+        panelRemover.setLayout(new BoxLayout(panelRemover, BoxLayout.Y_AXIS));
         panelRemover.setSize(400, 200);
 
-        // Criação do painel de rolagem para o remover produto
         JScrollPane scrollPane = new JScrollPane(panelRemover);
-        scrollPane.setBounds(0, 265, 400, 300); // Define a posição e tamanho do painel de rolagem
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS); // Sempre mostra a barra de rolagem vertical
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Nunca mostra a barra de rolagem horizontal
+        scrollPane.setBounds(0, 265, 400, 300);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane);
 
         cadastrarButton = new JButton("Cadastrar");
@@ -176,7 +173,7 @@ public class CadastroProduto extends JLabel {
     public void adicionarProdutoParaRemover(Produto produto, ActionListener removerAction) {
         JPanel productPanel = new JPanel();
         productPanel.setLayout(null);
-        productPanel.setPreferredSize(new Dimension(380, 30)); // Tamanho do retângulo para cada produto
+        productPanel.setPreferredSize(new Dimension(380, 30));
 
         labelProduto = new JLabel(produto.getNome());
         labelProduto.setBounds(5, 5, 200, 20);
