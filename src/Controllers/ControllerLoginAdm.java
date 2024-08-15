@@ -1,5 +1,6 @@
 package Controllers;
 
+import ConexaoDB.LoginDAO;
 import View.LoginAdm;
 
 import javax.swing.*;
@@ -29,28 +30,34 @@ public class ControllerLoginAdm implements InterfaceController {
 
     // Método para realizar a autenticação do usuário
     private void login() {
-        String login = loginView.getLoginField().getText();  // Obtém o texto do campo de login
-        String senha = new String(loginView.getSenhaField().getPassword());  // Obtém a senha do campo de senha
+        String login = loginView.getLoginField().getText();
+        String senha = new String(loginView.getSenhaField().getPassword());
 
-        // Verifica se as credenciais são válidas
-        if ("admin".equals(login) && "admin".equals(senha)) {
-            // Se as credenciais estão corretas, mostra o menu administrativo e feedback positivo
-            loginView.mostrarAdmMenu(true);
-            loginView.getLogado().setText("Login efetuado com sucesso");
-            loginView.getLogado().setForeground(Color.GREEN);
-
-            // Limpa os campos de login e senha após o sucesso
-            loginView.getLoginField().setText("");
-            loginView.getSenhaField().setText("");
-
-            // Ações adicionais pós-login, como navegar para outra tela, podem ser adicionadas aqui.
-        } else {
-            // Fornece feedback ao usuário em caso de falha no login
-            loginView.getLogado().setText("Login falhou. Tente novamente.");
+        if (login.isEmpty() || senha.isEmpty()) {
+            loginView.getLogado().setText("Login e senha não podem estar vazios.");
             loginView.getLogado().setForeground(Color.RED);
-            // Limpa os campos de login e senha após o sucesso
-            loginView.getLoginField().setText("");
-            loginView.getSenhaField().setText("");
+            return;
+        }
+
+        LoginDAO loginDAO = new LoginDAO();
+
+        try {
+            if (loginDAO.login(login, senha)) {
+                loginView.mostrarAdmMenu(true);
+                loginView.getLogado().setText("Login efetuado com sucesso");
+                loginView.getLogado().setForeground(Color.GREEN);
+                loginView.getLoginField().setText("");
+                loginView.getSenhaField().setText("");
+            } else {
+                loginView.getLogado().setText("Login falhou. Tente novamente.");
+                loginView.getLogado().setForeground(Color.RED);
+                loginView.getLoginField().setText("");
+                loginView.getSenhaField().setText("");
+            }
+        } catch (RuntimeException e) {
+            loginView.getLogado().setText("Erro ao tentar efetuar o login. Tente novamente mais tarde.");
+            loginView.getLogado().setForeground(Color.RED);
+            e.printStackTrace();
         }
     }
 }

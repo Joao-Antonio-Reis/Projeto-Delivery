@@ -1,10 +1,10 @@
-CREATE TABLE IF NOT EXISTS administador(
+CREATE TABLE IF NOT EXISTS administrador(
     id_adm INT AUTO_INCREMENT PRIMARY KEY ,
     login VARCHAR(50),
     senha VARCHAR(50)
 );
 
-INSERT INTO `administador` (`id_adm`, `login`, `senha`) VALUES
+INSERT INTO administrador (`id_adm`, `login`, `senha`) VALUES
                                                             (1, 'admin', 'admin'),
                                                             (2, 'jorge', 'jorge'),
                                                             (3,'joao','joao');
@@ -77,13 +77,13 @@ CREATE TABLE IF NOT EXISTS produto (
 
 -- Inserindo dados na tabela produto
 INSERT INTO produto (produto_nome, produto_categoria, produto_valor, produto_descricao, produto_imagem) VALUES
-                                                                                                            ('Temaki Skin', 'Temaki', 22.90, 'Temaki de pele', 'temaki.jfif'),
-                                                                                                            ('Temaki de salmão com Arroz', 'Temaki', 20.90, 'temaki de salmão', 'temaki.jfif'),
-                                                                                                            ('Temaki Hot', 'Temaki', 25.90, 'temaki frito', 'TemakiHot.jpeg'),
-                                                                                                            ('Temaki Camarão', 'Temaki', 29.90, 'temaki camarão', 'TemakiSemArroz.jpeg'),
-                                                                                                            ('Combo Individual', 'Combos', 35.90, 'combo para uma pessoa', 'ComboIndividual.jpeg'),
-                                                                                                            ('Combo Casal', 'Combos', 64.90, 'combo para duas pessoas', 'ComboCasal.jpeg'),
-                                                                                                            ('Combo Especial', 'Combos', 89.90, 'combo especial para mais de duas pessoas', 'ComboCasal.jpeg'),
-                                                                                                            ('Gunkan Hot Bacon', 'Gunkan', 27.90, 'gunkan com bacon por cima', 'gunkan.png'),
-                                                                                                            ('Gunkan Salmão', 'Gunkan', 28.90, 'gunkanSalmão', 'Gunkan.jpeg'),
-                                                                                                            ('Hot Filadélfia', 'Hot', 19.90, 'hot filadelfia', 'HotFiladelfia.jpeg');
+                                                                                                            ('Temaki Skin', 'Temaki', 22.90, 'Temaki de pele', 'Imagens/temaki.jfif'),
+                                                                                                            ('Temaki de salmão com Arroz', 'Temaki', 20.90, 'Imagens/temaki de salmão', 'temaki.jfif'),
+                                                                                                            ('Temaki Hot', 'Temaki', 25.90, 'temaki frito', 'Imagens/TemakiHot.jpeg'),
+                                                                                                            ('Temaki Camarão', 'Temaki', 29.90, 'temaki camarão', 'Imagens/TemakiSemArroz.jpeg'),
+                                                                                                            ('Combo Individual', 'Combos', 35.90, 'combo para uma pessoa', 'Imagens/ComboIndividual.jpeg'),
+                                                                                                            ('Combo Casal', 'Combos', 64.90, 'combo para duas pessoas', 'Imagens/ComboCasal.jpeg'),
+                                                                                                            ('Combo Especial', 'Combos', 89.90, 'combo especial para mais de duas pessoas', 'Imagens/ComboCasal.jpeg'),
+                                                                                                            ('Gunkan Hot Bacon', 'Gunkan', 27.90, 'gunkan com bacon por cima', 'Imagens/gunkan.png'),
+                                                                                                            ('Gunkan Salmão', 'Gunkan', 28.90, 'gunkanSalmão', 'Imagens/Gunkan.jpeg'),
+                                                                                                            ('Hot Filadélfia', 'Hot', 19.90, 'hot filadelfia', 'Imagens/HotFiladelfia.jpeg');

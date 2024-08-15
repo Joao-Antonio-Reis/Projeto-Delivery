@@ -2,6 +2,7 @@ package Controllers;
 
 import ConexaoDB.ClienteDAO;
 import ConexaoDB.EnderecoDAO;
+import ConexaoDB.PedidoDAO;
 import Models.Cliente;
 import Models.Endereco;
 import Models.Pedido;
@@ -9,6 +10,7 @@ import Models.Produto;
 import View.ClientForm;
 import View.PedidoView;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ControllerClientForm implements InterfaceController{
@@ -47,17 +49,24 @@ public class ControllerClientForm implements InterfaceController{
         String complemento = clientForm.getCompleArea().getText();
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        EnderecoDAO endereco = new EnderecoDAO();
-        try {
-            int enderecoId = endereco.inserirEndereco(bairro, rua, numero, complemento);
-            clienteDAO.inserirCliente(nome, telefone, email, enderecoId);
-        }catch (Exception e){
-            e.printStackTrace();  // Captura e exibe exceções
-            System.out.println("Erro ao cadastrar cliente.");
-        }
+        EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-        Cliente cliente = new Cliente(nome,telefone,email, new Endereco(bairro,rua,numero,complemento));
-        Pedido pedido = new Pedido(cliente, produtos,valorTotal, formaPagamento, entrega);
-        PedidoView teste = new PedidoView(pedido);
+        try {
+            int enderecoId = enderecoDAO.inserirEndereco(bairro, rua, numero, complemento);
+            int clienteId = clienteDAO.inserirCliente(nome, telefone, email, enderecoId);
+
+            Cliente cliente = new Cliente(clienteId, nome, telefone, email, new Endereco(bairro, rua, numero, complemento));
+            Pedido pedido = new Pedido(cliente, produtos, valorTotal, formaPagamento, entrega);
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            pedidoDAO.inserirPedido(pedido);
+
+            PedidoView pedidoView = new PedidoView(pedido);
+
+        } catch (SQLException e) {
+            e.printStackTrace();  // Exibe o erro no console para depuração
+            System.out.println("Erro ao cadastrar cliente ou inserir pedido.");
+        }
     }
+
 }

@@ -14,7 +14,7 @@ public class PedidoDAO extends Conexao {
     private static Conexao dao = new Conexao();
 
     public void inserirPedido(Pedido pedido) throws SQLException {
-        Connection conexao = dao.getConnection(); // Obtenha a conexão com o banco de dados
+        Connection conexao = dao.getConnection();// Obtenha a conexão com o banco de dados
         try {
             // Inserir pedido
             String sqlPedido = "INSERT INTO Pedidos (ClienteID, ValorTotal, FormaPagamento) VALUES (?, ?, ?)";
@@ -31,17 +31,6 @@ public class PedidoDAO extends Conexao {
                 pedidoID = generatedKeys.getInt(1);
             } else {
                 throw new SQLException("Falha ao inserir pedido, nenhum ID gerado.");
-            }
-
-            // Inserir itens do pedido
-            String sqlItem = "INSERT INTO ItensPedido (PedidoID, ProdutoID, Quantidade, PrecoUnitario) VALUES (?, ?, ?, ?)";
-            PreparedStatement stmtItem = conexao.prepareStatement(sqlItem); // Preparar fora do loop para eficiência
-            for (Produto produto : pedido.getLista_produtos()) {
-                stmtItem.setInt(1, pedidoID);
-                stmtItem.setInt(2, produto.getId()); // Assume que Produto tem um método getId()
-                stmtItem.setInt(3, 1); // Quantidade fixa como exemplo, ajustar conforme necessário
-                stmtItem.setDouble(4, produto.getValor()); // Corrigido para usar getValor
-                stmtItem.executeUpdate();
             }
         } finally {
             if (conexao != null) {
