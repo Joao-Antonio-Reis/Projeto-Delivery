@@ -51,6 +51,9 @@ public class Pedido {
     public void setForma_Pagamento(String forma_Pagamento) {
         this.forma_Pagamento = forma_Pagamento;
     }
+    public boolean isEntregar() {
+        return entregar;
+    }
 
     
 

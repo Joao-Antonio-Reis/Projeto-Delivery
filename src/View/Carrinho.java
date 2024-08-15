@@ -33,7 +33,6 @@ public class Carrinho extends JLabel {
         scrollPane.setBounds(0, 0, 400, 450);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         add(scrollPane);
 
         entregaCheckBox = new JCheckBox("Entregar");
@@ -75,7 +74,6 @@ public class Carrinho extends JLabel {
         observacaoArea.setAlignmentY(JTextField.TOP);
         observacaoArea.setLineWrap(true);
         observacaoArea.setWrapStyleWord(true);
-        observacaoArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(observacaoArea);
 
         valorFinal = new JLabel("Valor total: R$ 0.00");
@@ -85,11 +83,10 @@ public class Carrinho extends JLabel {
 
         submitButton = new JButton("Finalizar compra");
         submitButton.setSize(new Dimension(125, 40));
-        submitButton.setBounds(270, 690, 125, 40);
+        submitButton.setBounds(210, 690, 175, 40);
         submitButton.setFont(font);
         submitButton.setBackground(cor);
         submitButton.setForeground(Color.WHITE);
-        submitButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
         add(submitButton);
     }
 

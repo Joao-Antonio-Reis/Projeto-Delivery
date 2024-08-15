@@ -48,6 +48,9 @@ public class ControllerLoginAdm implements InterfaceController {
             // Fornece feedback ao usuário em caso de falha no login
             loginView.getLogado().setText("Login falhou. Tente novamente.");
             loginView.getLogado().setForeground(Color.RED);
+            // Limpa os campos de login e senha após o sucesso
+            loginView.getLoginField().setText("");
+            loginView.getSenhaField().setText("");
         }
     }
 }

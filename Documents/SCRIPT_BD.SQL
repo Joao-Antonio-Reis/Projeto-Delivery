@@ -1,9 +1,13 @@
 CREATE TABLE IF NOT EXISTS administador(
     id_adm INT AUTO_INCREMENT PRIMARY KEY ,
-    login VARCHAR(100),
-    senha VARCHAR(100)
+    login VARCHAR(50),
+    senha VARCHAR(50)
 );
 
+INSERT INTO `administador` (`id_adm`, `login`, `senha`) VALUES
+                                                            (1, 'admin', 'admin'),
+                                                            (2, 'jorge', 'jorge'),
+                                                            (3,'joao','joao');
 
 CREATE TABLE IF NOT EXISTS endereco (
     endereco_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,22 +43,12 @@ INSERT INTO cliente (cliente_nome, cliente_telefone, cliente_email, endereco_id)
 CREATE TABLE Pedidos (
     PedidoID INT PRIMARY KEY AUTO_INCREMENT,
     ClienteID INT NOT NULL,
+    DataPedido DATETIME DEFAULT CURRENT_TIMESTAMP,
     ValorTotal DECIMAL(10, 2),
     FormaPagamento VARCHAR(255),
-    DataPedido DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+    FOREIGN KEY (ClienteID) REFERENCES cliente(cliente_id)
 );
 
-
-CREATE TABLE ItensPedido (
-    ItemPedidoID INT PRIMARY KEY AUTO_INCREMENT,
-    PedidoID INT NOT NULL,
-    ProdutoID INT NOT NULL,
-    Quantidade INT NOT NULL,
-    PrecoUnitario DECIMAL(10, 2),
-    FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID),
-    FOREIGN KEY (ProdutoID) REFERENCES produto(produto_id)
-);
 
 CREATE TABLE IF NOT EXISTS categoria (
     categoria_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -63,10 +57,14 @@ CREATE TABLE IF NOT EXISTS categoria (
 );
 
 INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES
-                                  ('Temaki',' '),
-                                  ('Combos',' '),
-                                  ('Gunkan',' '),
-                                  ('Hot',' ');
+                                  ('Temaki','Temaki recheados '),
+                                  ('Combos','Combos mais baratos'),
+                                  ('Gunkan','Salmão e creme cheese'),
+                                  ('Hot','Sushi frito '),
+                                  ('Bebidas','Bebidas geladas e quentes'),
+                                  ('Nigiri','Arroz e salmão'),
+                                  ('Uramaki','Arroz alga e salmão'),
+                                  ('Sashimi','Peixe cru');
 
 CREATE TABLE IF NOT EXISTS produto (
     produto_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -79,14 +77,13 @@ CREATE TABLE IF NOT EXISTS produto (
 
 -- Inserindo dados na tabela produto
 INSERT INTO produto (produto_nome, produto_categoria, produto_valor, produto_descricao, produto_imagem) VALUES
-                                                                                                            ('Temaki Skin', 'Temaki', 22.90, '', ''),
-                                                                                                            ('Temaki Com Arroz', 'Temaki', 20.90, '', ''),
-                                                                                                            ('Temaki sem Arroz', 'Temaki', 25.90, '', ''),
-                                                                                                            ('Temaki Hot', 'Temaki', 25.90, '', ''),
-                                                                                                            ('Temaki Camarão', 'Temaki', 29.90, '', ''),
-                                                                                                            ('Combo Individual', 'Combos', 35.90, '', ''),
-                                                                                                            ('Combo Casal', 'Combos', 64.90, '', ''),
-                                                                                                            ('Combo Especial', 'Combos', 89.90, '', ''),
-                                                                                                            ('Gunkan Hot Bacon', 'Gunkan', 27.90, '', ''),
-                                                                                                            ('Gunkan Salmão', 'Gunkan', 28.90, '', ''),
-                                                                                                            ('Hot Filadélfia', 'Hot', 19.90, '', '');
+                                                                                                            ('Temaki Skin', 'Temaki', 22.90, 'Temaki de pele', 'temaki.jfif'),
+                                                                                                            ('Temaki de salmão com Arroz', 'Temaki', 20.90, 'temaki de salmão', 'temaki.jfif'),
+                                                                                                            ('Temaki Hot', 'Temaki', 25.90, 'temaki frito', 'TemakiHot.jpeg'),
+                                                                                                            ('Temaki Camarão', 'Temaki', 29.90, 'temaki camarão', 'TemakiSemArroz.jpeg'),
+                                                                                                            ('Combo Individual', 'Combos', 35.90, 'combo para uma pessoa', 'ComboIndividual.jpeg'),
+                                                                                                            ('Combo Casal', 'Combos', 64.90, 'combo para duas pessoas', 'ComboCasal.jpeg'),
+                                                                                                            ('Combo Especial', 'Combos', 89.90, 'combo especial para mais de duas pessoas', 'ComboCasal.jpeg'),
+                                                                                                            ('Gunkan Hot Bacon', 'Gunkan', 27.90, 'gunkan com bacon por cima', 'gunkan.png'),
+                                                                                                            ('Gunkan Salmão', 'Gunkan', 28.90, 'gunkanSalmão', 'Gunkan.jpeg'),
+                                                                                                            ('Hot Filadélfia', 'Hot', 19.90, 'hot filadelfia', 'HotFiladelfia.jpeg');

@@ -39,13 +39,6 @@ public class Cardapio extends JLabel {
 
         panelCardapio.setLayout(new BoxLayout(panelCardapio, BoxLayout.Y_AXIS));
 
-        ProdutoDAO produtoList = new ProdutoDAO();
-        List<Produto> produtos = produtoList.obterProdutosOrdenados();
-
-        for (Produto produto : produtos) {
-
-        }
-
         JScrollPane scrollPane = new JScrollPane(panelCardapio);
         scrollPane.setBounds(0, 0, 400, 685);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
