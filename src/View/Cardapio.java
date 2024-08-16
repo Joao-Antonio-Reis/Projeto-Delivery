@@ -51,7 +51,7 @@ public class Cardapio extends JLabel {
         JPanel imagemPanel = new JPanel();
         imagemPanel.setBounds(5, 5, 100, 70);
         imagemPanel.setLayout(new BorderLayout());
-        ImageIcon imageIcon = new ImageIcon(produto.getImagem());
+        ImageIcon imageIcon = new ImageIcon("Imagens/"+produto.getImagem());
         JLabel imageLabel = new JLabel(imageIcon);
         imagemPanel.add(imageLabel, BorderLayout.CENTER);
         productPanel.add(imagemPanel);

@@ -1,5 +1,6 @@
 package Controllers;
 
+import ConexaoDB.LoginDAO;
 import View.LoginAdm;
 
 import javax.swing.*;
@@ -31,9 +32,9 @@ public class ControllerLoginAdm implements InterfaceController {
     private void login() {
         String login = loginView.getLoginField().getText();  // Obtém o texto do campo de login
         String senha = new String(loginView.getSenhaField().getPassword());  // Obtém a senha do campo de senha
-
+        LoginDAO loginDAO = new LoginDAO();
         // Verifica se as credenciais são válidas
-        if ("admin".equals(login) && "admin".equals(senha)) {
+        if (loginDAO.login(login, senha)) {
             // Se as credenciais estão corretas, mostra o menu administrativo e feedback positivo
             loginView.mostrarAdmMenu(true);
             loginView.getLogado().setText("Login efetuado com sucesso");

@@ -54,6 +54,7 @@ public class PedidoView extends JFrame {
             JLabel labelProduto = new JLabel(produto.getNome());
             panel.add(labelProduto);
         }
+
         panel.add(new JLabel());
         JLabel observacao = new JLabel("Observação do pedido");
         observacao.setFont(new Font("Arial", Font.BOLD, 14));
