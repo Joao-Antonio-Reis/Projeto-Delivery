@@ -100,7 +100,7 @@ public class ControllerCarrinho implements InterfaceController {
     private void cadastroCliente() {
         ClientForm clientForm = new ClientForm();
         String formaPagamento  =carrinhoView.getFormaPagamentoSelecionada();
-        ControllerClientForm controllerClientForm = new ControllerClientForm(clientForm, produtosMain, valorTotal,entregaAdicionada, formaPagamento);
+        ControllerClientForm controllerClientForm = new ControllerClientForm(clientForm, produtosMain, valorTotal,entregaAdicionada, formaPagamento, carrinhoView.getObservacao());
         menuView.changeContent(clientForm);
     }
 }

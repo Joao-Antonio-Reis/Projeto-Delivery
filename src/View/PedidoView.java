@@ -45,13 +45,21 @@ public class PedidoView extends JFrame {
             panel.add(bairroCliente);
             JLabel complementoCliente = new JLabel("Complemento: "+ pedido.getCliente().getEndereço().getComplemento());
             panel.add(complementoCliente);
+            add(new JLabel());
         }
-
-        panel.add(new JLabel("Produtos"));
+        JLabel produtos = new JLabel("Produtos");
+        produtos.setFont(new Font("Arial", Font.BOLD, 14));
+        panel.add(produtos);
         for (Produto produto: pedido.getLista_produtos()){
             JLabel labelProduto = new JLabel(produto.getNome());
             panel.add(labelProduto);
         }
+        panel.add(new JLabel());
+        JLabel observacao = new JLabel("Observação do pedido");
+        observacao.setFont(new Font("Arial", Font.BOLD, 14));
+        panel.add(observacao);
+        JLabel observacaoConteudo = new JLabel(pedido.getObservacao());
+        add(observacaoConteudo);
 
         panel.add(new JLabel(""));
         JLabel valorTotal = new JLabel("Valor total: "+ String.format("%.2f", pedido.getValor_Total_Pedido()));

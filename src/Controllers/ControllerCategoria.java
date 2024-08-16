@@ -1,6 +1,6 @@
 package Controllers;
 
-import ConexaoDB.CategoriaDAO;
+import DAO.CategoriaDAO;
 import Models.Categoria;
 import View.CadastroCategoria;
 

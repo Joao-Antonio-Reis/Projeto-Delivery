@@ -1,6 +1,6 @@
 package Controllers;
 
-import ConexaoDB.ProdutoDAO;
+import DAO.ProdutoDAO;
 import Models.Produto;
 import View.Cardapio;
 

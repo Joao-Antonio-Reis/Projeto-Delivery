@@ -1,7 +1,7 @@
 package Controllers;
 
-import ConexaoDB.CategoriaDAO;
-import ConexaoDB.ProdutoDAO;
+import DAO.CategoriaDAO;
+import DAO.ProdutoDAO;
 import Models.Categoria;
 import View.CadastroProduto;
 

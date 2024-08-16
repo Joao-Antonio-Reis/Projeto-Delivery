@@ -15,15 +15,6 @@ public class Cliente{
         this.email = email;
         this.endereço = endereço;
     }
-    public Cliente() {}
-
-    public Cliente(int clienteId, String nome, String telefone, String email, Endereco endereco) {
-        this.ClienteId = clienteId;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.endereço = endereco;
-    }
 
     public int getClienteId() {
         return ClienteId;
