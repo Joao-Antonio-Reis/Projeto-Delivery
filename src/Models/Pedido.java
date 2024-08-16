@@ -10,17 +10,13 @@ public class Pedido {
     private String observacao;
 
     public Pedido(Cliente cliente, ArrayList<Produto> lista_produtos, Double valor_Total_Pedido,
-            String forma_Pagamento, boolean entrega, String observcao) {
+                  String forma_Pagamento, boolean entrega, String observacao) {
         this.cliente = cliente;
         this.lista_produtos = lista_produtos;
         this.valor_Total_Pedido = valor_Total_Pedido;
         this.forma_Pagamento = forma_Pagamento;
         this.entregar = entrega;
         this.observacao = observacao;
-    }
-
-    public Pedido() {
-
     }
 
     public Cliente getCliente() {

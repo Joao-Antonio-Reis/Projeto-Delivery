@@ -117,7 +117,7 @@ public class Carrinho extends JLabel {
         return null;
     }
 
-    public String getObservacao() {
-        return observacaoArea.getText();
+    public JTextArea getObservacaoArea() {
+        return observacaoArea;
     }
 }

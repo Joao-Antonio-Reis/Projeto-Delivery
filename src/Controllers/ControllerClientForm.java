@@ -2,6 +2,7 @@ package Controllers;
 
 import DAO.ClienteDAO;
 import DAO.EnderecoDAO;
+import DAO.PedidoDAO;
 import Models.Cliente;
 import Models.Endereco;
 import Models.Pedido;
@@ -9,6 +10,7 @@ import Models.Produto;
 import View.ClientForm;
 import View.PedidoView;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ControllerClientForm implements InterfaceController {
@@ -18,6 +20,7 @@ public class ControllerClientForm implements InterfaceController {
     private boolean entrega; // Indica se o pedido inclui entrega
     private String formaPagamento; // Forma de pagamento escolhida pelo cliente
     private String observacao; // Observação adicional para o pedido
+    private int idCliente;
 
     // Construtor que inicializa o controlador com os dados do cliente e do pedido
     public ControllerClientForm(ClientForm clientForm, ArrayList<Produto> produtos, double valorTotal, boolean entrega, String formaPagamento, String observacao) {
@@ -60,7 +63,7 @@ public class ControllerClientForm implements InterfaceController {
             // Insere o endereço no banco de dados e obtém o ID do endereço
             int enderecoId = endereco.inserirEndereco(bairro, rua, numero, complemento);
             // Insere o cliente no banco de dados associando-o ao ID do endereço
-            clienteDAO.inserirCliente(nome, telefone, email, enderecoId);
+            idCliente = clienteDAO.inserirCliente(nome, telefone, email, enderecoId);
         } catch (Exception e) {
             e.printStackTrace(); // Captura e exibe exceções
             System.out.println("Erro ao cadastrar cliente.");
@@ -70,7 +73,13 @@ public class ControllerClientForm implements InterfaceController {
         Cliente cliente = new Cliente(nome, telefone, email, new Endereco(bairro, rua, numero, complemento));
         // Cria um objeto Pedido com o cliente, lista de produtos e outras informações do pedido
         Pedido pedido = new Pedido(cliente, produtos, valorTotal, formaPagamento, entrega, observacao);
+        PedidoDAO pedidoDAO = new PedidoDAO();
+        try {
+            pedidoDAO.inserirPedido(pedido, idCliente);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         // Exibe a interface do PedidoView para visualizar o pedido criado
-        PedidoView teste = new PedidoView(pedido);
+        PedidoView pedidoView = new PedidoView(pedido);
     }
 }
