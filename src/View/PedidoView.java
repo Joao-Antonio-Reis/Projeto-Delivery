@@ -22,7 +22,7 @@ public class PedidoView extends JFrame {
         setSize(400, 800);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(20, 1));
+        JPanel panel = new JPanel(new GridLayout(30, 1,10,10));
         add(panel);
 
         JLabel nomeCLiente = new JLabel("Nome: "+ pedido.getCliente().getNome());
