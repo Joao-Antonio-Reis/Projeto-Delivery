@@ -1,6 +1,6 @@
 package Controllers;
 
-import ConexaoDB.LoginDAO;
+import DAO.LoginDAO;
 import View.LoginAdm;
 
 import javax.swing.*;
