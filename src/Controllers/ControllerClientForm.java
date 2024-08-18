@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ControllerClientForm implements InterfaceController {
     private ClientForm clientForm; // Referência à interface gráfica do formulário de cliente
-    private ArrayList<Produto> produtos; // Lista de produtos associados ao pedido
+    private ArrayList<Produto> produtosMain; // Lista de produtos associados ao pedido
     private double valorTotal; // Valor total do pedido
     private boolean entrega; // Indica se o pedido inclui entrega
     private String formaPagamento; // Forma de pagamento escolhida pelo cliente
@@ -23,9 +23,9 @@ public class ControllerClientForm implements InterfaceController {
     private int idCliente;
 
     // Construtor que inicializa o controlador com os dados do cliente e do pedido
-    public ControllerClientForm(ClientForm clientForm, ArrayList<Produto> produtos, double valorTotal, boolean entrega, String formaPagamento, String observacao) {
+    public ControllerClientForm(ClientForm clientForm, ArrayList<Produto> produtosMain, double valorTotal, boolean entrega, String formaPagamento, String observacao) {
         this.clientForm = clientForm;
-        this.produtos = produtos;
+        this.produtosMain = produtosMain;
         this.valorTotal = valorTotal;
         this.entrega = entrega;
         this.formaPagamento = formaPagamento;
@@ -72,7 +72,7 @@ public class ControllerClientForm implements InterfaceController {
         // Cria um objeto Cliente com os dados preenchidos
         Cliente cliente = new Cliente(nome, telefone, email, new Endereco(bairro, rua, numero, complemento));
         // Cria um objeto Pedido com o cliente, lista de produtos e outras informações do pedido
-        Pedido pedido = new Pedido(cliente, produtos, valorTotal, formaPagamento, entrega, observacao);
+        Pedido pedido = new Pedido(cliente, produtosMain, valorTotal, formaPagamento, entrega, observacao);
         PedidoDAO pedidoDAO = new PedidoDAO();
         try {
             pedidoDAO.inserirPedido(pedido, idCliente);
@@ -80,6 +80,7 @@ public class ControllerClientForm implements InterfaceController {
             throw new RuntimeException(e);
         }
         // Exibe a interface do PedidoView para visualizar o pedido criado
-        PedidoView pedidoView = new PedidoView(pedido);
+
+        PedidoView pedidoView = new PedidoView(pedido, produtosMain);
     }
 }

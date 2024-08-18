@@ -98,7 +98,6 @@ public class ControllerCarrinho implements InterfaceController {
 
     // Finaliza a compra, realizando ações necessárias após o usuário confirmar a compra
     private void cadastroCliente() {
-        produtosMain.clear();
         ClientForm clientForm = new ClientForm();
         String formaPagamento  =carrinhoView.getFormaPagamentoSelecionada();
         String observacao = carrinhoView.getObservacaoArea().getText();

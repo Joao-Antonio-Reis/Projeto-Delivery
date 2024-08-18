@@ -1,11 +1,11 @@
 package DAO;
 
+import Models.Historico;
 import Models.Pedido;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PedidoDAO extends Conexao {
 
@@ -27,5 +27,30 @@ public class PedidoDAO extends Conexao {
                 conexao.close(); // Feche a conexão
             }
         }
+    }
+
+    public List<Historico> listarPedidos() throws SQLException {
+        List<Historico> historicoList = new ArrayList<>();
+        Connection conexao = dao.getConnection();
+        String sql = "SELECT * FROM pedidos";
+
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        try{
+            while (rs.next()) {
+                Historico historico = new Historico(
+                        rs.getInt("PedidoID"),
+                        rs.getInt("ClienteID"),
+                        rs.getTimestamp("DataPedido").toLocalDateTime(),
+                        rs.getBigDecimal("ValorTotal"),
+                        rs.getString("FormaPagamento")
+                );
+                historicoList.add(historico);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return historicoList;
     }
 }
