@@ -91,6 +91,8 @@ public class MenuPrincipalView extends JFrame {
         historico.setForeground(Color.WHITE);
         admMenu.add(historico);
 
+
+
         setJMenuBar(menuBar);
 
         menuprin = new JLabel();
@@ -181,6 +183,7 @@ public class MenuPrincipalView extends JFrame {
 
     public void mostrarAdmMenu(boolean logado) {
         this.logado = logado;
+
         admMenu.setVisible(logado);
     }
 

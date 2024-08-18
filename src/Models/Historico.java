@@ -10,8 +10,8 @@ public class Historico {
     private BigDecimal valor;
     private String formaPagamento;
 
-    public Historico(int id, int idCliente, LocalDateTime dataCadastro, BigDecimal valor, String formaPagamento) {
-        this.id = id;
+    public Historico(int idPedido, int idCliente, LocalDateTime dataCadastro, BigDecimal valor, String formaPagamento) {
+        this.id = idPedido;
         this.idCliente = idCliente;
         this.dataCadastro = dataCadastro;
         this.valor = valor;
