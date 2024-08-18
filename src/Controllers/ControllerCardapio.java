@@ -1,6 +1,6 @@
 package Controllers;
 
-import ConexaoDB.ProdutoDAO;
+import DAO.ProdutoDAO;
 import Models.Produto;
 import View.Cardapio;
 
@@ -48,12 +48,7 @@ public class ControllerCardapio implements InterfaceController {
 
     // Método para adicionar um produto ao carrinho
     private void adicionarCarrinho(Produto produto) {
-        // Verifica se o produto já não está no carrinho
-        if (!produtosMain.contains(produto)) {
-            produtosMain.add(produto);  // Adiciona o produto ao carrinho
-            System.out.println("Produto adicionado ao carrinho: " + produto.getNome());
-        } else {
-            System.out.println("Produto já está no carrinho: " + produto.getNome());
-        }
+        produtosMain.add(produto);  // Adiciona o produto ao carrinho
+        System.out.println("Produto adicionado ao carrinho: " + produto.getNome());
     }
 }

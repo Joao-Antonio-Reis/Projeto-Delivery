@@ -1,4 +1,4 @@
-package ConexaoDB;
+package DAO;
 
 import Models.Categoria;
 
@@ -16,18 +16,18 @@ public class CategoriaDAO {
         // Uso do bloco try-with-resources para garantir que os recursos serão fechados automaticamente
         try (
                 Connection connection = dao.getConnection(); // Obtém a conexão com o banco de dados
-                PreparedStatement statement = connection.prepareStatement(
+                PreparedStatement stmt = connection.prepareStatement(
                         "INSERT INTO categoria (categoria_nome, categoria_descricao) VALUES (?, ?)"); // Prepara a declaração SQL
         ) {
             // Define os parâmetros da declaração SQL
-            statement.setString(1, categoria_nome);
-            statement.setString(2, categoria_descricao);
+            stmt.setString(1, categoria_nome);
+            stmt.setString(2, categoria_descricao);
 
             // Executa a declaração SQL
-            statement.executeUpdate();
+            stmt.executeUpdate();
 
             // Fecha a declaração e a conexão (opcional aqui, pois try-with-resources fecha automaticamente)
-            statement.close();
+            stmt.close();
             connection.close();
 
             System.out.println("Categoria inserida com sucesso!");

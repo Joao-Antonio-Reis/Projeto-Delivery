@@ -11,6 +11,7 @@ public class MenuPrincipalView extends JFrame {
     private JButton loginButton;
     private JMenuItem cadastroCategoria;
     private JMenuItem cadastroProduto;
+    private JMenuItem historico;
     private JButton loginMenu;
     private JButton carrinhoMenu;
     private JButton cardapioMenu;
@@ -66,6 +67,7 @@ public class MenuPrincipalView extends JFrame {
         loginMenu.setForeground(Color.WHITE);
         menuBar.add(loginMenu);
 
+
         admMenu = new JMenu("ADM");
         admMenu.setForeground(Color.WHITE);
         menuBar.add(admMenu);
@@ -82,6 +84,14 @@ public class MenuPrincipalView extends JFrame {
         cadastroProduto.setBackground(cor);
         cadastroProduto.setForeground(Color.WHITE);
         admMenu.add(cadastroProduto);
+
+        historico = new JMenuItem("Historico");
+        historico.setBorder(BorderFactory.createLineBorder(cor, 2));
+        historico.setBackground(cor);
+        historico.setForeground(Color.WHITE);
+        admMenu.add(historico);
+
+
 
         setJMenuBar(menuBar);
 
@@ -160,6 +170,10 @@ public class MenuPrincipalView extends JFrame {
         return voltaMenu;
     }
 
+    public JMenuItem getHistorico() {
+        return historico;
+    }
+
     public void changeContent(JLabel newContent) {
         getContentPane().removeAll();
         getContentPane().add(newContent);
@@ -169,6 +183,7 @@ public class MenuPrincipalView extends JFrame {
 
     public void mostrarAdmMenu(boolean logado) {
         this.logado = logado;
+
         admMenu.setVisible(logado);
     }
 

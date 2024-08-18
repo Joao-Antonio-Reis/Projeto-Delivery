@@ -1,13 +1,7 @@
 package Controllers;
 
 import Models.Produto;
-import View.MenuPrincipalView;
-import View.Cardapio;
-import View.ClientForm;
-import View.Carrinho;
-import View.LoginAdm;
-import View.CadastroCategoria;
-import View.CadastroProduto;
+import View.*;
 
 import java.util.ArrayList;
 
@@ -45,6 +39,7 @@ public class ControllerMenuPrincipal implements InterfaceController {
         menuView.getCadastrarCategoriaItem().addActionListener(e -> abrirCadastroCategoria());
         menuView.getCadastrarProdutoItem().addActionListener(e -> abrirCadastroProduto());
         menuView.getVoltaMenu().addActionListener(e -> showMainMenu());
+        menuView.getHistorico().addActionListener(e -> abrirHistorico());
     }
 
     // Abre a vista do cardápio
@@ -81,6 +76,12 @@ public class ControllerMenuPrincipal implements InterfaceController {
         CadastroProduto cadastroProduto = new CadastroProduto();  // Cria a interface de cadastro de produtos
         ControllerProduto controllerCadastroProduto = new ControllerProduto(cadastroProduto);  // Inicializa o controlador de produtos
         menuView.changeContent(cadastroProduto);  // Troca o conteúdo da interface para o cadastro de produtos
+    }
+
+    private void abrirHistorico(){
+        HistoricoPedidos historicoPedidos = new HistoricoPedidos();
+        ControllerHistorico controllerHistorico = new ControllerHistorico(historicoPedidos);
+        menuView.changeContent(historicoPedidos);
     }
 
     // Retorna ao menu principal

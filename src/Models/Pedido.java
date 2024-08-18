@@ -1,4 +1,6 @@
 package Models;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 public class Pedido {
     private Cliente cliente;
@@ -7,18 +9,16 @@ public class Pedido {
     private Double valor_Total_Pedido;
     private String forma_Pagamento;
     private boolean entregar;
+    private String observacao;
 
     public Pedido(Cliente cliente, ArrayList<Produto> lista_produtos, Double valor_Total_Pedido,
-            String forma_Pagamento, boolean entrega) {
+                  String forma_Pagamento, boolean entrega, String observacao) {
         this.cliente = cliente;
         this.lista_produtos = lista_produtos;
         this.valor_Total_Pedido = valor_Total_Pedido;
         this.forma_Pagamento = forma_Pagamento;
         this.entregar = entrega;
-    }
-
-    public Pedido() {
-
+        this.observacao = observacao;
     }
 
     public Cliente getCliente() {
@@ -55,6 +55,7 @@ public class Pedido {
         return entregar;
     }
 
-    
-
+    public String getObservacao() {
+        return observacao;
+    }
 }

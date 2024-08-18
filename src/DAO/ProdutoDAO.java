@@ -1,4 +1,4 @@
-package ConexaoDB;
+package DAO;
 
 import Models.Produto; // Importa o modelo de dados Produto
 

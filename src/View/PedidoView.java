@@ -10,9 +10,11 @@ import java.util.ArrayList;
 
 public class PedidoView extends JFrame {
     private Pedido pedido;
+    private ArrayList<Produto> produtosMain;
 
-    public PedidoView(Pedido pedido) {
+    public PedidoView(Pedido pedido, ArrayList<Produto> produtosMain) {
         this.pedido = pedido;
+        this.produtosMain = produtosMain;
         frame();
     }
     public void frame() {
@@ -22,7 +24,7 @@ public class PedidoView extends JFrame {
         setSize(400, 800);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(20, 1));
+        JPanel panel = new JPanel(new GridLayout(30, 1,10,10));
         add(panel);
 
         JLabel nomeCLiente = new JLabel("Nome: "+ pedido.getCliente().getNome());
@@ -45,13 +47,22 @@ public class PedidoView extends JFrame {
             panel.add(bairroCliente);
             JLabel complementoCliente = new JLabel("Complemento: "+ pedido.getCliente().getEndereço().getComplemento());
             panel.add(complementoCliente);
+            panel.add(new JLabel());
         }
-
-        panel.add(new JLabel("Produtos"));
-        for (Produto produto: pedido.getLista_produtos()){
+        JLabel produtos = new JLabel("Produtos");
+        produtos.setFont(new Font("Arial", Font.BOLD, 14));
+        panel.add(produtos);
+        for (Produto produto: produtosMain){
             JLabel labelProduto = new JLabel(produto.getNome());
             panel.add(labelProduto);
         }
+
+        panel.add(new JLabel());
+        JLabel observacao = new JLabel("Observação do pedido");
+        observacao.setFont(new Font("Arial", Font.BOLD, 14));
+        panel.add(observacao);
+        JLabel observacaoConteudo = new JLabel(pedido.getObservacao());
+        panel.add(observacaoConteudo);
 
         panel.add(new JLabel(""));
         JLabel valorTotal = new JLabel("Valor total: "+ String.format("%.2f", pedido.getValor_Total_Pedido()));
@@ -60,7 +71,7 @@ public class PedidoView extends JFrame {
         panel.add(formaPagamento);
 
         setVisible(true);
-
+        produtosMain.clear();
     }
 
 }

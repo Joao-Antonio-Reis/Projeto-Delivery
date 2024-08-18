@@ -6,9 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import ConexaoDB.ProdutoDAO;
 import Models.Produto;
 
 public class Cardapio extends JLabel {
@@ -54,7 +51,7 @@ public class Cardapio extends JLabel {
         JPanel imagemPanel = new JPanel();
         imagemPanel.setBounds(5, 5, 100, 70);
         imagemPanel.setLayout(new BorderLayout());
-        ImageIcon imageIcon = new ImageIcon(produto.getImagem());
+        ImageIcon imageIcon = new ImageIcon("Imagens/"+produto.getImagem());
         JLabel imageLabel = new JLabel(imageIcon);
         imagemPanel.add(imageLabel, BorderLayout.CENTER);
         productPanel.add(imagemPanel);
