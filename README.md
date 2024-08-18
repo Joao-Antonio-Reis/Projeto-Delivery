@@ -22,7 +22,7 @@ O projeto é organizado seguindo o padrão de arquitetura MVC (Model-View-Contro
 
 ## Documentação
 
-**Documentos alocados na pasta 'Documents'**
+**Documentos alocados na pasta `Documents`**
 - A documentação do projeto contém diagramas de classe, diagramas de entidade e relacionamento.
 - Script de criação de tabelas do banco da criação do banco de dados esta na pasta documentação.
 
