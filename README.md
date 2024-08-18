@@ -20,6 +20,12 @@ O projeto é organizado seguindo o padrão de arquitetura MVC (Model-View-Contro
 - **Controllers**: Lógica de controle que conecta as views aos models, como `ControllerMenuPrincipal`, `ControllerCardapio`, etc.
 - **DAO (Data Access Object)**: Classes que interagem com o banco de dados para persistência de dados.
 
+## Documentação
+
+Documentos alocados na pasta "Documents"
+-A documentação do projeto contém diagramas de classe, diagramas de entidade e relacionamento.
+-Script do banco da criação do banco de dados esta na pasta documentação.
+
 ## Pré-requisitos
 
 - **Java**: Certifique-se de que a JDK está instalada no seu sistema.
