@@ -9,7 +9,6 @@ O **Projeto Delivery** é uma aplicação Java desenvolvida para gerenciar um si
 - **Menu Principal**: Navegue entre as diferentes funcionalidades do sistema.
 - **Cardápio**: Visualize produtos disponíveis e adicione-os ao carrinho.
 - **Carrinho**: Revise itens adicionados e finalize a compra.
-- **Cadastro**: Registre novos clientes ou edite os existentes.
 - **Login Administrativo**: Acesse funcionalidades administrativas para gerenciar produtos e categorias.
 
 ## Estrutura do Projeto
