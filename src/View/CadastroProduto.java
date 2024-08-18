@@ -12,7 +12,6 @@ import Models.Produto;
 
 public class CadastroProduto extends JLabel {
 
-    private JFrame frame;
     private JTextField nomeField;
     private JTextArea descProdutoArea;
     private JTextField precoField;
@@ -74,7 +73,6 @@ public class CadastroProduto extends JLabel {
 
         JButton uploadButton = new JButton("Upload Imagem");
         uploadButton.setFont(new Font("Arial", Font.BOLD, 15));
-        uploadButton.setBorder(BorderFactory.createLineBorder(cor, 1));
         uploadButton.setForeground(Color.WHITE);
         uploadButton.setBackground(cor);
         uploadButton.setBounds(10, 80, 150, 20);

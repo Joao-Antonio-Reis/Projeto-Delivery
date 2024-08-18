@@ -12,6 +12,7 @@ public class MenuPrincipalView extends JFrame {
     private JMenuItem cadastroCategoria;
     private JMenuItem cadastroProduto;
     private JMenuItem historico;
+    private JMenuItem logout;
     private JButton loginMenu;
     private JButton carrinhoMenu;
     private JButton cardapioMenu;
@@ -44,54 +45,45 @@ public class MenuPrincipalView extends JFrame {
         menuBar.setBackground(cor);
 
         voltaMenu = new JButton("Menu");
-        voltaMenu.setBorder(BorderFactory.createLineBorder(cor, 2));
         voltaMenu.setBackground(cor);
         voltaMenu.setForeground(Color.WHITE);
         menuBar.add(voltaMenu);
 
         cardapioMenu = new JButton("Cardapio");
-        cardapioMenu.setBorder(BorderFactory.createLineBorder(cor, 2));
         cardapioMenu.setBackground(cor);
         cardapioMenu.setForeground(Color.WHITE);
         menuBar.add(cardapioMenu);
 
         carrinhoMenu = new JButton("Carrinho");
-        carrinhoMenu.setBorder(BorderFactory.createLineBorder(cor, 2));
         carrinhoMenu.setForeground(Color.WHITE);
         carrinhoMenu.setBackground(cor);
         menuBar.add(carrinhoMenu);
 
         loginMenu = new JButton("Login");
-        loginMenu.setBorder(BorderFactory.createLineBorder(cor, 2));
         loginMenu.setBackground(cor);
         loginMenu.setForeground(Color.WHITE);
         menuBar.add(loginMenu);
 
 
         admMenu = new JMenu("ADM");
-        admMenu.setForeground(Color.WHITE);
         menuBar.add(admMenu);
         mostrarAdmMenu(logado);
 
         cadastroCategoria = new JMenuItem("Cadastrar Categoria");
-        cadastroCategoria.setBorder(BorderFactory.createLineBorder(cor, 2));
         cadastroCategoria.setBackground(cor);
-        cadastroCategoria.setForeground(Color.WHITE);
         admMenu.add(cadastroCategoria);
 
         cadastroProduto = new JMenuItem("Cadastrar Produto");
-        cadastroProduto.setBorder(BorderFactory.createLineBorder(cor, 2));
         cadastroProduto.setBackground(cor);
-        cadastroProduto.setForeground(Color.WHITE);
         admMenu.add(cadastroProduto);
 
         historico = new JMenuItem("Historico");
-        historico.setBorder(BorderFactory.createLineBorder(cor, 2));
         historico.setBackground(cor);
-        historico.setForeground(Color.WHITE);
         admMenu.add(historico);
 
-
+        logout = new JMenuItem("Logout");
+        logout.setBackground(cor);
+        admMenu.add(logout);
 
         setJMenuBar(menuBar);
 
@@ -100,7 +92,7 @@ public class MenuPrincipalView extends JFrame {
 
         JPanel imagemPanel = new JPanel();
         imagemPanel.setBounds(5, 0, 405, 205);
-        ImageIcon imagemIcon = new ImageIcon("Imagens/Logo.jpeg");
+        ImageIcon imagemIcon = new ImageIcon("Imagens/Logo.png");
         JLabel imagemLabel = new JLabel(imagemIcon);
         imagemPanel.add(imagemLabel);
         menuprin.add(imagemPanel);
@@ -172,6 +164,10 @@ public class MenuPrincipalView extends JFrame {
 
     public JMenuItem getHistorico() {
         return historico;
+    }
+
+    public JMenuItem getLogout() {
+        return logout;
     }
 
     public void changeContent(JLabel newContent) {

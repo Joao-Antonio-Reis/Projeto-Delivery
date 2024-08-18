@@ -12,9 +12,8 @@ public class PedidoDAO extends Conexao {
     private static Conexao dao = new Conexao();
 
     public void inserirPedido(Pedido pedido, int idCliente) throws SQLException {
-        Connection conexao = dao.getConnection(); // Obtenha a conexão com o banco de dados
+        Connection conexao = dao.getConnection();
         try {
-            // Inserir pedido
             String sqlPedido = "INSERT INTO Pedidos (ClienteID, ValorTotal, FormaPagamento) VALUES (?, ?, ?)";
             PreparedStatement stmtPedido = conexao.prepareStatement(sqlPedido, Statement.RETURN_GENERATED_KEYS);
             stmtPedido.setInt(1, idCliente); // Corrigido para usar getClienteID
@@ -24,7 +23,7 @@ public class PedidoDAO extends Conexao {
 
         } finally {
             if (conexao != null) {
-                conexao.close(); // Feche a conexão
+                conexao.close();
             }
         }
     }

@@ -13,7 +13,7 @@ public class Carrinho extends JLabel {
     private JButton submitButton;
     private JTextArea observacaoArea;
     private ButtonGroup formasPagamentoGroup;
-    private JCheckBox entregaCheckBox; // Adiciona referência ao checkbox de entrega
+    private JCheckBox entregaCheckBox;
 
     public Carrinho() {
         frameCarrinho();

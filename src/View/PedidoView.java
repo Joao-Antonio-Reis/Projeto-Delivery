@@ -1,9 +1,7 @@
 package View;
 
-import Models.Cliente;
 import Models.Pedido;
 import Models.Produto;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -66,8 +64,10 @@ public class PedidoView extends JFrame {
 
         panel.add(new JLabel(""));
         JLabel valorTotal = new JLabel("Valor total: "+ String.format("%.2f", pedido.getValor_Total_Pedido()));
+        valorTotal.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(valorTotal);
         JLabel formaPagamento = new JLabel("Forma de pagamento: "+ pedido.getForma_Pagamento());
+        formaPagamento.setFont(new Font("Arial", Font.BOLD, 12));
         panel.add(formaPagamento);
 
         setVisible(true);

@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 
-public class LoginAdm extends JLabel { // Changed from JLabel to JPanel
+public class LoginAdm extends JLabel {
     private JTextField loginField;
     private JPasswordField senhaField;
     private JButton loginButton;
@@ -18,7 +18,7 @@ public class LoginAdm extends JLabel { // Changed from JLabel to JPanel
     }
 
     private void frameLogin() {
-        setVisible(true); // Visibility true
+        setVisible(true);
         setLayout(null);
 
         JLabel loginLabel = new JLabel("Login:");
